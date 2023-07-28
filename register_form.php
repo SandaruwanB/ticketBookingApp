@@ -111,8 +111,8 @@
 							  </div>
               </form>
             </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+          </div>
+        </div>
       </div>
       
       <?php
@@ -154,15 +154,15 @@
             </div>
             <div class="form-group">
               <label for="username">First Name:</label>
-              <input type="text" id="username" name="firstname" required>
+              <input type="text" id="firstname" name="firstname" required>
             </div>
             <div class="form-group">
               <label for="username">Last Name:</label>
-              <input type="text" id="username" name="lastname" required>
+              <input type="text" id="lastname" name="lastname" required>
             </div>
             <div class="form-group">
               <label for="form_mobile">Mobile :</label>
-              <input type="text" name="formmobile" id="form_mobile" required>   
+              <input type="text" name="formmobile" id="mobile" required>   
             </div>
             <div class="form-group">
               <label for="email">Email:</label>
@@ -170,19 +170,19 @@
             </div>
             <div class="form-group">
               <label for="username">Username:</label>
-              <input type="text" id="username" name="username" required>
+              <input type="text" id="uname" name="username" required>
               <span class="small_text">(Minimum 6 characters)</span>
             </div>
             <div class="form-group">
               <label for="password">Password:</label>
-              <input type="password" id="password" name="password" required>
+              <input type="password" id="pass" name="password" required>
               <span class="small_text">(Should be a minimum of 4 characters)</span>
             </div>
             <div class="form-group">
               <label for="confirm-password">Confirm Password:</label>
-              <input type="password" id="confirm-password" name="confirm-password" required>
+              <input type="password" id="confirmpassword" name="confirm-password" required>
             </div>
-            <h6 class="mb-0 mt-3"><a class="button_1" href="#">Register</a></h6>
+            <h6 class="mb-0 mt-3"><button class="button_1" id="registerBtn">Register</button></h6>
           </form>
         </div>
         <br><br>
@@ -210,7 +210,10 @@
         </div>
       </div>
     </section>
+
+    <div id="snackbar"></div>
     
+    <script src="./sources/js/jquery.min.js"></script>
     <script>
     window.onscroll = function() {myFunction()};
     
@@ -228,7 +231,7 @@
       }
     }
     </script>
-    
+    <script src="./sources/js/main.js"></script>
   </body>
   
 </html>

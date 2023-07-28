@@ -1,3 +1,53 @@
+//register 
+$('#registerBtn').click(function (e) { 
+    e.preventDefault();
+    const title = $('#form_title').val();
+    const fname = $('#firstname').val();
+    const lname = $('#lastname').val();
+    const contact = $('#mobile').val();
+    const email = $('#email').val();
+    const username = $('#uname').val();
+    const password = $('#pass').val();
+    const repassword = $('#confirmpassword').val();
+
+    if(title == "" || fname == "" || lname == "" || contact == "" || email == "" || username == "" || password == "" || repassword == ""){
+        showToast("red", "All Fields are Required");
+    }
+    else if(password != repassword){
+        showToast('red', "Passwords doesn't Match.");
+    }
+    else{
+        $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+                register : true,
+                title : title,
+                fname : fname,
+                lname : lname,
+                contact : contact,
+                email : email,
+                username : username,
+                password : password
+            },
+            dataType: "text",
+            success: function (response) {
+                const finalRes = response.trim();
+                if(finalRes == "email"){
+                    showToast("red", "This email already in use.");
+                }
+                else if(finalRes == "user"){
+                    showToast("red", "This user name already exists.")
+                }
+                else{
+                    location.replace("/moviebooker/user/");
+                }
+            }
+        });
+    }
+});
+
+
 // contact message
 $('#addContactMessage').click(function (e) { 
     e.preventDefault();
@@ -29,3 +79,12 @@ $('#addContactMessage').click(function (e) {
         });
     }
 });
+
+
+function showToast(color, text){
+    var x = document.getElementById("snackbar");
+    $('#snackbar').text(text);
+    $('#snackbar').css('background-color', color);
+    $('#snackbar').addClass('show');
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
