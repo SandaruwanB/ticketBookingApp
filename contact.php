@@ -87,32 +87,32 @@
 							<div class="blog1ld3 row mt-4">
 								<div class="col-md-6">
 									<div class="blog1ld3l">
-										<input class="form-control" placeholder="Name" type="text">
+										<input class="form-control" id="name" placeholder="Name" type="text">
 									</div>
 								</div> 
 								<div class="col-md-6">
 									<div class="blog1ld3l">
-										<input class="form-control" placeholder="Email" type="text">
+										<input class="form-control" id="email" placeholder="Email" type="text">
 									</div>
 								</div>
 							</div>
 							<div class="blog1ld3 row">
 								<div class="col-md-6">
 									<div class="blog1ld3l">
-										<input class="form-control mt-3" placeholder="Phone_Number" type="text">
+										<input type="text" class="form-control mt-3" id="phone" placeholder="Phone Number" >
 									</div>
 								</div> 
 								<div class="col-md-6">
 									<div class="blog1ld3l">
-										<input class="form-control mt-3" placeholder="Subject" type="text">
+										<input class="form-control mt-3" id="subject" placeholder="Subject" type="text">
 									</div>
 								</div>
 							</div>
 							<div class="blog1ld3 row">
 								<div class="col-md-12">
 									<div class="blog1ld3l">
-										<textarea placeholder="Message" class="form-control form_text mt-3"></textarea>
-										<h6 class="mb-0 mt-3"><a class="button_1" href="#">Submit </a></h6>
+										<textarea placeholder="Message" class="form-control form_text mt-3" id="message"></textarea>
+										<h6 class="mb-0 mt-3"><button class="button_1" id="addContactMessage">Submit </button></h6>
 									</div>
 								</div> 
 							</div>
@@ -212,6 +212,8 @@
 			</div>
 		</section>
 		
+
+		<script src="./sources/js/jquery.min.js"></script>
 		<script>
 		window.onscroll = function() {myFunction()};
 		
@@ -229,7 +231,7 @@
 			}
 		}
 		</script>
-		
+		<script src="./sources/js/main.js"></script>
 	</body>
 	
 </html>
