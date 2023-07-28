@@ -47,6 +47,44 @@ $('#registerBtn').click(function (e) {
     }
 });
 
+//login
+$('#loginBtn').click(function (e) { 
+    e.preventDefault();
+    const username = $('#uname').val();
+    const password = $('#pass').val();
+
+    if(username == "" || password == ""){
+        showToast("red", "All Fields are Required");
+    }
+    else{
+        $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+                signin : true,
+                username : username,
+                password : password
+            },
+            dataType: "text",
+            success: function (response) {
+                const actRes = response.trim();
+                if(actRes == "pass"){
+                    showToast("red", "Incorect Password Please Check Again.");
+                }
+                else if(actRes == "notfound"){
+                    showToast("red", "User Account not Found Please Register.")
+                }
+                else if(actRes == "user"){
+                    location.replace("/moviebooker/user/");
+                }
+                else{
+                    location.replace("/moviebooker/admin/");
+                }
+            }
+        });
+    }
+});
+
 
 // contact message
 $('#addContactMessage').click(function (e) { 

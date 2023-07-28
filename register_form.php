@@ -135,7 +135,7 @@
           <div class="tab-content">
             <div class="tab-pane active" id="home">
               <div class="upcome_2i row">
-                <p style="font-size: 16px;">To become a user of the website and to perform online transactions you have to be a registered user. Please fill out the following form with relevant and valid information.</p>
+                <p style="font-size: 16px;" class="text-center">To become a user of the website and to perform online transactions you have to be a registered user. Please fill out the following form with relevant and valid information.</p>
               </div> 
             </div>
           </div>
@@ -181,6 +181,9 @@
             <div class="form-group">
               <label for="confirm-password">Confirm Password:</label>
               <input type="password" id="confirmpassword" name="confirm-password" required>
+            </div>
+            <div class="form-group">
+              <p style="font-size : 15px;">Already have an account <a style="color : blue;" href="/moviebooker/login.php">Login Now</a></p>
             </div>
             <h6 class="mb-0 mt-3"><button class="button_1" id="registerBtn">Register</button></h6>
           </form>

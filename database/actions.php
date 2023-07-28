@@ -44,3 +44,30 @@
             }
         }
     }
+
+    else if(isset($_POST['signin'])){
+        $user = $_POST['username'];
+        $password = $_POST['password'];
+
+        $query = mysqli_query($con, "SELECT * FROM users,userRoles WHERE email='".$user."' OR userName='".$user."' AND users.role = userRoles.id");
+        if(mysqli_num_rows($query) > 0){
+            $row = mysqli_fetch_assoc($query);
+            $actPass = $row['password'];
+            if(password_verify($password, $actPass)){
+                session_start();
+                $_SESSION['user'] = $row['userName'];
+                if($row['type'] == "admin"){
+                    echo "admin";
+                }
+                else{
+                    echo "user";
+                }
+            }
+            else{
+                echo "pass";
+            }
+        }
+        else{
+            echo "notfound";
+        }
+    }
