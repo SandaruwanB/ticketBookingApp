@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+    
+    .item-image {
+    flex: 1;
+    text-align: center;
+    }
+    
+    .item-image img {
+    max-width: 100%;
+    height: auto;
+    }
+    
+    .item-details {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+    }
+    
+    h2 {
+    margin-top: 0;
+    }
+    
+    ul {
+    padding: 0;
+    margin: 10px 0;
+    }
+    
+    li {
+    list-style-type: none;
+    margin-bottom: 5px;
+    }
+    
+    h3 {
+    margin-top: 20px;
+    }
+    
+    button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    }
+    
+    button:hover {
+    background-color: #45a049;
+    }
+    

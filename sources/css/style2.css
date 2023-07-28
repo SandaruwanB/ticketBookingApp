@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.sidebar {
+    position: fixed;
+    width: 270px;
+    height: 100%;
+    background: transparent;
+    overflow-x: hidden;
+    z-index: 2;
+}
+
+.sidebar ul li {
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar ul li:hover {
+    background: #f0bddc;
+    border-radius: 25px;
+}
+
+h2.title {
+    line-height: 60px;
+    margin-bottom: 20px;
+    font-size: 100px;
+    border-bottom: 1px solid #fff;
+}
+
+.sidebar ul li:first-child:hover {
+    background: none;
+}
+
+.sidebar ul li a {
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: .875rem;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.sidebar ul li a i {
+    min-width: 60px;
+    font-size: 17px;
+    text-align: center;
+}
+
+.sidebar .title {
+    padding: 0 10px;
+    font-size: 14px;
+}
+
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    min-height: 100vh;
+    left: 300px;
+    background: #f5f5f5;
+}
+
+.top-bar {
+    position: fixed;
+    height: 60px;
+    width: calc(100% - 300px);
+    background: #fff;
+    display: grid;
+    grid-template-columns: 10fr 0.4fr 1fr;
+    grid-gap: 5px;
+    align-items: center;
+    color: #444;
+    padding: 0 20px;
+    box-shadow: 0 4px 8px 0 (0,0,0,0.2);
+    z-index: 1;
+}
+
+.top-bar .search {
+    position: relative;
+    max-width: 400px;
+}
+
+.search input {
+    width: 100%;
+    min-width: 128px;
+    height: 40px;
+    padding: 0 40px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    background: #f5f5f5;
+}
+
+.search i {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.user {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.cards {
+    margin-top: 60px;
+    width: 100%;
+    padding: 35px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.cards .card {
+    background: #f0bddc;
+    padding: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.number {
+    font-size: 40px;
+    font-weight: 500;
+    color: #232121;
+}
+
+.card-name {
+    color: #232121;
+    font-weight: 200;
+    font-size: 15px;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+.icon-box i {
+    font-size: 60px;
+    color: #a6148e;
+}
+*{
+    margin: 0;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 35px;
+    text-align: center;
+}
+
+.tables {
+    margin-top: 80px;
+    width: 100%;
+    padding: 0 20px 20px 20px;
+}
+
+.all-movie {
+    height: 350px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px 0;
+    border-radius: 10px;
+}
+
+.heading {
+    display: flex;
+    width: 100%;
+    text-align: left;
+    color: #444;
+}
+
+table {
+    margin-top: 10px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead td {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+tbody tr:hover {
+    background: #f0bddc;
+    color: #121212;
+    border-radius: 25px;
+}
+
+table tbody tr:last-child {
+    border-bottom: none;
+}
+
+td {
+    padding: 13px 7px;
+    font-size: 14px;
+}
+
+td i {
+    padding: 7px;
+    color: #fff;
+    border-radius: 50px;
+}
+
+.btn {
+    padding: 5px 10px;
+    background: #ff4444;
+    color: #fff;
+    text-decoration: none;
+    text-align: left;
+    margin-left: 700px;
+    margin-top: 20px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.fa-eye {
+    background: #38da63;
+}
+
+.fa-edit {
+    background: #71b3e2;
+}
+
+.fa-trash-o {
+    background: #e46363;
+}
+
+
+
+
