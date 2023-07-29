@@ -238,7 +238,7 @@ td i {
 
 .btn {
     padding: 5px 10px;
-    background: #ff4444;
+    background: #38da63;
     color: #fff;
     text-decoration: none;
     text-align: left;
@@ -262,6 +262,11 @@ td i {
     background: #e46363;
 }
 
+.add-btn{
+    position: absolute;
+    top: 80px;
+    right: 7%;
+}
 
 
 
