@@ -7,7 +7,7 @@
                         </h2>
                     </a>
                 </li>
-                <li>
+                <li style="margin-top : 70px;">
                     <a href="/moviebooker/admin/">
                         <i class="fa fa-home"></i>
                         <div class="title">Admin Dashbord</div>
@@ -32,7 +32,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/moviebooker/admin/admins.php">
+                        <i class="fa fa-user"></i>
+                        <div class="title">Admins</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/moviebooker/admin/customers.php">
                         <i class="fa fa-user"></i>
                         <div class="title">Customers</div>
                     </a>
@@ -50,7 +56,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" id="logout">
                         <i class="fa fa-sign-out"></i>
                         <div class="title">Logout</div>
                     </a>

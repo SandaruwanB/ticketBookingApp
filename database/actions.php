@@ -71,3 +71,8 @@
             echo "notfound";
         }
     }
+
+    else if(isset($_POST['logout'])){
+        session_destroy();
+        echo "success";
+    }

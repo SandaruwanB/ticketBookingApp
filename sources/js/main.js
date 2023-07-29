@@ -123,6 +123,21 @@ $('#addContactMessage').click(function (e) {
     }
 });
 
+$('#logout').click(function (e) { 
+    e.preventDefault();
+    $.ajax({
+        type: "post",
+        url: "/moviebooker/database/actions.php",
+        data: {
+            logout : true,
+        },
+        dataType: "text",
+        success: function (response) {
+            window.location.replace("/moviebooker/");
+        }
+    });
+});
+
 
 function showToast(color, text){
     var x = document.getElementById("snackbar");
