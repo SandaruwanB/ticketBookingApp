@@ -29,18 +29,15 @@
 								<div class="mb-3">
 									<label for="username" class="form-label">Name</label>
 								    <input class="form-control" type="email" id="username" required="" placeholder="Enter Name" name="username">
-							    </div>
-							 
+							    </div>							 
 							    <div class="mb-3">
 								    <label for="emailaddress" class="form-label">Email address</label>
 								    <input class="form-control" type="email" id="emailaddress" required="" placeholder="info@gmail.com" name="emailaddress">
-							    </div>
-							 
+							    </div>							 
 							    <div class="mb-3">
 								    <label for="password" class="form-label">Password</label>
 								    <input class="form-control" type="password" required="" id="password" placeholder="Enter your password" name="password">
 							    </div>
-
 								<div class="mb-3 text-center">
 									<h6><a type="submit" class="button_1 d-block" name="submit">LOG IN</a></h6>
 								</div>
@@ -65,16 +62,15 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img src="sources/img/image1.jpg" class="d-block w-100" alt="..." style="max-height : 65vh; object-fit : cover;">
-					</div>
-					
+					</div>					
 					<div class="carousel-item">
 						<img src="sources/img/image2.jpg" class="d-block w-100" alt="..." style="max-height : 65vh; object-fit : cover;">
 					</div>
-
                     <div class="carousel-item">
                         <img src="sources/img/image3.jpg" class="d-block w-100" alt="..." style="max-height : 65vh; object-fit : cover;">
                     </div>
 				</div>
+				<div class="topdarker"></div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>

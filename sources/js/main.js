@@ -96,7 +96,7 @@ $('#addContactMessage').click(function (e) {
     const message = $('#message').val();
 
     if(name == "" || email == "" || contact == "" || subject == "" || message == ""){
-
+        showToast("red", "All Fileds are Required.");
     }
     else{
         $.ajax({
@@ -112,7 +112,12 @@ $('#addContactMessage').click(function (e) {
             },
             dataType: "text",
             success: function (response) {
-                alert(response);
+                $('#name').val("");
+                $('#email').val("");
+                $('#phone').val("");
+                $('#subject').val("");
+                $('#message').val("");
+                showToast("green", "Your Message is Submitted. Please be in touch with your mailbox.");
             }
         });
     }
@@ -124,5 +129,5 @@ function showToast(color, text){
     $('#snackbar').text(text);
     $('#snackbar').css('background-color', color);
     $('#snackbar').addClass('show');
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
 }

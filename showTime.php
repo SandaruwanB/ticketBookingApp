@@ -118,8 +118,8 @@
                 </div>
               </form>
             </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+          </div>
+        </div>
       </div>
 
       <?php
@@ -128,7 +128,7 @@
       
     </section>
     
-    <img src="sources/img/wall_img.jpg" width="1520px" height="480px">
+    <img src="sources/img/wall_img.jpg" width="85%" height="350px" style="object-fit : cover;">
     
     <section id="upcome" class="p_3 bg-light">
       <div class="container-xl">
@@ -141,7 +141,7 @@
         <div class="row upcome_2 mt-4">
           <div class="tab-content">
             <div class="tab-pane active" id="home">
-              <div class="upcome_2i row">
+              <div class="upcome_2i row text-center">
                 <p style="font-size: 16px;">Please select the required theater and the showtime from the dropdown lists and it will display current rates applicable to the relevant theater and show time</p>
                 <h6 style="font-weight: bold;">Note:</h6>
                 <p style="font-size: 16px;">The Ticket rates and Showtimes displayed are standard rates and showtimes for the Theater ONLY. Tickets Rates and Show Tmes may differ from Movie to Movie</p>

@@ -121,13 +121,13 @@
       
     </section>
     
-    <img src="sources/img/wall_img.jpg" width="1520px" height="480px">
+    <img src="sources/img/wall_img.jpg" width="85%" height="350px" style="object-fit : cover;">
     
     <section id="upcome" class="p_3 bg-light">
       <div class="container-xl">
         <div class="row upcome_1 text-center">
           <div class="col-md-12">
-            <h3 class="mb-0">Login to CINEMA Movies</h3>
+            <h3 class="mb-0">LOGIN TO CINEMA MOVIES</h3>
             <hr class="line me-auto ms-auto">
           </div>
         </div>

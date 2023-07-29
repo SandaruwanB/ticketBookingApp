@@ -66,12 +66,14 @@
 			
 		</section>
 
-		<section id="center" class="center_o pt-5">
-			<div class="container">
-				<div class="row center_o1 text-center">
+		<img src="sources/img/wall_img.jpg" width="85%" height="350px" style="object-fit : cover;">
+
+		<section id="upcome" class="p_3 bg-light">
+			<div class="container-xl">
+				<div class="row upcome_1 text-center">
 					<div class="col-md-12">
-						<h2>CONTACT US</h2>
-						<h5 class="bg_dark d-inline-block p-4 mb-0 mt-4 pt-2 pb-2 fw-normal col_red"><a class="text-white" href="#">Home</a>  <span class="me-2 ms-2 text-muted"> /</span>   Contact Us</h5>
+						<h3 class="mb-0">CONTACT US</h3>
+						<hr class="line me-auto ms-auto">
 					</div>
 				</div>
 			</div>
@@ -82,8 +84,6 @@
 				<div class="row contact1">
 					<div class="col-md-8">
 						<div class="contact1l">
-							<h3>CONTACT US</h3>
-							<hr class="line">
 							<div class="blog1ld3 row mt-4">
 								<div class="col-md-6">
 									<div class="blog1ld3l">
@@ -212,6 +212,7 @@
 			</div>
 		</section>
 		
+		<div id="snackbar"></div>
 
 		<script src="./sources/js/jquery.min.js"></script>
 		<script>

@@ -93,8 +93,8 @@
 							    </div>
 							</form>
 						</div>
-					</div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
+					</div>
+				</div>
 			</div>
 			
 			<?php
@@ -103,7 +103,7 @@
 			
 		</section>
 		
-		<img src="sources/img/wall_img.jpg" width="1520px" height="480px">
+		<img src="sources/img/wall_img.jpg" width="85%" height="350px" style="object-fit : cover;">
 		
 		<section id="upcome" class="p_3 bg-light">
 			<div class="container-xl">
