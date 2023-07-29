@@ -13,21 +13,21 @@
 
         <li class="nav-item">
         <?php 
-          if($url == "/moviebooker/"){
-            echo '<a class="nav-link active" aria-current="page" href="/moviebooker/">Home</a>';
+          if($url == "/moviebooker/user/"){
+            echo '<a class="nav-link active" aria-current="page" href="/moviebooker/user/">Home</a>';
           }
           else{
-            echo '<a class="nav-link" aria-current="page" href="/moviebooker/">Home</a>';
+            echo '<a class="nav-link" aria-current="page" href="/moviebooker/user/">Home</a>';
           }
         ?>
         </li>
 		    <li class="nav-item">
         <?php 
-          if($url == "/moviebooker/theaters.php"){
-            echo '<a class="nav-link active" aria-current="page" href="/moviebooker/theaters.php">Theaters</a>';
+          if($url == "/moviebooker/user/theotors.php"){
+            echo '<a class="nav-link active" aria-current="page" href="/moviebooker/user/theotors.php">Theaters</a>';
           }
           else{
-            echo '<a class="nav-link" aria-current="page" href="/moviebooker/theaters.php">Theaters</a>';
+            echo '<a class="nav-link" aria-current="page" href="/moviebooker/user/theotors.php">Theaters</a>';
           }
         ?>
         </li>
@@ -41,24 +41,33 @@
             echo '<a class="nav-link" aria-current="page" href="/moviebooker/showTime.php">Rates & show times</a>';
           }
         ?>
-        </li>        
-        <li class="nav-item">
+        </li>
+		
+		    <li class="nav-item">
           <?php 
-            if($url == "/moviebooker/contact.php"){
-              echo '<a class="nav-link active" aria-current="page" href="/moviebooker/contact.php">contact us</a>';
+            if($url == "/moviebooker/buy_tickets.php"){
+              echo '<a class="nav-link active" aria-current="page" href="/moviebooker/buy_tickets.php">Buy tickets</a>';
             }
             else{
-              echo '<a class="nav-link" aria-current="page" href="/moviebooker/contact.php">contact us</a>';
+              echo '<a class="nav-link" aria-current="page" href="/moviebooker/buy_tickets.php">Buy tickets</a>';
+            }
+          ?>
+        </li>	
+        
+        <li class="nav-item">
+          <?php 
+            if($url == "/moviebooker/user/complain.php"){
+              echo '<a class="nav-link active" aria-current="page" href="/moviebooker/user/complain.php">complain</a>';
+            }
+            else{
+              echo '<a class="nav-link" aria-current="page" href="/moviebooker/user/complain.php">complain</a>';
             }
           ?>
         </li>	
       </ul>
 	    <ul class="navbar-nav mb-0 ms-auto">
         <li class="nav-item ms-3">
-          <a class="nav-link button" href="/moviebooker/register_form.php">Register</a>
-        </li>
-        <li class="nav-item ms-3">
-          <a class="nav-link button" href="/moviebooker/login.php">Login</a>
+              <a class="nav-link button" data-bs-toggle="modal" data-bs-target="#signup-modal" href="#">SIGN UP</a>
         </li>
       </ul>
     </div>
