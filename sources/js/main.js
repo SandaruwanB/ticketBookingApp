@@ -123,6 +123,44 @@ $('#addContactMessage').click(function (e) {
     }
 });
 
+
+$('#editUser').click(function (e) { 
+    e.preventDefault();
+    const title = $('#form_title').val();
+    const firstname = $('#firstname').val();
+    const lastname = $('#lastname').val();
+    const mobile = $('#mobile').val();
+    const email = $('#email').val();
+    const user = $('#uname').val();
+    const password = $('#pass').val();
+
+    if(firstname == "" || lastname == "" || mobile == "" || email == "" || user == ""){
+        alert("You Missed Some Fields.");
+    }
+    else{
+        $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+                editUserData : true,
+                title : title,
+                firstname : firstname,
+                lastname : lastname,
+                mobile : mobile,
+                email : email,
+                user : user,
+                password : password
+            },
+            dataType: "text",
+            success: function (response) {
+                alert(response);
+            }
+        });
+    }
+});
+
+
+
 $('#logout').click(function (e) { 
     e.preventDefault();
     $.ajax({

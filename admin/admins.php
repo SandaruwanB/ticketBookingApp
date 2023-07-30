@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../sources/css/style2.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Admin Dashbord</title>
+        <title>CINEMA : admins</title>
     </head>
     
     <body>
@@ -58,7 +58,7 @@
                                                 <td>'.$row['email'].'</td>
                                                 <td>'.$row['mobile'].'</td>
                                                 <td>
-                                                    <a href="/moviebooker/admin/adminEdit.php?aid='.$row['userName'].'" class="btn1"><i class="fa fa-edit"></i></a>
+                                                    <a href="/moviebooker/admin/userEdit.php?uid='.$row['userName'].'" class="btn1"><i class="fa fa-edit"></i></a>
                                                     <button class="btn1" onclick="deleteAdmin("'.$row['userName'].'")" style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></button>
                                                 </td>
                                             </tr>';

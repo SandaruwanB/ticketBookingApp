@@ -72,6 +72,32 @@
         }
     }
 
+    else if(isset($_POST['editUserData'])){
+        $user = $_POST['user'];
+        $title = $_POST['title'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $mobile = $_POST['mobile'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $query = mysqli_query($con, "SELECT * FROM users WHERE email='".$email."' AND userName<>'".$user."'");
+        if(mysqli_num_rows($query) > 0){
+            echo "exists";
+        }
+        else{
+            if($password == ""){
+                mysqli_query($con, "UPDATE users SET title='".$title."', firstName='".$firstname."', lastName='".$lastname."', mobile='".$mobile."' WHERE userName='".$user."'");
+                echo "success";
+            }
+            else{
+                $actPass = password_hash($password, PASSWORD_DEFAULT);
+                mysqli_query($con, "UPDATE users SET title='".$title."', firstName='".$firstname."', lastName='".$lastname."', mobile='".$mobile."', password='".$actPass."' WHERE userName='".$user."'");
+                echo "success";
+            }
+        }
+    }
+
     else if(isset($_POST['logout'])){
         session_destroy();
         echo "success";
