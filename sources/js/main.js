@@ -135,7 +135,7 @@ $('#editUser').click(function (e) {
     const password = $('#pass').val();
 
     if(firstname == "" || lastname == "" || mobile == "" || email == "" || user == ""){
-        alert("You Missed Some Fields.");
+        $('#alert-setter').html(alertSet("input", "You missed some required fields."));
     }
     else{
         $.ajax({
@@ -153,7 +153,13 @@ $('#editUser').click(function (e) {
             },
             dataType: "text",
             success: function (response) {
-                alert(response);
+                const finalVal = response.trim();
+                if(finalVal == "exists"){
+                    $('#alert-setter').html(alertSet("exist", "This email or user name already in use."));
+                }
+                else{
+                    $('#alert-setter').html(alertSet("success", ""));
+                }
             }
         });
     }
@@ -183,4 +189,16 @@ function showToast(color, text){
     $('#snackbar').css('background-color', color);
     $('#snackbar').addClass('show');
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+}
+
+function alertSet(classA, text){
+    const string1 = '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Error! </strong> '+ text +'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> </div>';
+    const string2 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Success!</strong> Account data sucessfully changed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> </div>';
+
+    if(classA == "success"){
+        return string2;
+    }
+    else{
+        return string1;
+    }
 }

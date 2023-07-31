@@ -118,16 +118,10 @@
             <div class="form-group">
               <label for="username">Username:</label>
               <input type="text" id="uname" name="username" required>
-              <span class="small_text">(Minimum 4 characters)</span>
             </div>
             <div class="form-group">
               <label for="password">Password:</label>
               <input type="password" id="pass" name="password" required>
-              <span class="small_text">(Should be a minimum of 6 characters)</span>
-            </div>
-            <div class="form-group">
-              <label for="confirm-password">Confirm Password:</label>
-              <input type="password" id="confirmpassword" name="confirm-password" required>
             </div>
             <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="registerBtn">Add</button><a class="btn btn-md btn-info" href="/moviebooker/admin/admins.php" style="margin-left : 20px;" id="registerBtn">Cancel</a></h6>
           </form>

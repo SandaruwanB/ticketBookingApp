@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CINEMA : Edit Admin</title>
     <link href="../sources/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="../sources/css/font-awesome.min.css" rel="stylesheet" >
     <link href="../sources/css/global.css" rel="stylesheet">
     <link href="../sources/css/index.css" rel="stylesheet">
@@ -98,6 +99,9 @@
         ?>
         <div class="container-md w-50 mt-5">
           <form>
+            <div class="form-group" id="alert-setter">
+
+            </div>
             <div class="form-group">
               <label for="title">Title:</label>
               <select id="form_title" name="title" class="required">
@@ -183,6 +187,8 @@
     }
     </script>
     <script src="../sources/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" ></script>
   </body>
   
 </html>
