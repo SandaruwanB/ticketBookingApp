@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CINEMA : Add Admin</title>
     <link href="../sources/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" >
     <link href="../sources/css/font-awesome.min.css" rel="stylesheet" >
     <link href="../sources/css/global.css" rel="stylesheet">
     <link href="../sources/css/index.css" rel="stylesheet">
@@ -89,6 +90,9 @@
         </div>
         <div class="container-md w-50 mt-5">
           <form>
+            <div class="form-group" id="alert-setter">
+
+            </div>
             <div class="form-group">
               <label for="title">Title:</label>
               <select id="form_title" name="title" class="required">
@@ -123,7 +127,7 @@
               <label for="password">Password:</label>
               <input type="password" id="pass" name="password" required>
             </div>
-            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="registerBtn">Add</button><a class="btn btn-md btn-info" href="/moviebooker/admin/admins.php" style="margin-left : 20px;" id="registerBtn">Cancel</a></h6>
+            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addNewAdmin">Add</button><a class="btn btn-md btn-info" href="/moviebooker/admin/admins.php" style="margin-left : 20px;" id="registerBtn">Cancel</a></h6>
           </form>
         </div>
       </div>
@@ -148,6 +152,8 @@
 
     </script>
     <script src="../sources/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" ></script>
   </body>
   
 </html>

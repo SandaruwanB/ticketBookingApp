@@ -98,6 +98,28 @@
         }
     }
 
+
+    else if(isset($_POST['adminAdd'])){
+        $title = $_POST['title'];
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $mobile = $_POST['mobile'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['pass'];
+        $actPass = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = mysqli_query($con, "SELECT * FROM users WHERE email='".$email."' OR userName='".$username."'");
+        if(mysqli_num_rows($query) > 0){
+            echo "user";
+        }
+        else{
+            mysqli_query($con, "INSERT INTO users(email,title,firstName,lastName,mobile,userName,password,role) VALUES('".$email."', '".$title."', '".$fname."', '".$lname."', '".$mobile."', '".$username."', '".$actPass."', 1)");
+            echo "success";
+        }
+    }
+
+
     else if(isset($_POST['logout'])){
         session_destroy();
         echo "success";

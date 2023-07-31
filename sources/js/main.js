@@ -158,7 +158,49 @@ $('#editUser').click(function (e) {
                     $('#alert-setter').html(alertSet("exist", "This email or user name already in use."));
                 }
                 else{
-                    $('#alert-setter').html(alertSet("success", ""));
+                    $('#alert-setter').html(alertSet("success", "User data succesfully changed."));
+                }
+            }
+        });
+    }
+});
+
+
+$('#addNewAdmin').click(function (e) { 
+    e.preventDefault();
+    const title = $('#form_title').val();
+    const fname = $('#firstname').val();
+    const lname = $('#lastname').val();
+    const mobile = $('#mobile').val();
+    const email = $('#email').val();
+    const username = $('#uname').val();
+    const pass = $('#pass').val();
+
+    if(title == "" || fname == "" || lname == "" || mobile == "" || email == "" || username == "" || pass == ""){
+        $('#alert-setter').html(alertSet("input", "All fields are required."));
+    }
+    else{
+        $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+                adminAdd : true,
+                title : title,
+                fname : fname,
+                lname : lname,
+                mobile : mobile,
+                email : email,
+                username : username,
+                pass : pass
+            },
+            dataType: "text",
+            success: function (response) {
+                const finalRes = response.trim();
+                if(finalRes == "user"){
+                    $('#alert-setter').html(alertSet("input", "This email or user name already in use.")); 
+                }
+                else{
+                    $('#alert-setter').html(alertSet("success", "User account successfully added.")); 
                 }
             }
         });
@@ -193,7 +235,7 @@ function showToast(color, text){
 
 function alertSet(classA, text){
     const string1 = '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Error! </strong> '+ text +'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> </div>';
-    const string2 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Success!</strong> Account data sucessfully changed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> </div>';
+    const string2 = '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Success!</strong>  '+ text +'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> </div>';
 
     if(classA == "success"){
         return string2;
