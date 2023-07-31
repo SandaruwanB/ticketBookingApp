@@ -59,7 +59,7 @@
                                                 <td>'.$row['mobile'].'</td>
                                                 <td>
                                                     <a href="/moviebooker/admin/userEdit.php?uid='.$row['userName'].'" class="btn1"><i class="fa fa-edit"></i></a>
-                                                    <button class="btn1" onclick="deleteAdmin("'.$row['userName'].'")" style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></button>
+                                                    <a href="/moviebooker/database/deluser.php?uid='.$row['userName'].'" class="btn1" id="delAdmin" value="'.$row['userName'].'" style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>';
                                             ++$loop;
@@ -77,11 +77,6 @@
         </div>
 
         <script src="../sources/js/jquery.min.js"></script>
-        <script>
-            function deleteAdmin(user){
-                alert(user);
-            }
-        </script>
         <script src="../sources/js/main.js"></script>
     </body>
     
