@@ -84,7 +84,7 @@
       <div class="container-xl">
         <div class="row upcome_1 text-center">
           <div class="col-md-12">
-            <h3 class="mb-0">ADD UPCOMMING MOVIE</h3>
+            <h3 class="mb-0">ADD CURRENT MOVIE</h3>
             <hr class="line me-auto ms-auto">
           </div>
         </div>
@@ -106,7 +106,7 @@
             </div>
             <div class="form-group">
               <label for="email">Releasing Date:</label>
-              <input type="date" id="rdate" name="rdate" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px; " required>
+              <input type="date" id="rdate" name="rdate" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>
             </div>
             <div class="form-group">
               <label for="username">Language:</label>
@@ -140,7 +140,7 @@
     }
 
     function goBack(){
-      window.location.replace("/moviebooker/admin/upcommingMovies.php");
+      window.location.replace("/moviebooker/admin/currentMovies.php");
     }
     </script>
     <script src="../sources/js/main.js"></script>
