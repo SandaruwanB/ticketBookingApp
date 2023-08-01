@@ -1,3 +1,7 @@
+<?php
+    include_once("../database/connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,27 +33,41 @@
                     <div class="all-theaters">
                         <div class="heading">
                             <h2>Theaters</h2>
-                            <button href="#" class="add-btn btn">Add New</button>
+                            <a href="/moviebooker/admin/theaterAdd.php" class="add-btn btn">Add New</a>
                         </div>
                         <table class="All Theaters" style="margin-top : 50px;">
                             <thead>
-                                <td>Theatre ID</td>
+                                <td>#</td>
                                 <td>Theatre Name</td>
                                 <td>Theatre Location</td>
+                                <td>Address</td>
                                 <td>Capacity</td>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>New Empiriyal</td>
-                                    <td>Kurunegala</td>
-                                    <td>200</td>
-                                    <td>
-                                        <a href="#" class="btn1"><i class="fa fa-eye"></i></a>
-                                        <a href="#" class="btn1"><i class="fa fa-edit"></i></a>
-                                        <a href="#" class="btn1"><i class="fa fa-trash-o"></i></a>
-                                    </td>
-                                </tr>
+                                <?php
+                                    $query = mysqli_query($con, "SELECT * FROM filmHalls");
+                                    if(mysqli_num_rows($query) > 0){
+                                        $loop = 1;
+                                        while($row = mysqli_fetch_assoc($query)){
+                                            echo '<tr>
+                                                    <td>'.$loop.'</td>
+                                                    <td>'.$row['hallName'].'</td>
+                                                    <td>'.$row['location'].'</td>
+                                                    <td>'.$row['address'].'</td>
+                                                    <td>'.$row['capacity'].'</td>
+                                                    <td>
+                                                        <a href="#" class="btn1"><i class="fa fa-edit"></i></a>
+                                                        <a href="#" class="btn1"><i class="fa fa-trash-o"></i></a>
+                                                    </td>
+                                                </tr>';
+                                            ++$loop;
+                                        }
+                                    }
+                                    else{
+                                        echo "<tr><td colspan='6' style='text-align : center; font-size : 1rem;'>No Theaters Availble to Show.</td></tr>";
+                                    }
+                                ?>
+
                             </tbody>
                         </table>
                     </div>

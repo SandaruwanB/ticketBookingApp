@@ -139,6 +139,15 @@
         }
     }
 
+    else if(isset($_POST['addNewTheater'])){
+        $theatername = $_POST['name'];
+        $location = $_POST['location'];
+        $address = $_POST['address'];
+        $capacity = $_POST['capacity'];
+
+        mysqli_query($con, "INSERT INTO filmHalls(hallName,location,address,capacity) VALUES('".$theatername."', '".$location."', '".$address."', ".$capacity.")");
+        echo "success";
+    }
 
     else if(isset($_POST['logout'])){
         session_destroy();
