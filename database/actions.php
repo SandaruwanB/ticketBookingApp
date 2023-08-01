@@ -87,12 +87,12 @@
         }
         else{
             if($password == ""){
-                mysqli_query($con, "UPDATE users SET title='".$title."', firstName='".$firstname."', lastName='".$lastname."', mobile='".$mobile."' WHERE userName='".$user."'");
+                mysqli_query($con, "UPDATE users SET title='".$title."', email='".$email."', firstName='".$firstname."', lastName='".$lastname."', mobile='".$mobile."' WHERE userName='".$user."'");
                 echo "success";
             }
             else{
                 $actPass = password_hash($password, PASSWORD_DEFAULT);
-                mysqli_query($con, "UPDATE users SET title='".$title."', firstName='".$firstname."', lastName='".$lastname."', mobile='".$mobile."', password='".$actPass."' WHERE userName='".$user."'");
+                mysqli_query($con, "UPDATE users SET title='".$title."', email='".$email."' firstName='".$firstname."', lastName='".$lastname."', mobile='".$mobile."', password='".$actPass."' WHERE userName='".$user."'");
                 echo "success";
             }
         }
@@ -115,6 +115,26 @@
         }
         else{
             mysqli_query($con, "INSERT INTO users(email,title,firstName,lastName,mobile,userName,password,role) VALUES('".$email."', '".$title."', '".$fname."', '".$lname."', '".$mobile."', '".$username."', '".$actPass."', 1)");
+            echo "success";
+        }
+    }
+
+    else if(isset($_POST['customerAdd'])){
+        $title = $_POST['title'];
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $mobile = $_POST['mobile'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['pass'];
+        $actPass = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = mysqli_query($con, "SELECT * FROM users WHERE email='".$email."' OR userName='".$username."'");
+        if(mysqli_num_rows($query) > 0){
+            echo "user";
+        }
+        else{
+            mysqli_query($con, "INSERT INTO users(email,title,firstName,lastName,mobile,userName,password,role) VALUES('".$email."', '".$title."', '".$fname."', '".$lname."', '".$mobile."', '".$username."', '".$actPass."', 2)");
             echo "success";
         }
     }

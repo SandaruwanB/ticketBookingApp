@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CINEMA : Add Admin</title>
+    <title>CINEMA : Add Customer</title>
     <link href="../sources/css/bootstrap.min.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" >
     <link href="../sources/css/font-awesome.min.css" rel="stylesheet" >
@@ -84,7 +84,7 @@
       <div class="container-xl">
         <div class="row upcome_1 text-center">
           <div class="col-md-12">
-            <h3 class="mb-0">ADD NEW ADMIN ACCOUNT</h3>
+            <h3 class="mb-0">ADD NEW CUSTOMER ACCOUNT</h3>
             <hr class="line me-auto ms-auto">
           </div>
         </div>
@@ -127,7 +127,7 @@
               <label for="password">Password:</label>
               <input type="password" id="pass" name="password" required>
             </div>
-            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addNewAdmin">Add</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
+            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addNewCustomer">Add</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
           </form>
         </div>
       </div>
@@ -151,7 +151,7 @@
     }
 
     function goBack(){
-      window.location.replace("/moviebooker/admin/admins.php");
+      window.location.replace("/moviebooker/admin/customers.php");
     }
     </script>
     <script src="../sources/js/main.js"></script>

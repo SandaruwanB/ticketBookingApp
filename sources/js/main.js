@@ -207,6 +207,47 @@ $('#addNewAdmin').click(function (e) {
     }
 });
 
+$('#addNewCustomer').click(function (e) { 
+    e.preventDefault();
+    const title = $('#form_title').val();
+    const fname = $('#firstname').val();
+    const lname = $('#lastname').val();
+    const mobile = $('#mobile').val();
+    const email = $('#email').val();
+    const username = $('#uname').val();
+    const pass = $('#pass').val();
+
+    if(title == "" || fname == "" || lname == "" || mobile == "" || email == "" || username == "" || pass == ""){
+        $('#alert-setter').html(alertSet("input", "All fields are required."));
+    }
+    else{
+        $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+                customerAdd : true,
+                title : title,
+                fname : fname,
+                lname : lname,
+                mobile : mobile,
+                email : email,
+                username : username,
+                pass : pass
+            },
+            dataType: "text",
+            success: function (response) {
+                const finalRes = response.trim();
+                if(finalRes == "user"){
+                    $('#alert-setter').html(alertSet("input", "This email or user name already in use.")); 
+                }
+                else{
+                    $('#alert-setter').html(alertSet("success", "User account successfully added.")); 
+                }
+            }
+        });
+    }
+});
+
 
 
 $('#logout').click(function (e) { 
