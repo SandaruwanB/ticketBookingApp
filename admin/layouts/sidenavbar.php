@@ -14,21 +14,21 @@
                     </a>
                 </li>
                 <li>
-                    <a href="movies.php">
+                    <a href="/moviebooker/admin/upcommingMovies.php">
                         <i class="fa fa-file-movie-o"></i>
-                        <div class="title">Movies</div>
+                        <div class="title">Upcomming Movies</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/moviebooker/admin/currentMovies.php">
+                        <i class="fa fa-file-movie-o"></i>
+                        <div class="title">Current Movies</div>
                     </a>
                 </li>
                 <li>
                     <a href="/moviebooker/admin/theators.php">
                         <i class="fa fa-building"></i>
                         <div class="title">Theaters</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-film"></i>
-                        <div class="title">Shows</div>
                     </a>
                 </li>
                 <li>
@@ -44,15 +44,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/moviebooker/admin/bookings.php">
                         <i class="fa fa-desktop"></i>
                         <div class="title">Bookings</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-key"></i>
-                        <div class="title">Change Password</div>
                     </a>
                 </li>
                 <li>

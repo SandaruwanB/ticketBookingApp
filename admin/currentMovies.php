@@ -6,11 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../sources/css/style2.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>CINEMA : admin dashbord</title>
-    </head>
-    
+        <title>CINEMA : current movies</title>
+    </head>    
     <body>
-
         <div class="container">
             <?php
             include('./layouts/sidenavbar.php');
@@ -28,13 +26,11 @@
                 <div class="tables">
                     <div class="all-theaters">
                         <div class="heading">
-                            <h2>Dashboard</h2>
+                            <h2>Current Movies</h2>
                         </div>
                     </div>
                 </div>
             </div>    
         </div>
-
-    </body>
-    
+    </body>    
 </html>
