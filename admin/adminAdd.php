@@ -127,7 +127,7 @@
               <label for="password">Password:</label>
               <input type="password" id="pass" name="password" required>
             </div>
-            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addNewAdmin">Add</button><a class="btn btn-md btn-info" href="/moviebooker/admin/admins.php" style="margin-left : 20px;" id="registerBtn">Cancel</a></h6>
+            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addNewAdmin">Add</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
           </form>
         </div>
       </div>
@@ -150,6 +150,9 @@
       }
     }
 
+    function goBack(){
+      window.location.replace("/moviebooker/admin/admins.php");
+    }
     </script>
     <script src="../sources/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>

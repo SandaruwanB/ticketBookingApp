@@ -26,14 +26,14 @@
                         <label for="search"><i class="fa fa-search"></i></label>
                     </div>
                     <div class="user">
-                        <img src="../sources/img/image1.jpg" alt="">
+                        <img src="../sources/img/image1.jpg" alt="" style="border-radius : 30px;">
                     </div>
                 </div>
                 <div class="tables">
                     <div class="all-theaters">
                         <div class="heading">
                             <h2>Admins</h2>
-                            <a href="/moviebooker/admin/addAdmin.php" class="add-btn btn">Add New Admin</a>
+                            <a href="/moviebooker/admin/adminAdd.php" class="add-btn btn">Add New Admin</a>
                         </div>
                         <table class="All Theaters" style="margin-top : 50px;">
                             <thead>
@@ -58,7 +58,7 @@
                                                 <td>'.$row['email'].'</td>
                                                 <td>'.$row['mobile'].'</td>
                                                 <td>
-                                                    <a href="/moviebooker/admin/userEdit.php?uid='.$row['userName'].'" class="btn1"><i class="fa fa-edit"></i></a>
+                                                    <a href="/moviebooker/admin/adminEdit.php?uid='.$row['userName'].'" class="btn1"><i class="fa fa-edit"></i></a>
                                                     <a href="/moviebooker/database/deluser.php?uid='.$row['userName'].'" class="btn1" id="delAdmin" value="'.$row['userName'].'" style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>';
@@ -66,7 +66,9 @@
                                         }
                                     }
                                     else{
-
+                                        echo "<tr>
+                                                <td class='text-center' colspan='7'>No Admins Found</td>
+                                            </tr>";
                                     }
                                 ?>
                             </tbody>

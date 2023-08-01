@@ -163,7 +163,7 @@
               <label for="password">Password:</label>
               <input type="password" id="pass" name="password" >
             </div>
-            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="editUser">Save</button><a class="btn btn-md btn-info" href="/moviebooker/admin/admins.php" style="margin-left : 20px;" id="registerBtn">Cancel</a></h6>
+            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="editUser">Save</button><button type="button" onclick="goBack()" id="backbtn" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
           </form>
         </div>
       </div>
@@ -184,6 +184,10 @@
         navbar_sticky.classList.remove("sticky");
         document.body.style.paddingTop = '0'
       }
+    }
+
+    function goBack(){
+      window.location.replace('/moviebooker/admin/admins.php');
     }
     </script>
     <script src="../sources/js/main.js"></script>
