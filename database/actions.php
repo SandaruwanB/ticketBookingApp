@@ -149,6 +149,19 @@
         echo "success";
     }
 
+    else if(isset($_POST['editTheater'])){
+        $theaterId = $_POST['theaterId'];
+        $theatername = $_POST['name'];
+        $location = $_POST['location'];
+        $address = $_POST['address'];
+        $capacity = $_POST['capacity'];
+
+        mysqli_query($con, "UPDATE filmHalls SET hallName='".$theatername."', location='".$location."', address='".$address."', capacity=".$capacity." WHERE id=".$theaterId."");
+        echo "success";
+    }
+
+
+
     else if(isset($_POST['logout'])){
         session_destroy();
         echo "success";

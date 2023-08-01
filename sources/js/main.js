@@ -278,6 +278,39 @@ $('#addNewTheater').click(function (e) {
     }
 });
 
+
+$('#editTheater').click(function (e) { 
+    e.preventDefault();
+    const name = $('#theatername').val();
+    const location = $('#location').val();
+    const address = $('#address').val();
+    const capacity = $('#capacity').val();
+    const theaterId = $('#theaterid').val();
+
+    if(name == "" || location == "" || address == "" || capacity == ""){
+        $('#alert-setter').html(alertSet("input", "All Fields are Required.")); 
+    }
+    else{
+        $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+                editTheater : true,
+                theaterId : theaterId,
+                name : name,
+                location : location,
+                address : address,
+                capacity : capacity
+            },
+            dataType: "text",
+            success: function (response) {
+                $('#alert-setter').html(alertSet("success", "Theater successfully changed.")); 
+            }
+        });
+    }
+});
+
+
 $('#logout').click(function (e) { 
     e.preventDefault();
     $.ajax({
