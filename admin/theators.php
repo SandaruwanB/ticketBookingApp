@@ -41,6 +41,8 @@
                                 <td>Theatre Name</td>
                                 <td>Theatre Location</td>
                                 <td>Address</td>
+                                <td>Contact</td>
+                                <td>Email</td>
                                 <td>Capacity</td>
                             </thead>
                             <tbody>
@@ -54,6 +56,8 @@
                                                     <td>'.$row['hallName'].'</td>
                                                     <td>'.$row['location'].'</td>
                                                     <td>'.$row['address'].'</td>
+                                                    <td>'.$row['contact'].'</td>
+                                                    <td>'.$row['email'].'</td>
                                                     <td>'.$row['capacity'].'</td>
                                                     <td>
                                                         <a href="/moviebooker/admin/theaterEdit.php?tid='.$row['id'].'" class="btn1"><i class="fa fa-edit"></i></a>
