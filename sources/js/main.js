@@ -255,6 +255,8 @@ $('#addNewTheater').click(function (e) {
     const location = $('#location').val();
     const address = $('#address').val();
     const capacity = $('#capacity').val();
+    const contact = $('#contact').val();
+    const email = $('#email').val();
 
     if(name == "" || location == "" || address == "" || capacity == ""){
         $('#alert-setter').html(alertSet("input", "All Fields are Required.")); 
@@ -268,7 +270,9 @@ $('#addNewTheater').click(function (e) {
                 name : name,
                 location : location,
                 address : address,
-                capacity : capacity
+                capacity : capacity,
+                contact : contact,
+                email : email,
             },
             dataType: "text",
             success: function (response) {

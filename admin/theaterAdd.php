@@ -106,6 +106,14 @@
               <input type="text" name="address" id="address" required>   
             </div>
             <div class="form-group">
+              <label for="form_mobile">Contact Number :</label>
+              <input type="text" name="contact" id="contact" required>   
+            </div>
+            <div class="form-group">
+              <label for="form_mobile">Email :</label>
+              <input type="text" name="email" id="email" required>   
+            </div>
+            <div class="form-group">
               <label for="email">Capacity :</label>
               <input type="number" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" id="capacity" name="capacity" required>
             </div>

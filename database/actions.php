@@ -144,8 +144,10 @@
         $location = $_POST['location'];
         $address = $_POST['address'];
         $capacity = $_POST['capacity'];
+        $contact = $_POST['contact'];
+        $email = $_POST['email'];
 
-        mysqli_query($con, "INSERT INTO filmHalls(hallName,location,address,capacity) VALUES('".$theatername."', '".$location."', '".$address."', ".$capacity.")");
+        mysqli_query($con, "INSERT INTO filmHalls(hallName,location,address,capacity,contact,email) VALUES('".$theatername."', '".$location."', '".$address."', ".$capacity.", '".$contact."', '".$email."')");
         echo "success";
     }
 
@@ -155,8 +157,10 @@
         $location = $_POST['location'];
         $address = $_POST['address'];
         $capacity = $_POST['capacity'];
+        $contact = $_POST['contact'];
+        $email = $_POST['email'];
 
-        mysqli_query($con, "UPDATE filmHalls SET hallName='".$theatername."', location='".$location."', address='".$address."', capacity=".$capacity." WHERE id=".$theaterId."");
+        mysqli_query($con, "UPDATE filmHalls SET hallName='".$theatername."', location='".$location."', address='".$address."', capacity=".$capacity.", contact='".$contact."', email='".$email."' WHERE id=".$theaterId."");
         echo "success";
     }
 
