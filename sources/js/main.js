@@ -258,7 +258,7 @@ $('#addNewTheater').click(function (e) {
     const contact = $('#contact').val();
     const email = $('#email').val();
 
-    if(name == "" || location == "" || address == "" || capacity == ""){
+    if(name == "" || location == "" || address == "" || capacity == "" || contact == "" || email == ""){
         $('#alert-setter').html(alertSet("input", "All Fields are Required.")); 
     }
     else{
@@ -290,8 +290,10 @@ $('#editTheater').click(function (e) {
     const address = $('#address').val();
     const capacity = $('#capacity').val();
     const theaterId = $('#theaterid').val();
+    const contact = $('#contact').val();
+    const email = $('#email').val();
 
-    if(name == "" || location == "" || address == "" || capacity == ""){
+    if(name == "" || location == "" || address == "" || capacity == "" || contact == "" || email == ""){
         $('#alert-setter').html(alertSet("input", "All Fields are Required.")); 
     }
     else{
@@ -304,7 +306,9 @@ $('#editTheater').click(function (e) {
                 name : name,
                 location : location,
                 address : address,
-                capacity : capacity
+                capacity : capacity,
+                contact : contact,
+                email : email
             },
             dataType: "text",
             success: function (response) {
