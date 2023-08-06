@@ -334,6 +334,29 @@ $('#logout').click(function (e) {
     });
 });
 
+var selectedFile;
+$('#image').change(function (e) { 
+    e.preventDefault();
+    selectedFile = e.target.files[0];
+});
+
+$('#addMovieUp').click(function (e) { 
+    e.preventDefault();
+    $.ajax({
+        type: "post",
+        url: "/moviebooker/database/actions.php",
+        data: {
+            image : true,
+            file : selectedFile
+        },
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            console.log(response);
+        }
+    });
+});
+
 
 function showToast(color, text){
     var x = document.getElementById("snackbar");

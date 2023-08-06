@@ -116,7 +116,7 @@
               <label for="username">Description:</label>
               <textarea rows="4" id="description" name="description" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required></textarea>
             </div>
-            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addNewAdmin">Add</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
+            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addMovieUp">Add</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
           </form>
         </div>
       </div>

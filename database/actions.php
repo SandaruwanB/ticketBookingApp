@@ -165,6 +165,11 @@
     }
 
 
+    else if(isset($_POST['image'])){
+        
+    }
+
+
 
     else if(isset($_POST['logout'])){
         session_destroy();
