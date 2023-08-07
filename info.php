@@ -1,3 +1,8 @@
+<?php
+    include_once("./database/connection.php");
+    $id = $_GET['tid'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -68,46 +73,6 @@
     <body>
 
         <section id="header">
-            <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">SIGN UP</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-
-                            <form class="ps-3 pe-3" action="#">
-                                <div class="mb-3">
-                                    <label for="username" class="form-label">Name</label>
-                                    <input class="form-control" type="email" id="username" required="" placeholder="Enter Name">
-                                </div>
-							 
-							    <div class="mb-3">
-								    <label for="emailaddress" class="form-label">Email address</label>
-								    <input class="form-control" type="email" id="emailaddress" required="" placeholder="info@gmail.com">
-							    </div>
-							 
-							    <div class="mb-3">
-								    <label for="password" class="form-label">Password</label>
-								    <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
-							    </div>
-							 
-							    <div class="mb-3">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="customCheck1">
-									    <label class="form-check-label" for="customCheck1">I accept <a href="#">Terms and Conditions</a></label>
-								    </div> 
-							    </div>
-                                
-                                <div class="mb-3 text-center">
-                                    <h6><a class="button_1 d-block" href="#">LOG IN</a></h6>
-                                </div>
-                            </form>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div>
 
             <?php
             include_once("./layouts/navbar.php");
@@ -118,10 +83,14 @@
         <img src="sources/img/wall_img.jpg" width="1520px" height="480px">
         
         <section id="upcome" class="p_3 bg-light">
+            <?php
+                $query = mysqli_query($con, "SELECT * FROM filmHalls WHERE id=".$id."");
+                $row = mysqli_fetch_assoc($query);
+            ?>
             <div class="container-xl">
                 <div class="row upcome_1 text-center">
                     <div class="col-md-12">
-                        <h1>Sinexpo 3D Kurunegala</h1>
+                        <h1><?= $row['hallName'] ?> <?= $row['location'] ?></h1>
                         <hr class="line me-auto ms-auto">
                     </div>
                 </div>
@@ -132,7 +101,7 @@
                         <div class="row upcome_2 mt-4">
                             <div class="col-sm-8">
                                 <div class="theater_slider">
-                                    <div class="rectangle"><p class="rect">Sinexpo 3D Kurunegala</p></div>
+                                    <div class="rectangle"><p class="rect"><?= $row['hallName'] ?> <?= $row['location'] ?></p></div>
                                     <p><p>Sinexpo Cinema in Kurunegala is one of top end movie cinemas that is operated by CINEMA Films and Theaters outside Colombo and it is one of the most sought after cinemas by the patrons living outside colombo.</p></p>
                                 </div>
                             </div>
@@ -143,17 +112,17 @@
                                         <table class="100%">
                                             <tr>
                                                 <td width="30%">Address : </td>
-                                                <td width="70%">No 18, South Circular Rd, Kurunegala.</td>
+                                                <td width="70%"><?= $row['address'] ?></td>
                                             </tr>
                                             <tr height="10"></tr>
                                             <tr>
                                                 <td>Telephone : </td>
-                                                <td><a href="tel:+94377214542">+94377214542</a> </td>
+                                                <td><a href=<?= "tel:".$row['contact'] ?>><?= $row['contact'] ?></a> </td>
                                             </tr>
                                             <tr height="10"></tr>
                                             <tr>
                                                 <td>Email :</td>
-                                                <td><a href="mailto:sinexpo@eapmovies.com">sinexpo@cinemamovies.com</a></td>
+                                                <td><a href=<?= "mailto:".$row['email'] ?>><?= $row['email'] ?></a></td>
                                             </tr>
                                             <tr height="20"></tr>
                                         </table>

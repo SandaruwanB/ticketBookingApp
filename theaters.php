@@ -1,3 +1,7 @@
+<?php
+	require_once("./database/connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -117,58 +121,25 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="home">
 							<div class="upcome_2i row">
-								<div class="col-md-3">
-									<div class="rectangle"><p class="rect">Sinexpo 3D Kurunegala</p></div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Sinexpo 3D - Kurunegala</a></h5>
-													<h6 class="mb-0"><a class="button_1" href="info.php">More Info</a></h6>
+								<?php
+									$query = mysqli_query($con, "SELECT * FROM filmHalls");
+									while($row = mysqli_fetch_assoc($query)){
+										echo '<div class="col-md-3">
+											<div class="rectangle"><p class="rect">'.$row['hallName'].' '.$row['location'].'</p></div>
+											<div class="upcome_2i_last bg-white p-3">
+												<div class="upcome_2i_lasti row">
+													<div class="col-md-9 col-9">
+														<div class="upcome_2i_lastil">
+															<h5><a href="#">'.$row['hallName'].' - '.$row['location'].'</a></h5>
+															<h6 class="mb-0"><a class="button_1" href="/moviebooker/info.php?tid='.$row['id'].'">More Info</a></h6>
+														</div>
+													</div>
 												</div>
 											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="rectangle"><p class="rect">Savoy Metro Maharagama</p></div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Savoy Metro Maharagama - Maharagama</a></h5>
-													<h6 class="mb-0"><a class="button_1" href="#">More Info</a></h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="rectangle"><p class="rect">Savoy Metro Gampaha</p></div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Savoy Metro Gampaha - Gampaha</a></h5>
-													<h6 class="mb-0"><a class="button_1" href="#">More Info</a></h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="rectangle"><p class="rect">Savoy Rajagiriya</p></div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Savoy Premier Rajagiriya - Rajagiriya</a></h5>
-													<h6 class="mb-0"><a class="button_1" href="#">More Info</a></h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+										</div>';
+									}
+								?>
+
 							</div>
 						</div>
 					</div>
