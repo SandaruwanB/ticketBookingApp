@@ -102,7 +102,7 @@
                             <div class="col-sm-8">
                                 <div class="theater_slider">
                                     <div class="rectangle"><p class="rect"><?= $row['hallName'] ?> <?= $row['location'] ?></p></div>
-                                    <p><p>Sinexpo Cinema in Kurunegala is one of top end movie cinemas that is operated by CINEMA Films and Theaters outside Colombo and it is one of the most sought after cinemas by the patrons living outside colombo.</p></p>
+                                    <p><p><?= $row['description'] ?></p></p>
                                 </div>
                             </div>
                             <div class="col-sm-4">

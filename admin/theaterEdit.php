@@ -129,6 +129,10 @@
               <label for="email">Capacity :</label>
               <input type="number" value=<?= $row['capacity'] ?> style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" id="capacity" name="capacity" required>
             </div>
+            <div class="form-group">
+              <label for="email">Description :</label>
+              <textarea rows="4" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" id="description"><?= $row['description'] ?></textarea>
+            </div>
             <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="editTheater">Save</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
           </form>
         </div>
