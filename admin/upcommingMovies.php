@@ -54,7 +54,7 @@
                                                 <td>'.$row['language'].'</td>
                                                 <td>
                                                     <a href="#" class="btn1"><i class="fa fa-eye"></i></a>
-                                                    <a href="/moviebooker/admin/customerEdit.php?uid='.$row['id'].'" class="btn1"><i class="fa fa-edit"></i></a>
+                                                    <a href="/moviebooker/admin/customerEdit.php?ufid='.$row['id'].'" class="btn1"><i class="fa fa-edit"></i></a>
                                                     <a href="/moviebooker/database/deluser.php?ufid='.$row['id'].'" class="btn1"  style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>';
