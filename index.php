@@ -1,3 +1,7 @@
+<?php
+	include_once('./database/connection.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -276,7 +280,7 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="homeo">
 							<div class="upcome_2i row">
-								<div class="col-md-6">
+								<div class="col-md-6 mt-3">
 									<div class="popular_m clearfix position-relative">
 										<div class="popular_m1 clearfix">
 											<img src="sources/img/img18.jpg" class="w-100" height="435" alt="abc">
@@ -288,146 +292,35 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/img16.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Insidious 5: The Red Door</a></h5>
-													<h6 class="text-muted">2023 | English</h6>
+
+								<?php
+									$query = mysqli_query($con, "SELECT * FROM upcomming");
+									while($row = mysqli_fetch_assoc($query)){
+										echo '<div class="col-md-3 mt-3">
+											<div class="upcome_2i1 clearfix position-relative" style="min-height : 490px">
+												<div class="upcome_2i1i clearfix">
+													<img src="'.$row['image'].'" style="height : 490px; object-fit : cover;" class="w-100" alt="abc">
+												</div>
+												<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
+													<h6 class="text-uppercase mb-0"><a class="button_2" href="/moviebooker/viewUpcomming.php?fid='.$row['id'].'">View Details</a></h6>
 												</div>
 											</div>
-											<div class="col-md-3 p-0 col-3">
-												<div class="upcome_2i_lastir pt-3"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/img07.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">The Little Mermaid</a></h5>
-													<h6 class="text-muted">May 26 | English</h6>
+											<div class="upcome_2i_last bg-white p-3">
+												<div class="upcome_2i_lasti row">
+													<div class="col-md-9 col-9">
+														<div class="upcome_2i_lastil">
+															<h5><a href="/moviebooker/viewUpcomming.php?fid='.$row['id'].'">'.$row['filmName'].'</a></h5>
+															<h6 class="text-muted">'.$row['releasingDate'].' | '.$row['language'].'</h6>
+														</div>
+													</div>
+													<div class="col-md-3 p-0 col-3">
+														<div class="upcome_2i_lastir pt-3"></div>
+													</div>
 												</div>
 											</div>
-											<div class="col-md-3 p-0 col-3">
-												<div class="upcome_2i_lastir pt-3"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="upcome_2i row mt-4">
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/img08.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">The Flash</a></h5>
-													<h6 class="text-muted">16 Jun | English</h6>
-												</div>
-											</div>
-											<div class="col-md-3 p-0 col-3">
-												<div class="upcome_2i_lastir pt-3"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/img09.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">About My Father</a></h5>
-													<h6 class="text-muted">26 May | English</h6>
-												</div>
-											</div>
-											<div class="col-md-3 p-0 col-3">
-												<div class="upcome_2i_lastir pt-3"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/img17.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Talk to Me</a></h5>
-													<h6 class="text-muted">2023 | English</h6>
-												</div>
-											</div>
-											<div class="col-md-3 p-0 col-3">
-												<div class="upcome_2i_lastir pt-3"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/img11.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Leo</a></h5>
-													<h6 class="text-muted">19 Oct | Tamil</h6>
-												</div>
-											</div>
-											<div class="col-md-3 p-0 col-3">
-												<div class="upcome_2i_lastir pt-3"></div>
-											</div>
-										</div>
-									</div>
-								</div>
+										</div>';
+									}
+								?>
 							</div>
 						</div>
 					</div>
