@@ -382,6 +382,20 @@ $('#addMovieUp').click(function (e) {
 });
 
 
+$('#editMovieUp').click(function (e) { 
+    e.preventDefault();
+    const filmname = $('#filmname').val();
+    const duration = $('#duration').val();
+    const rdate = $('#rdate').val();
+    const lang = $('#language').val();
+    const description = $('#description').val();
+
+    if(filmname == "" || duration == "" || rdate == "" || lang == "" || description == ""){
+        $('#alert-setter').html(alertSet("input", "All Fields are Required.")); 
+    }
+});
+
+
 function showToast(color, text){
     var x = document.getElementById("snackbar");
     $('#snackbar').text(text);
