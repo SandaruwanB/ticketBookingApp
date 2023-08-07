@@ -173,10 +173,21 @@
         $lang = $_POST['lang'];
         $decription = $_POST['description'];
 
-        $query = mysqli_query($con, "INSERT INTO upcomming(filmName,description,duration,image,releasingDate,language) VALUES('".$filmname."', '".$decription."', '".$duration."', '".$image."', '".$rdate."', '".$lang."')");
+        mysqli_query($con, "INSERT INTO upcomming(filmName,description,duration,image,releasingDate,language) VALUES('".$filmname."', '".$decription."', '".$duration."', '".$image."', '".$rdate."', '".$lang."')");
         echo "success";
     }
 
+    else if(isset($_POST['editUpcommingMovie'])){
+        $itemid = $_POST['itemid'];
+        $filmname = $_POST['filmname'];
+        $duration = $_POST['duration'];
+        $rdate = $_POST['rdate'];
+        $lang = $_POST['lang'];
+        $description = $_POST['description'];
+
+        mysqli_query($con, "UPDATE upcomming SET filmName='".$filmname."', description='".$description."', duration='".$duration."', releasingDate='".$rdate."', language='".$lang."' WHERE id=".$itemid."");
+        echo "success";
+    }
 
 
     else if(isset($_POST['logout'])){

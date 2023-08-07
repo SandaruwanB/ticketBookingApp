@@ -103,30 +103,31 @@
             </div>
             <div class="form-group">
               <label for="username">Film Name:</label>
-              <input type="text" value=<?= $row['filmName'] ?> id="filmname" name="filmname" required>
+              <input type="text" id="filmname" name="filmname" required value=<?= $row['filmName'] ?>>
             </div>
             <div class="form-group">
               <label for="username">Duration: Hours and Mins</label>
-              <input type="number" value=<?= $row['duration'] ?> step="0.01" id="duration" name="duration" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>
+              <input type="number" step="0.01" id="duration" name="duration" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required value=<?= $row['duration'] ?>>
             </div>
             <div class="form-group">
               <label for="email">Releasing Date:</label>
-              <input type="date" value=<?= $row['releasingDate'] ?> id="rdate" name="rdate" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px; " required>
+              <input type="date"  id="rdate" name="rdate" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px; " required value=<?= $row['releasingDate'] ?>>
             </div>
             <div class="form-group">
               <label for="username">Language:</label>
-              <input type="text" value=<?= $row['language'] ?> id="language" name="language" required>
+              <input type="text" id="lang" value=<?= $row['language'] ?>>
             </div>
             <div class="form-group">
               <label for="username">Description:</label>
               <textarea rows="4" id="description" name="description" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required><?= $row['description'] ?></textarea>
             </div>
-            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="editMovieUp">Save</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
+            <h6 class="mb-0 mt-3"><button value=<?= $row['id'] ?> class="btn btn-md btn-success" id="editMovieUp">Save</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
           </form>
         </div>
       </div>
     </section>    
     <script src="../sources/js/jquery.min.js"></script>
+    <script src="../sources/js/main.js"></script>
     <script>
     window.onscroll = function() {myFunction()};
     
@@ -148,7 +149,6 @@
       window.location.replace("/moviebooker/admin/upcommingMovies.php");
     }
     </script>
-    <script src="../sources/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" ></script>
   </body>
