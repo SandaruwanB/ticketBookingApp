@@ -319,23 +319,6 @@ $('#editTheater').click(function (e) {
 });
 
 
-$('#logout').click(function (e) { 
-    e.preventDefault();
-    $.ajax({
-        type: "post",
-        url: "/moviebooker/database/actions.php",
-        data: {
-            logout : true,
-        },
-        dataType: "text",
-        success: function (response) {
-            window.location.replace("/moviebooker/");
-        }
-    });
-});
-
-
-
 $('#addMovieUp').click(function (e) { 
     e.preventDefault();
     const image = $('#image')[0].files[0];
@@ -414,6 +397,26 @@ $('#editMovieUp').click(function (e) {
         });
     }
 });
+
+
+
+$('#logout').click(function (e) { 
+    e.preventDefault();
+    $.ajax({
+        type: "post",
+        url: "/moviebooker/database/actions.php",
+        data: {
+            logout : true,
+        },
+        dataType: "text",
+        success: function (response) {
+            window.location.replace("/moviebooker/");
+        }
+    });
+});
+
+
+
 
 
 function showToast(color, text){
