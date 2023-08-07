@@ -18,3 +18,9 @@
         $query = mysqli_query($con, "DELETE FROM filmHalls WHERE id=".$id."");
         echo "<script>window.location.replace('/moviebooker/admin/theators.php')</script>";
     }
+
+    else if(isset($_GET['ufid'])){
+        $id = $_GET['ufid'];
+        $query = mysqli_query($con, "DELETE FROM upcomming WHERE id=".$id."");
+        echo "<script>window.location.replace('/moviebooker/admin/upcommingMovies.php')</script>";
+    }

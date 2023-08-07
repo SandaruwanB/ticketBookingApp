@@ -165,8 +165,16 @@
     }
 
 
-    else if(isset($_POST['image'])){
-        
+    else if(isset($_POST['addUpcomingMovie'])){
+        $image = $_POST['image'];
+        $filmname = $_POST['filmname'];
+        $duration = $_POST['duration'];
+        $rdate = $_POST['rdate'];
+        $lang = $_POST['lang'];
+        $decription = $_POST['description'];
+
+        $query = mysqli_query($con, "INSERT INTO upcomming(filmName,description,duration,image,releasingDate,language) VALUES('".$filmname."', '".$decription."', '".$duration."', '".$image."', '".$rdate."', '".$lang."')");
+        echo "success";
     }
 
 

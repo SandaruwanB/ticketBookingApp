@@ -334,27 +334,51 @@ $('#logout').click(function (e) {
     });
 });
 
-var selectedFile;
-$('#image').change(function (e) { 
-    e.preventDefault();
-    selectedFile = e.target.files[0];
-});
+
 
 $('#addMovieUp').click(function (e) { 
     e.preventDefault();
-    $.ajax({
-        type: "post",
-        url: "/moviebooker/database/actions.php",
-        data: {
-            image : true,
-            file : selectedFile
-        },
-        processData: false,
-        contentType: false,
-        success: function (response) {
-            console.log(response);
+    const image = $('#image')[0].files[0];
+    const filmname = $('#filmname').val();
+    const duration = $('#duration').val();
+    const rdate = $('#rdate').val();
+    const lang = $('#language').val();
+    const description = $('#description').val();
+
+    var base64Url = "";
+    if(image){
+        const fileReader = new FileReader();
+        fileReader.onload = readSuccess;
+        function readSuccess(e){
+            base64Url = e.target.result;
+            if(filmname == "" || duration == "" || rdate == "" || lang == "" || description == ""){
+                $('#alert-setter').html(alertSet("input", "You Missed Some Required Fields.")); 
+            }
+            else{
+                $.ajax({
+                    type: "post",
+                    url: "/moviebooker/database/actions.php",
+                    data: {
+                        addUpcomingMovie : true,
+                        image : base64Url,
+                        filmname : filmname,
+                        duration : duration,
+                        rdate : rdate,
+                        lang : lang,
+                        description : description
+                    },
+                    dataType: "text",
+                    success: function (response) {
+                        $('#alert-setter').html(alertSet("success", "Upcomming Movie Successfully Added.")); 
+                    }
+                });
+            }
         }
-    });
+        fileReader.readAsDataURL(image);
+    }
+    else{
+        $('#alert-setter').html(alertSet("input", "Image is Required.")); 
+    }
 });
 
 
