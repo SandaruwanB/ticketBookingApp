@@ -24,3 +24,9 @@
         $query = mysqli_query($con, "DELETE FROM upcomming WHERE id=".$id."");
         echo "<script>window.location.replace('/moviebooker/admin/upcommingMovies.php')</script>";
     }
+
+    else if(isset($_GET['cfid'])){
+        $id = $_GET['cfid'];
+        $query = mysqli_query($con, "DELETE FROM nowShowing WHERE id=".$id."");
+        echo "<script>window.location.replace('/moviebooker/admin/currentMovies.php')</script>";
+    }
