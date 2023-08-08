@@ -50,7 +50,6 @@
                                                 <td>'.$loop.'</td>
                                                 <td>'.$row['filmName'].'</td>
                                                 <td>'.$row['duration'].'</td>
-                                                <td>'.$row['releasingDate'].'</td>
                                                 <td>'.$row['language'].'</td>
                                                 <td>
                                                     <a href="#" class="btn1"><i class="fa fa-eye"></i></a>

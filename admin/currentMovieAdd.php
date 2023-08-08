@@ -105,10 +105,6 @@
               <input type="file" name="image" id="image" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
             </div>
             <div class="form-group">
-              <label for="email">Releasing Date:</label>
-              <input type="date" id="rdate" name="rdate" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>
-            </div>
-            <div class="form-group">
               <label for="username">Language:</label>
               <input type="text" id="language" name="language" required>
             </div>

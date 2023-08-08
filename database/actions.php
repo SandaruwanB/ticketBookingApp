@@ -191,6 +191,17 @@
         echo "success";
     }
 
+    else if(isset($_POST['addCurrentMovie'])){
+        $filmname = $_POST['filmname'];
+        $duration = $_POST['duration'];
+        $lang = $_POST['lang'];
+        $description = $_POST['description'];
+        $image = $_POST['image'];
+
+        mysqli_query($con, "INSERT INTO nowShowing(filmName, duration, description, image, language) VALUES('".$filmname."', '".$duration."', '".$description."', '".$image."', '".$lang."')");
+        echo "success";
+    }
+
 
     else if(isset($_POST['logout'])){
         session_destroy();

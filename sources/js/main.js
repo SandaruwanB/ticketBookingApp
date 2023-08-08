@@ -402,6 +402,49 @@ $('#editMovieUp').click(function (e) {
     }
 });
 
+$('#addcurrMovie').click(function (e) { 
+    e.preventDefault();
+    const image = $('#image')[0].files[0];
+    const filmname = $('#filmname').val();
+    const duration = $('#duration').val();
+    const lang = $('#language').val();
+    const description = $('#description').val(); 
+
+    var base64url = "";
+    if(image){
+        const fileReader = new FileReader();
+        fileReader.onload = loadSuccess;
+        function loadSuccess(e){
+            base64url = e.target.result;
+            if(filmname == "" || duration == "" || lang == "" || description == ""){
+                $('#alert-setter').html(alertSet("input", "You Missed Some Required Fields."));
+            }
+            else{
+                $.ajax({
+                    type: "post",
+                    url: "/moviebooker/database/actions.php",
+                    data: {
+                        addCurrentMovie : true,
+                        filmname : filmname,
+                        duration : duration,
+                        lang : lang,
+                        description : description,
+                        image : base64url
+                    },
+                    dataType: "text",
+                    success: function (response) {
+                        $('#alert-setter').html(alertSet("success", "Current Movie Successfully Added."));
+                    }
+                });
+            }
+        }
+        fileReader.readAsDataURL(image);
+    } 
+    else{
+        $('#alert-setter').html(alertSet("input", "Image is Required."));
+    }
+});
+
 
 
 $('#logout').click(function (e) { 
