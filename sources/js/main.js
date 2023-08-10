@@ -454,10 +454,10 @@ $('#editcurrMovie').click(function (e) {
     const description = $('#description').val();
     const itemid = $('#editcurrMovie').val(); 
 
-    /*if(filmname == "" || duration == "" || lang == "" || description == ""){
+    if(filmname == "" || duration == "" || lang == "" || description == ""){
         $('#alert-setter').html(alertSet("input", "All Fields are Required."));
     }
-    else{*/
+    else{
         $.ajax({
             type: "post",
             url: "/moviebooker/database/actions.php",
@@ -471,10 +471,10 @@ $('#editcurrMovie').click(function (e) {
             },
             dataType: "text",
             success: function (response) {
-                console.log(response);
+                $('#alert-setter').html(alertSet("success", "Current Movie Data Successfully Changed."));
             }
         });
-    //}
+    }
     //console.log(description);
 });
 
