@@ -446,6 +446,39 @@ $('#addcurrMovie').click(function (e) {
 });
 
 
+$('#editcurrMovie').click(function (e) { 
+    e.preventDefault();
+    const filmname = $('#filmname').val();
+    const duration = $('#duration').val();
+    const lang = $('#language').val();
+    const description = $('#description').val();
+    const itemid = $('#editcurrMovie').val(); 
+
+    /*if(filmname == "" || duration == "" || lang == "" || description == ""){
+        $('#alert-setter').html(alertSet("input", "All Fields are Required."));
+    }
+    else{*/
+        $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+                editCurrentMovie : true,
+                itemid : itemid,
+                filmname : filmname,
+                duration : duration,
+                lang : lang,
+                description : description
+            },
+            dataType: "text",
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    //}
+    //console.log(description);
+});
+
+
 
 $('#logout').click(function (e) { 
     e.preventDefault();

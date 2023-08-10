@@ -1,3 +1,8 @@
+<?php
+    include_once("../database/connection.php");
+    $id = $_GET['fid'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -89,30 +94,34 @@
           </div>
         </div>
         <div class="container-md w-50 mt-5">
+            <?php
+                $query = mysqli_query($con, "SELECT * FROM nowShowing WHERE id=".$id."");
+                $row = mysqli_fetch_assoc($query);
+            ?>
           <form>
             <div class="form-group" id="alert-setter">
             </div>
             <div class="form-group">
               <label for="username">Film Name:</label>
-              <input type="text" id="filmname" name="filmname" required>
+              <input type="text" id="filmname" value=<?= $row['filmName'] ?>>
             </div>
             <div class="form-group">
               <label for="username">Duration: Hours and Mins</label>
-              <input type="number" step="0.01" id="duration" name="duration" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>
+              <input type="number" step="0.01" id="duration" name="duration" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required value=<?= $row['duration'] ?>>
             </div>
             <div class="form-group">
               <label for="username">Language:</label>
-              <input type="text" id="language" name="language" required>
+              <input type="text" id="language" value=<?= $row['language'] ?>>
             </div>
             <div class="form-group">
               <label for="username">Description:</label>
-              <textarea rows="4" id="description" name="description" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required></textarea>
+              <textarea id="description" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" cols="30" rows="4"><?= $row['description'] ?></textarea>
             </div>
-            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="editcurrMovie">Add</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
+            <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="editcurrMovie" value=<?= $id ?>>Save</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
           </form>
         </div>
       </div>
-    </section>    
+    </section>
     <script src="../sources/js/jquery.min.js"></script>
     <script>
     window.onscroll = function() {myFunction()};

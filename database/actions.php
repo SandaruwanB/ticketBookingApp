@@ -202,6 +202,17 @@
         echo "success";
     }
 
+    else if(isset($_POST['editCurrentMovie'])){
+        $filmname = $_POST['filmname'];
+        $duration = $_POST['duration'];
+        $lang = $_POST['lang'];
+        $description = $_POST['description'];
+        $itemid = $_POST['itemid'];
+
+        mysqli_query($con, "UPDATE nowShowing SET filmName='".$filmname."', duration='".$duration."', description='".$description."', language='".$lang."' WHERE id=".$itemid."");
+        echo "success";
+    }
+
 
     else if(isset($_POST['logout'])){
         session_destroy();
