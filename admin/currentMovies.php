@@ -52,7 +52,7 @@
                                                 <td>'.$row['duration'].'</td>
                                                 <td>'.$row['language'].'</td>
                                                 <td>
-                                                    <a href="#" class="btn1"><i class="fa fa-eye"></i></a>
+                                                    <a href="/moviebooker/admin/currentMovieView.php?cfid='.$row['id'].'" class="btn1"><i class="fa fa-eye"></i></a>
                                                     <a href="/moviebooker/admin/currentMovieEdit.php?fid='.$row['id'].'" class="btn1"><i class="fa fa-edit"></i></a>
                                                     <a href="/moviebooker/database/deluser.php?cfid='.$row['id'].'" class="btn1"  style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></a>
                                                 </td>
