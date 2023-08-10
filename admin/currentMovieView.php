@@ -146,8 +146,6 @@
             window.location.replace("/moviebooker/admin/currentMovieEdit.php?fid="+id);
         }
 
-		</script>
-		
+		</script>		
 	</body>
-
 </html>

@@ -26,6 +26,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/moviebooker/admin/bookings.php">
+                        <i class="fa fa-money"></i>
+                        <div class="title">Ticket Pricing</div>
+                    </a>
+                </li>
+                <li>
                     <a href="/moviebooker/admin/theators.php">
                         <i class="fa fa-building"></i>
                         <div class="title">Theaters</div>
