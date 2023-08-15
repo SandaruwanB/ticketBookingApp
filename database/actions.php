@@ -214,7 +214,14 @@
     }
 
     else if(isset($_POST['addTicket'])){
-        echo "got";
+        $filmHall = $_POST['filmHall'];
+        $film = $_POST['film'];
+        $ePrice = $_POST['ePrice'];
+        $sTicket = $_POST['sTicket'];
+        $showTime = $_POST['showTime'];
+
+        mysqli_query($con, "INSERT INTO tiketsAndPricing(hallid,movieid,elderTicket,youngerPrice,showTime) VALUES(".$filmHall.", ".$film.", '".$ePrice."', '".$sTicket."', '".$showTime."')");
+        echo "success";
     }
 
     else if(isset($_POST['logout'])){
