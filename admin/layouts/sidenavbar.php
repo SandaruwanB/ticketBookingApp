@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/moviebooker/admin/bookings.php">
+                    <a href="/moviebooker/admin/pricing.php">
                         <i class="fa fa-money"></i>
                         <div class="title">Ticket Pricing</div>
                     </a>
