@@ -30,3 +30,9 @@
         $query = mysqli_query($con, "DELETE FROM nowShowing WHERE id=".$id."");
         echo "<script>window.location.replace('/moviebooker/admin/currentMovies.php')</script>";
     }
+    
+    else if(isset($_GET['tbid'])){
+        $id = $_GET['tbid'];
+        $query = mysqli_query($con, "DELETE FROM tiketsAndPricing WHERE tid=".$id."");
+        echo "<script>window.location.replace('/moviebooker/admin/pricing.php')</script>";
+    }

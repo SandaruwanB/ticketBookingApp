@@ -46,20 +46,20 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $query = mysqli_query($con, "SELECT * FROM users, userRoles WHERE users.role=userRoles.id AND userRoles.type='admin'");
+                                    $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing,filmHalls WHERE tiketsAndPricing.hallid=filmHalls.id AND tiketsAndPricing.movieid=nowShowing.id");
                                     if(mysqli_num_rows($query) > 0){
                                         $loop = 1;
                                         while($row = mysqli_fetch_assoc($query)){
                                             echo '<tr>
                                                 <td>'.$loop.'</td>
-                                                <td>'.$row['userName'].'</td>
-                                                <td>'.$row['firstName'].'</td>
-                                                <td>'.$row['lastName'].'</td>
-                                                <td>'.$row['email'].'</td>
-                                                <td>'.$row['mobile'].'</td>
+                                                <td>'.$row['filmName'].'</td>
+                                                <td>'.$row['hallName'].' - '.$row['location'].'</td>
+                                                <td>Rs.'.$row['youngerPrice'].'</td>
+                                                <td>Rs.'.$row['elderTicket'].'</td>
+                                                <td>'.$row['showTime'].'</td>
                                                 <td>
-                                                    <a href="/moviebooker/admin/adminEdit.php?uid='.$row['userName'].'" class="btn1"><i class="fa fa-edit"></i></a>
-                                                    <a href="/moviebooker/database/deluser.php?uid='.$row['userName'].'" class="btn1" id="delAdmin" value="'.$row['userName'].'" style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="/moviebooker/admin/adminEdit.php?tbid='.$row['tid'].'" class="btn1"><i class="fa fa-edit"></i></a>
+                                                    <a href="/moviebooker/database/deluser.php?tbid='.$row['tid'].'" class="btn1" id="delAdmin" style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>';
                                             ++$loop;
@@ -67,7 +67,7 @@
                                     }
                                     else{
                                         echo "<tr>
-                                                <td class='text-center' colspan='7'>No Admins Found</td>
+                                                <td style='text-align : center;' colspan='7'>No Ticket Details Found</td>
                                             </tr>";
                                     }
                                 ?>
