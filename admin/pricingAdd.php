@@ -98,7 +98,7 @@
                     </div>
                     <div class="form-group">
                         <label for="username">Theater Name :</label>
-                        <select type="text" id="theatername" name="theatername" required>
+                        <select type="text" id="theatername" required>
                             <option value="">Select Theater</option>
                             <?php
                                 $query = mysqli_query($con, "SELECT * FROM filmHalls");
@@ -110,7 +110,7 @@
                     </div>
                     <div class="form-group">
                         <label for="username">Movie :</label>
-                        <select type="text" id="movie" name="movie" required>
+                        <select type="text" id="movie" required>
                             <option value="">Select Movie</option>
                             <?php 
                                 $query = mysqli_query($con, "SELECT * FROM nowShowing");
@@ -122,17 +122,17 @@
                     </div>
                     <div class="form-group">
                         <label for="form_mobile">Children Ticket Price :</label>
-                        <input type="number" step="0.1" name="address" id="cticket" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
+                        <input type="number" step="0.1" id="cticket" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
                     </div>
                     <div class="form-group">
                         <label for="form_mobile">Elder Ticket Price :</label>
-                        <input type="number" step="0.1" name="contact" id="eticket" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
+                        <input type="number" step="0.1" id="eticket" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
                     </div>
                     <div class="form-group">
                         <label for="form_mobile">Show Time :</label>
-                        <input type="number" step="0.01" name="time" id="time" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
+                        <input type="number" step="0.01" id="time" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
                     </div>
-                    <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addNewTheater">Add</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
+                    <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addNewPricing">Add</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
                 </form>
             </div>
         </div>

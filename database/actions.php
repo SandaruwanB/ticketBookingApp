@@ -213,6 +213,9 @@
         echo "success";
     }
 
+    else if(isset($_POST['addTicket'])){
+        echo "got";
+    }
 
     else if(isset($_POST['logout'])){
         session_destroy();
