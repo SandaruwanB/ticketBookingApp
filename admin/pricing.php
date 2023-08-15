@@ -58,7 +58,7 @@
                                                 <td>Rs.'.$row['elderTicket'].'</td>
                                                 <td>'.$row['showTime'].'</td>
                                                 <td>
-                                                    <a href="/moviebooker/admin/adminEdit.php?tbid='.$row['tid'].'" class="btn1"><i class="fa fa-edit"></i></a>
+                                                    <a href="/moviebooker/admin/pricingEdit.php?tbid='.$row['tid'].'" class="btn1"><i class="fa fa-edit"></i></a>
                                                     <a href="/moviebooker/database/deluser.php?tbid='.$row['tid'].'" class="btn1" id="delAdmin" style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>';

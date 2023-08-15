@@ -503,7 +503,7 @@ $('#addNewPricing').click(function (e) {
             },
             dataType: "text",
             success: function (response) {
-                console.log(response);
+                $('#alert-setter').html(alertSet("success", "Ticket booking details saved successfully."));
             }
         });
     }
