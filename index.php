@@ -98,169 +98,34 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="home">
 							<div class="upcome_2i row">
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/image7.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="view.php">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">PS - 2</a></h5>
-													<h6 class="text-muted">Tamil</h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/img14.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Guththila</a></h5>
-													<h6 class="text-muted">Sinhala</h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/img15.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Ksheera Sagaraya Kalabina</a></h5>
-													<h6 class="text-muted">Sinhala</h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="upcome_2i1 clearfix position-relative">
-										<div class="upcome_2i1i clearfix">
-											<img src="sources/img/image4.jpg" class="w-100" alt="abc">
-										</div>
-										<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-											<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-										</div>
-									</div>
-									<div class="upcome_2i_last bg-white p-3">
-										<div class="upcome_2i_lasti row">
-											<div class="col-md-9 col-9">
-												<div class="upcome_2i_lastil">
-													<h5><a href="#">Avatar</a></h5>
-													<h6 class="text-muted">UA | English</h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="upcome_2i row mt-4">
-									<div class="col-md-3">
-										<div class="upcome_2i1 clearfix position-relative">
-											<div class="upcome_2i1i clearfix">
-												<img src="sources/img/image8.jpg" class="w-100" alt="abc">
-											</div>
-											<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-												<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-											</div>
-										</div>
-										<div class="upcome_2i_last bg-white p-3">
-											<div class="upcome_2i_lasti row">
-												<div class="col-md-9 col-9">
-													<div class="upcome_2i_lastil">
-														<h5><a href="#">Yugathra</a></h5>
-														<h6 class="text-muted">Sinhala</h6>
+								
+									<?php
+										$query = mysqli_query($con, "SELECT * FROM nowShowing LIMIT 8");
+										while($row = mysqli_fetch_assoc($query)){
+											echo '
+											<div class="col-md-3 mt-3">
+												<div class="upcome_2i1 clearfix position-relative">
+													<div class="upcome_2i1i clearfix">
+														<img src="'.$row['image'].'" style="height : 490px; object-fit : cover;" class="w-100" alt="abc">
+													</div>
+													<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
+														<h6 class="text-uppercase mb-0"><a class="button_2" href="view.php">View Details</a></h6>
 													</div>
 												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="upcome_2i1 clearfix position-relative">
-											<div class="upcome_2i1i clearfix">
-												<img src="sources/img/image9.jpg" class="w-100" alt="abc">
-											</div>
-											<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-												<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-											</div>
-										</div>
-										<div class="upcome_2i_last bg-white p-3">
-											<div class="upcome_2i_lasti row">
-												<div class="col-md-9 col-9">
-													<div class="upcome_2i_lastil">
-														<h5><a href="#">Dada Ima</a></h5>
-														<h6 class="text-muted">Sinhala</h6>
+												<div class="upcome_2i_last bg-white p-3">
+													<div class="upcome_2i_lasti row">
+														<div class="col-md-9 col-9">
+															<div class="upcome_2i_lastil">
+																<h5><a href="#">'.$row['filmName'].'</a></h5>
+																<h6 class="text-muted">'.$row['language'].'</h6>
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="upcome_2i1 clearfix position-relative">
-											<div class="upcome_2i1i clearfix">
-												<img src="sources/img/image10.jpg" class="w-100" alt="abc">
-											</div>
-											<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-												<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-											</div>
-										</div>
-										<div class="upcome_2i_last bg-white p-3">
-											<div class="upcome_2i_lasti row">
-												<div class="col-md-9 col-9">
-													<div class="upcome_2i_lastil">
-														<h5><a href="#">Farhana</a></h5>
-														<h6 class="text-muted">Tamil</h6>
-														<span class="col_red"></span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="upcome_2i1 clearfix position-relative">
-											<div class="upcome_2i1i clearfix">
-												<img src="sources/img/image11.jpg" class="w-100" alt="abc">
-											</div>
-											<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-												<h6 class="text-uppercase mb-0"><a class="button_2" href="#">View Details</a></h6>
-											</div>
-										</div>
-										<div class="upcome_2i_last bg-white p-3">
-											<div class="upcome_2i_lasti row">
-												<div class="col-md-9 col-9">
-													<div class="upcome_2i_lastil">
-														<h5><a href="#">Pathaan</a></h5>
-														<h6 class="text-muted">Hindi</h6>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+											</div>';
+										}
+									?>
+				
 							</div>
 						</div>
 					</div>
@@ -294,7 +159,7 @@
 								</div>
 
 								<?php
-									$query = mysqli_query($con, "SELECT * FROM upcomming");
+									$query = mysqli_query($con, "SELECT * FROM upcomming LIMIT 6");
 									while($row = mysqli_fetch_assoc($query)){
 										echo '<div class="col-md-3 mt-3">
 											<div class="upcome_2i1 clearfix position-relative" style="min-height : 490px">
