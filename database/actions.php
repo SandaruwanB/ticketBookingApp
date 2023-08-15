@@ -224,6 +224,18 @@
         echo "success";
     }
 
+    else if(isset($_POST['editTicket'])){
+        $filmHall = $_POST['filmHall'];
+        $film = $_POST['film'];
+        $ePrice = $_POST['ePrice'];
+        $sTicket = $_POST['sTicket'];
+        $showTime = $_POST['showTime'];
+        $id = $_POST['id'];
+
+        mysqli_query($con, "UPDATE tiketsAndPricing SET hallid=".$filmHall.", movieid=".$film.", elderTicket='".$ePrice."', youngerPrice='".$sTicket."', showTime='".$showTime."' WHERE tid=".$id."");
+        echo "success";
+    }
+
     else if(isset($_POST['logout'])){
         session_destroy();
         echo "success";

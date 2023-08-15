@@ -509,6 +509,39 @@ $('#addNewPricing').click(function (e) {
     }
 });
 
+$('#editPricing').click(function (e) { 
+    e.preventDefault();
+    const filmHall = $('#theatername').val();
+    const film = $('#movie').val();
+    const ePrice = $('#eticket').val();
+    const sTicket = $('#cticket').val();
+    const showTime = $('#time').val();
+    const id = $('#editPricing').val();
+
+    if(film == "" || filmHall == "" || ePrice == "" || sTicket == "" || showTime == ""){
+        $('#alert-setter').html(alertSet("input", "All Fields are Required."));
+    }
+    else{
+        $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+                editTicket : true,
+                filmHall : filmHall,
+                film : film,
+                ePrice : ePrice,
+                sTicket : sTicket,
+                showTime : showTime,
+                id : id
+            },
+            dataType: "text",
+            success: function (response) {
+                $('#alert-setter').html(alertSet("success", "Ticket booking details successfully updated."));
+            }
+        });
+    }
+});
+
 
 
 $('#logout').click(function (e) { 

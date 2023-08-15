@@ -136,7 +136,7 @@
                         <label for="form_mobile">Show Time :</label>
                         <input type="number" step="0.01" id="time" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" value=<?= $row2['showTime'] ?>>   
                     </div>
-                    <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="editPricing">Save</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
+                    <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="editPricing" value=<?= $row2['tid'] ?>>Save</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
                 </form>
             </div>
         </div>
