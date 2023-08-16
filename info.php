@@ -175,56 +175,30 @@
                     <div class="inner_bg">
                         <div class="container">
                             <div class="theater_nowshowing_movie">
-                                <h3>Now Showing Movies at Sinexpo 3D</h3>
-                                <div class="row">
-                                    <div class="col-sm-3 0">
-                                        <div class="nowshowing_movie">
-                                            <img src="https://www.eapmovies.com/components/com_eapmovies/includes/images/movies/movies_1329/movies_1329_6459e42a48726_gu_poster.jpg" class="img-responsive" />
-                                            <div class="nsm_bottom_wrp">
-                                                <h6>Guththila</h6>
-                                                <div class="ns-movie-time-wrap">
-                                                    10:15 am
+                                <h3>Now Showing Movies at <?= $row['hallName'] ?></h3>
+                                <div class="row mt-5">
+                                <?php
+                                    $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing WHERE nowShowing.id=tiketsAndPricing.movieid AND tiketsAndPricing.hallid=".$id."");
+                                    if(mysqli_num_rows($query) > 0){
+                                        while($row = mysqli_fetch_assoc($query)){
+                                            echo '<div class="col-sm-3 0">
+                                                <div class="nowshowing_movie">
+                                                    <img src="'.$row['image'].'" class="img-responsive" />
+                                                    <div class="nsm_bottom_wrp">
+                                                        <h6>'.$row['filmName'].'</h6>
+                                                        <div class="ns-movie-time-wrap">
+                                                            '.($row['showTime'] > 11.59 ? $row['showTime']." PM" : $row['showTime']." AM").'
+                                                        </div>
+                                                        <a href="#" class="button_1">Buy Tickets</a>
+                                                    </div>
                                                 </div>
-                                                <a href="#" class="button_1">Buy Tickets</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3 1">
-                                        <div class="nowshowing_movie">
-                                            <img src="https://www.eapmovies.com/components/com_eapmovies/includes/images/movies/movies_1329/movies_1329_6459e42a48726_gu_poster.jpg" class="img-responsive" />
-                                            <div class="nsm_bottom_wrp">
-                                                <h6>Guththila</h6>
-                                                <div class="ns-movie-time-wrap">
-                                                    12:30 pm                                   
-                                                </div>    
-                                                <a href="#" class="button_1">Buy Tickets</a>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    <div class="col-sm-3 2">
-                                        <div class="nowshowing_movie">
-                                            <img src="https://www.eapmovies.com/components/com_eapmovies/includes/images/movies/movies_1329/movies_1329_6459e42a48726_gu_poster.jpg" class="img-responsive" />
-                                            <div class="nsm_bottom_wrp">
-                                                <h6>Guththila</h6>
-                                                <div class="ns-movie-time-wrap">
-                                                    2:45 pm                                    
-                                                </div>    
-                                                <a href="#" class="button_1">Buy Tickets</a>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    <div class="col-sm-3 3">
-                                        <div class="nowshowing_movie">
-                                            <img src="https://www.eapmovies.com/components/com_eapmovies/includes/images/movies/movies_1329/movies_1329_6459e42a48726_gu_poster.jpg" class="img-responsive" />
-                                            <div class="nsm_bottom_wrp">
-                                                <h6>Guththila</h6>
-                                                <div class="ns-movie-time-wrap">
-                                                    7:15 pm                                    
-                                                </div>    
-                                                <a href="#" class="button_1">Buy Tickets</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            </div>';
+                                        }
+                                    }
+                                    else{
+                                        echo '<div class="alert alert-info alert-lg text-center">No Movies Avilable at this Time Please be in touch.</div>';
+                                    }
+                                ?>
                                 </div>
                             </div>
                         </div>

@@ -26,9 +26,7 @@
 							<h5 class="modal-title" id="exampleModalLabel">SIGN UP</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-
 						<div class="modal-body">
-
 							<form class="ps-3 pe-3" action="connect.php" method="post">
 								<div class="mb-3">
 									<label for="username" class="form-label">Name</label>
@@ -86,7 +84,7 @@
 			</button>
 		</section>
 		
-		<section id="upcome" class="p_3 bg-light">
+		<section id="upcome" class="p_3 bg-light mt-5">
 			<div class="container-xl">
 				<div class="row upcome_1 text-center">
 					<div class="col-md-12">
@@ -130,6 +128,10 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="mt-5 mb-5 container text-center" style="position: relative;">
+				<hr>
+				<a href="">Show More</a>
 			</div>
 		</section>
 		
@@ -191,6 +193,10 @@
 					</div>
 				</div>
 			</div>
+			<div class="mt-5 mb-5 container text-center" style="position: relative;">
+				<hr>
+				<a href="">Show More</a>
+			</div>
 		</section>
 		
 		<section id="subs" class="pt-5 pb-5 bg_red">
@@ -204,6 +210,9 @@
 					</div>
 					<div class="col-md-8">
 						<h6 class="text-uppercase mb-0"><a class="button_2" href="register_form.php" style="border:1px solid #fff; padding: 20px; font-size: 16px; margin: 15px 10px; border-radius: 12px;">Register Now</a></h6>
+					</div>
+				</div>
+			</div>
 		</section>
 		
 		<section id="footer" class="p_3">
@@ -264,21 +273,21 @@
 		</section>
 		
 		<script>
-		window.onscroll = function() {myFunction()};
-		
-		var navbar_sticky = document.getElementById("navbar_sticky");
-        var sticky = navbar_sticky.offsetTop;
-        var navbar_height = document.querySelector('.navbar').offsetHeight;
-		
-		function myFunction() {
-			if (window.pageYOffset >= sticky + navbar_height) {
-				navbar_sticky.classList.add("sticky")
-				document.body.style.paddingTop = navbar_height + 'px';
-			} else {
-				navbar_sticky.classList.remove("sticky");
-				document.body.style.paddingTop = '0'
+			window.onscroll = function() {myFunction()};
+			
+			var navbar_sticky = document.getElementById("navbar_sticky");
+			var sticky = navbar_sticky.offsetTop;
+			var navbar_height = document.querySelector('.navbar').offsetHeight;
+			
+			function myFunction() {
+				if (window.pageYOffset >= sticky + navbar_height) {
+					navbar_sticky.classList.add("sticky")
+					document.body.style.paddingTop = navbar_height + 'px';
+				} else {
+					navbar_sticky.classList.remove("sticky");
+					document.body.style.paddingTop = '0'
+				}
 			}
-		}
 		</script>
 		
 	</body>

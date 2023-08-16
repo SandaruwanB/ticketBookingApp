@@ -4,7 +4,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light" id="navbar_sticky">
   <div class="container-fluid">
-    <a class="navbar-brand fs-4 p-0 fw-bold text-white text-uppercase" href="index.php"><i class="fa fa-video-camera me-1 col_wight fs-1 align-middle"></i><span style="color : #fFF; font-size: 2rem; text-shadow: 2px 1px;">Cine</span><span style="color : #fFF; font-size: 2rem; text-shadow: 2px 1px;">ma</span></a>
+    <a class="navbar-brand fs-4 p-0 fw-bold text-white text-uppercase" href="/moviebooker/"><i class="fa fa-video-camera me-1 col_wight fs-1 align-middle"></i><span style="color : #fFF; font-size: 2rem; text-shadow: 2px 1px;">Cine</span><span style="color : #fFF; font-size: 2rem; text-shadow: 2px 1px;">ma</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
