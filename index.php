@@ -107,7 +107,7 @@
 														<img src="'.$row['image'].'" style="height : 490px; object-fit : cover;" class="w-100" alt="abc">
 													</div>
 													<div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-														<h6 class="text-uppercase mb-0"><a class="button_2" href="view.php">View Details</a></h6>
+														<h6 class="text-uppercase mb-0"><a class="button_2" href="/moviebooker/view.php?fid='.$row['id'].'">View Details</a></h6>
 													</div>
 												</div>
 												<div class="upcome_2i_last bg-white p-3">

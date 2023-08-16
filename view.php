@@ -1,3 +1,8 @@
+<?php
+	include_once('./database/connection.php');
+	$id = $_GET['fid'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -118,19 +123,52 @@
 			
 		</section>
 		
-		<section id="upcome" class="p_3 bg-light">
-			<div class="container">
-				<div class="item-image">
-					<img src="sources/img/image7.jpg" alt="Item Image">
+		<section id="upcome" class="p_3 bg-light" style="height : 84vh">
+				<?php
+					$query = mysqli_query($con, "SELECT * FROM nowShowing WHERE id=".$id."");
+					$row = mysqli_fetch_assoc($query);
+				?>
+				<div class="row mt-5">
+					<div class="col-lg-2">
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3">
+						<img src=<?= $row['image'] ?> style="width : 100%" alt="Item Image">
+					</div>
+					<div class="col-sm-12 col-md-6 col-lg-5">
+							<h2><?= $row['filmName'] ?></h2>
+							<br>
+							<?php
+								$time = explode('.', $row['duration']);
+							?>
+							<h5>Runtime: <?= $time[0]."h ".$time[1]."m" ?></h5>
+							<br>
+							<h4>SYNOPSIS</h4>
+							<p><?= $row['description'] ?></p>
+							<button>Buy Tickets</button>
+					</div>
+					<div class="col-lg-2">
+					</div>
 				</div>
-				<div class="item-details">
-					<h2>Ponniyin Selvan - Part 2</h2>
-					<br>
-					<h5>Runtime: 2h 44m</h5>
-					<br>
-					<h4>SYNOPSIS</h4>
-					<p>A plot to murder the king and the two princes of the Chola dynasty is underfoot. Can the Cholas survive the wrath of the Pandiya rebels, who are being led by the vengeful Nandhini?</p>
-					<button>Buy Tickets</button>
+		</section>
+
+		<section id="footer_b" class="pt-3 pb-3">
+			<div class="container-xl">
+				<div class="row footer_b1">
+					<div class="col-md-8">
+						<div class="footer_b1l">
+							<p class="mb-0 fs-6 text-muted mt-1">© 2023 CINEMA Movies. All Rights Reserved | Design by <a class="col_red">Abeysekara</a></p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="footer_b1r text-end">
+							<ul class="social-network social-circle mb-0">
+								<li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+					            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-pinterest"></i></a></li>
+					            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+					            <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+				            </ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
