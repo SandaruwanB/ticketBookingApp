@@ -226,15 +226,14 @@
     }
 
     else if(isset($_POST['editTicket'])){
-        $filmHall = $_POST['filmHall'];
-        $film = $_POST['film'];
-        $ePrice = $_POST['ePrice'];
-        $sTicket = $_POST['sTicket'];
-        $showTime = $_POST['showTime'];
-        $id = $_POST['id'];
+        echo "gotcha";
+    }
 
-        mysqli_query($con, "UPDATE tiketsAndPricing SET hallid=".$filmHall.", movieid=".$film.", elderTicket='".$ePrice."', youngerPrice='".$sTicket."', showTime='".$showTime."' WHERE tid=".$id."");
-        echo "success";
+    else if(isset($_POST['getDatesAndTimes'])){
+        $id = $_POST['id'];
+        $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing WHERE tid=".$id."");
+        $row = mysqli_fetch_assoc($query);
+        echo json_encode($row['showingDates']);
     }
 
     else if(isset($_POST['logout'])){

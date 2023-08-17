@@ -479,7 +479,7 @@ $('#editcurrMovie').click(function (e) {
 });
 
 
-$('#editPricing').click(function (e) { 
+/*$('#editPricing').click(function (e) { 
     e.preventDefault();
     const filmHall = $('#theatername').val();
     const film = $('#movie').val();
@@ -510,7 +510,7 @@ $('#editPricing').click(function (e) {
             }
         });
     }
-});
+});*/
 
 const datesAndTime = [];
 $('#addShowDate').click(function (e) { 

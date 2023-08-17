@@ -133,10 +133,20 @@
                         <input type="number" step="0.1" id="eticket" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" value=<?= $row2['elderTicket'] ?>>   
                     </div>
                     <div class="form-group">
-                        <label for="form_mobile">Show Time :</label>
-                        <input type="number" step="0.01" id="time" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" value=<?= $row2['showTime'] ?>>   
+                        <label for="form_mobile">Box Ticket Price :</label>
+                        <input type="number" step="0.1" id="boxticket" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" value=<?= $row2['boxPrice'] ?>>   
                     </div>
-                    <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="editPricing" value=<?= $row2['tid'] ?>>Save</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
+                    <div class="form-group">
+                      <label for="form_mobile">Show Date & Time :</label>
+                      <div class="form-group text-center p-0" id="alert-setter2">
+                      </div>      
+                      <div class='form-group' id="timelist">
+                      </div>   
+                      <input type="date" id="reshowdate" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;">  
+                      <input type="time" id="retime" class="mt-2" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;">
+                      <button type="button" class="btn btn-sm btn-outline-primary mt-2" onclick="addNewDateAndTime()" id="addDateNew">Add Date & Time</button> 
+                    </div>
+                    <h6 class="mb-0 mt-3"><button type="button" class="btn btn-md btn-success" id="editPricing" onclick="saveEditedData()" value=<?= $row2['tid'] ?>>Save</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
                 </form>
             </div>
         </div>
@@ -144,6 +154,8 @@
     <script src="../sources/js/jquery.min.js"></script>
     <script>
     window.onscroll = function() {myFunction()};
+    const reDatesAndTimes = [];
+    window.onLoad = onLoad();
     
     var navbar_sticky = document.getElementById("navbar_sticky");
     var sticky = navbar_sticky.offsetTop;
@@ -162,6 +174,101 @@
     function goBack(){
       window.location.replace("/moviebooker/admin/pricing.php");
     }
+
+    function onLoad(){
+      $.ajax({
+        type: "post",
+        url: "/moviebooker/database/actions.php",
+        data: {
+          getDatesAndTimes : true,
+          id : <?= $_GET['tbid'] ?>
+        },
+        dataType: "text",
+        success: function (response) {
+          const res = JSON.parse(JSON.parse(response));
+          for(let i=0; i<res.length; i++){
+            reDatesAndTimes.push({"date" : res[i]["date"], "time" : res[i]["time"]});
+            let sring = "<ul class='list-group list-group-flush'>";
+            for(let i = 0; i<reDatesAndTimes.length; i++){
+                sring += '<li style="display : flex; justify-content : space-between;" value="'+ reDatesAndTimes[i].date +'" class="list-group-item">date : '+ reDatesAndTimes[i].date +'  Time :'+ reDatesAndTimes[i].time +'<button type="button" class="btn btn-sm btn-danger" value="'+i+'" onclick="removeReDate('+i+')">Remove</button></li>';
+            }
+            sring += "</ul>";
+            $('#timelist').html(sring);
+          }
+        }
+      });
+    }
+
+    function removeReDate(value){
+      $('#alert-setter2').text("");
+      reDatesAndTimes.splice(value,1);
+      if(reDatesAndTimes.length > 0){
+          let sring = "<ul class='list-group list-group-flush'>";
+          for(let i = 0; i<reDatesAndTimes.length; i++){
+              sring += '<li style="display : flex; justify-content : space-between;" value="'+ reDatesAndTimes[i].date +'" class="list-group-item">date : '+ reDatesAndTimes[i].date +'  Time :'+ reDatesAndTimes[i].time +'<button type="button" class="btn btn-sm btn-danger" value="'+i+'" onclick="removeReDate('+i+')">Remove</button></li>';
+          }
+          sring += "</ul>";
+          $('#timelist').html(sring);
+      }
+      else{
+          $('#timelist').html("");
+      }
+    }
+
+    function addNewDateAndTime(){
+      const date = $('#reshowdate').val();
+      const time = $('#retime').val();
+      if(date == "" || time == ""){
+        $('#alert-setter2').text("Time and Date are required");
+        $('#alert-setter2').css("color", "red");
+      }
+      else{
+        $('#alert-setter2').text("");
+        reDatesAndTimes.push({"date" : date, "time" : time});
+        let sring = "<ul class='list-group list-group-flush'>";
+        for(let i = 0; i<reDatesAndTimes.length; i++){
+          sring += '<li style="display : flex; justify-content : space-between;" value="'+ reDatesAndTimes[i].date +'" class="list-group-item">date : '+ reDatesAndTimes[i].date +'  Time :'+ reDatesAndTimes[i].time +'<button type="button" class="btn btn-sm btn-danger" value="'+i+'" onclick="removeReDate('+i+')">Remove</button></li>';
+        }
+        sring += "</ul>";
+        $('#timelist').html(sring);
+      }
+    }
+
+    function saveEditedData() {
+      const theater = $('#theatername').val();
+      const film = $('#movie').val();
+      const cPrice = $('#cticket').val();
+      const ePrice = $('#eticket').val();
+      const boxPrice = $('#boxticket').val();
+      const id = $('#editPricing').val();
+
+      if(theater == "" || film == "" || cPrice == "" || ePrice == "" || boxPrice == "" || reDatesAndTimes.length == 0){
+
+      }
+      else{
+        $.ajax({
+          type: "post",
+          url: "/moviebooker/database/actions.php",
+          data: {
+            editTicket : true,
+            theater : theater,
+            film : film,
+            cPrice : cPrice,
+            ePrice : ePrice,
+            boxPrice : boxPrice,
+            id : id,
+            dates : reDatesAndTimes
+          },
+          dataType: "text",
+          success: function (response) {
+            alert(response);
+          }
+        });
+      }
+    }
+
+
+
     </script>
     <script src="../sources/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>
