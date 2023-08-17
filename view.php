@@ -141,6 +141,7 @@
 								$time = explode('.', $row['duration']);
 							?>
 							<h5>Runtime: <?= $time[0]."h ".$time[1]."m" ?></h5>
+							<h5>Langauge: <?= $row['language'] ?></h5>
 							<br>
 							<h4>SYNOPSIS</h4>
 							<p><?= $row['description'] ?></p>
