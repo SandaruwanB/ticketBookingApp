@@ -218,9 +218,10 @@
         $film = $_POST['film'];
         $ePrice = $_POST['ePrice'];
         $sTicket = $_POST['sTicket'];
-        $showTime = $_POST['showTime'];
+        $boxPrice = $_POST['boxPrice'];
+        $showTime = json_encode($_POST['showTime']);
 
-        mysqli_query($con, "INSERT INTO tiketsAndPricing(hallid,movieid,elderTicket,youngerPrice,showTime) VALUES(".$filmHall.", ".$film.", '".$ePrice."', '".$sTicket."', '".$showTime."')");
+        mysqli_query($con, "INSERT INTO tiketsAndPricing(hallid,movieid,elderTicket,youngerPrice,showingDates,boxPrice) VALUES(".$filmHall.", ".$film.", '".$ePrice."', '".$sTicket."', '".$showTime."', '".$boxPrice."')");        
         echo "success";
     }
 

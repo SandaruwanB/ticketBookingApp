@@ -129,8 +129,18 @@
                         <input type="number" step="0.1" id="eticket" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
                     </div>
                     <div class="form-group">
-                        <label for="form_mobile">Show Time :</label>
-                        <input type="number" step="0.01" id="time" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
+                        <label for="form_mobile">Box Ticket Price :</label>
+                        <input type="number" step="0.1" id="boxticket" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>   
+                    </div>
+                    <div class="form-group">
+                      <label for="form_mobile">Show Date & Time :</label>
+                      <div class="form-group text-center p-0" id="alert-setter2">
+                      </div>      
+                      <div class='form-group' id="timelist">
+                      </div>   
+                      <input type="date" id="showdate" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>  
+                      <input type="time" id="time" class="mt-2" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" required>
+                      <button class="btn btn-sm btn-outline-primary mt-2" id="addShowDate">Add Date & Time</button> 
                     </div>
                     <h6 class="mb-0 mt-3"><button class="btn btn-md btn-success" id="addNewPricing">Add</button><button onclick="goBack()" type="button" class="btn btn-md btn-info" style="margin-left : 20px;" id="registerBtn">Cancel</button></h6>
                 </form>

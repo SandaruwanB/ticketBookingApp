@@ -478,36 +478,6 @@ $('#editcurrMovie').click(function (e) {
     //console.log(description);
 });
 
-$('#addNewPricing').click(function (e) { 
-    e.preventDefault();
-    const filmHall = $('#theatername').val();
-    const film = $('#movie').val();
-    const ePrice = $('#eticket').val();
-    const sTicket = $('#cticket').val();
-    const showTime = $('#time').val();
-
-    if(film == "" || filmHall == "" || ePrice == "" || sTicket == "" || showTime == ""){
-        $('#alert-setter').html(alertSet("input", "All Fields are Required."));
-    }
-    else{
-        $.ajax({
-            type: "post",
-            url: "/moviebooker/database/actions.php",
-            data: {
-                addTicket : true,
-                filmHall : filmHall,
-                film : film,
-                ePrice : ePrice,
-                sTicket : sTicket,
-                showTime : showTime
-            },
-            dataType: "text",
-            success: function (response) {
-                $('#alert-setter').html(alertSet("success", "Ticket booking details saved successfully."));
-            }
-        });
-    }
-});
 
 $('#editPricing').click(function (e) { 
     e.preventDefault();
@@ -541,6 +511,76 @@ $('#editPricing').click(function (e) {
         });
     }
 });
+
+const datesAndTime = [];
+$('#addShowDate').click(function (e) { 
+    e.preventDefault();
+    const date = $('#showdate').val();
+    const time = $('#time').val();
+    if(date == "" || time == ""){
+        $('#alert-setter2').text("Time and Date are required");
+        $('#alert-setter2').css("color", "red");
+    }
+    else{
+        $('#alert-setter2').text("");
+        datesAndTime.push({"date" : date, "time" : time});
+    }
+    let sring = "<ul class='list-group list-group-flush'>";
+    for(let i = 0; i<datesAndTime.length; i++){
+        sring += '<li style="display : flex; justify-content : space-between;" value="'+ datesAndTime[i].date +'" class="list-group-item">date : '+ datesAndTime[i].date +'  Time :'+ datesAndTime[i].time +'<button type="button" class="btn btn-sm btn-danger" value="'+i+'" onclick="removeDate('+i+')">Remove</button></li>';
+    }
+    sring += "</ul>";
+    $('#timelist').html(sring);
+
+});
+$('#addNewPricing').click(function (e) { 
+    e.preventDefault();
+    const filmHall = $('#theatername').val();
+    const film = $('#movie').val();
+    const ePrice = $('#eticket').val();
+    const sTicket = $('#cticket').val();
+    const boxPrice = $('#boxticket').val();
+
+    if(film == "" || filmHall == "" || ePrice == "" || sTicket == "" || datesAndTime.length == 0 || boxPrice == ""){
+        $('#alert-setter').html(alertSet("input", "All Fields are Required."));
+    }
+    else{
+        $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+                addTicket : true,
+                filmHall : filmHall,
+                film : film,
+                ePrice : ePrice,
+                sTicket : sTicket,
+                boxPrice : boxPrice,
+                showTime : datesAndTime
+            },
+            dataType: "text",
+            success: function (response) {
+                $('#alert-setter').html(alertSet("success", "Ticket booking details saved successfully."));
+            }
+        });
+    }
+});
+
+
+
+function removeDate(value){
+    datesAndTime.splice(value,1);
+    if(datesAndTime.length > 0){
+        let sring = "<ul class='list-group list-group-flush'>";
+        for(let i = 0; i<datesAndTime.length; i++){
+            sring += '<li style="display : flex; justify-content : space-between;" value="'+ datesAndTime[i].date +'" class="list-group-item">date : '+ datesAndTime[i].date +'  Time :'+ datesAndTime[i].time +'<button type="button" class="btn btn-sm btn-danger" value="'+i+'" onclick="removeDate('+i+')">Remove</button></li>';
+        }
+        sring += "</ul>";
+        $('#timelist').html(sring);
+    }
+    else{
+        $('#timelist').html("");
+    }
+}
 
 
 
