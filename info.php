@@ -181,18 +181,28 @@
                                     $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing WHERE nowShowing.id=tiketsAndPricing.movieid AND tiketsAndPricing.hallid=".$id."");
                                     if(mysqli_num_rows($query) > 0){
                                         while($row = mysqli_fetch_assoc($query)){
-                                            echo '<div class="col-sm-3 0">
-                                                <div class="nowshowing_movie">
-                                                    <img src="'.$row['image'].'" class="img-responsive" />
-                                                    <div class="nsm_bottom_wrp">
-                                                        <h6>'.$row['filmName'].'</h6>
-                                                        <div class="ns-movie-time-wrap">
-                                                            '.($row['showTime'] > 11.59 ? $row['showTime']." PM" : $row['showTime']." AM").'
+                                            $data = json_decode($row['showingDates']);
+                                            for($i = 0; $i<count($data); $i++ ){
+                                                echo '<div class="col-md-3 mt-3">
+                                                    <div class="upcome_2i1 clearfix position-relative">
+                                                        <div class="upcome_2i1i clearfix">
+                                                            <img src="'.$row['image'].'" style="height : 490px; object-fit : cover;" class="w-100" alt="abc">
                                                         </div>
-                                                        <a href="#" class="button_1">Buy Tickets</a>
                                                     </div>
-                                                </div>
-                                            </div>';
+                                                    <div class="upcome_2i_last bg-white p-3">
+                                                        <div class="upcome_2i_lasti row">
+                                                            <div class="col-md-9 col-9">
+                                                                <div class="upcome_2i_lastil">
+                                                                    <h5><a href="/moviebooker/view.php?fid='.$row['id'].'">'.$row['filmName'].'</a></h5>
+                                                                    <h6 class="text-muted">'.($data[$i]->date).' | '.($data[$i]->time).'</h6>
+                                                                    <h6 class="text-muted">'.$row['language'].'</h6>
+                                                                    <a href="/moviebooker/book.php?fid='.$row['id'].'date='.$data[$i]->date.'time='.$data[$i]->time.'" class="button_1">Buy Tickets</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>';
+                                            }
                                         }
                                     }
                                     else{

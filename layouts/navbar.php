@@ -53,9 +53,6 @@
       </ul>
 	    <ul class="navbar-nav mb-0 ms-auto">
         <li class="nav-item ms-3">
-          <a class="nav-link button" href="/moviebooker/register_form.php">Register</a>
-        </li>
-        <li class="nav-item ms-3">
           <a class="nav-link button" href="/moviebooker/login.php">Login</a>
         </li>
       </ul>
