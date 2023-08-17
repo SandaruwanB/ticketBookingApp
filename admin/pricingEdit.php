@@ -243,7 +243,7 @@
       const id = $('#editPricing').val();
 
       if(theater == "" || film == "" || cPrice == "" || ePrice == "" || boxPrice == "" || reDatesAndTimes.length == 0){
-
+        $('#alert-setter').html('<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Error! </strong> You Missed Some Required Fields.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> </div>');
       }
       else{
         $.ajax({
@@ -261,7 +261,7 @@
           },
           dataType: "text",
           success: function (response) {
-            alert(response);
+            $('#alert-setter').html('<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>Success!</strong> Pricing Details Succesfully Updated. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> </div>');
           }
         });
       }
