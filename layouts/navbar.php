@@ -31,17 +31,15 @@
           }
         ?>
         </li>
-		
-		    <li class="nav-item">
+        <li class="nav-item">
         <?php 
-          if($url == "/moviebooker/showTime.php"){
-            echo '<a class="nav-link active" aria-current="page" href="/moviebooker/showTime.php">Rates & show times</a>';
+          if($url == "/moviebooker/book.php"){
+            echo '<a class="nav-link active" aria-current="page" href="/moviebooker/book.php">Book Tickets</a>';
           }
           else{
-            echo '<a class="nav-link" aria-current="page" href="/moviebooker/showTime.php">Rates & show times</a>';
+            echo '<a class="nav-link" aria-current="page" href="/moviebooker/book.php">Book Tickets</a>';
           }
-        ?>
-        </li>        
+        ?>      
         <li class="nav-item">
           <?php 
             if($url == "/moviebooker/contact.php"){

@@ -134,7 +134,7 @@
 					<div class="col-sm-12 col-md-4 col-lg-3">
 						<img src=<?= $row['image'] ?> style="width : 100%" alt="Item Image">
 					</div>
-					<div class="col-sm-12 col-md-6 col-lg-5">
+					<div class="col-sm-12 col-md-6 col-lg-5 mb-4">
 							<h2><?= $row['filmName'] ?></h2>
 							<br>
 							<?php

@@ -124,7 +124,7 @@
 		</section>
 		
 		<section id="upcome" class="p_3 bg-light" style="height : 84vh">
-			<div class="row mt-5" style="height : 100%">
+			<div class="row mt-5 mb-4" style="height : 100%">
 				<?php
 					$query = mysqli_query($con, "SELECT * FROM upcomming WHERE id=".$id."");
 					$row = mysqli_fetch_assoc($query);
