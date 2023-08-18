@@ -196,7 +196,7 @@
                                                                     <h5><a href="/moviebooker/view.php?fid='.$row['id'].'">'.$row['filmName'].'</a></h5>
                                                                     <h6 class="text-muted">'.($data[$i]->date).' | '.($data[$i]->time).'</h6>
                                                                     <h6 class="text-muted">'.$row['language'].'</h6>
-                                                                    <a href="/moviebooker/book.php?fid='.$row['id'].'&date='.$data[$i]->date.'&time='.$data[$i]->time.'" class="button_1">Buy Tickets</a>
+                                                                    <a href="/moviebooker/book.php?tid='.$id.'&fid='.$row['id'].'&date='.$data[$i]->date.'&time='.$data[$i]->time.'" class="button_1">Buy Tickets</a>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -1,3 +1,18 @@
+<?php 
+    require_once("./database/connection.php");
+    $filmId = $_GET['fid'];
+    $cdate = $_GET['date'];
+    $ctime = $_GET['time'];
+    $theaterId = $_GET['tid'];
+
+    $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing,filmHalls WHERE tiketsAndPricing.hallid =filmHalls.id AND tiketsAndPricing.movieid=nowShowing.id AND tiketsAndPricing.hallid=".$theaterId."");
+    $allDetails = mysqli_fetch_assoc($query);
+    $capacity = json_encode($allDetails['capacity']);
+    $dateAndTime = json_decode($allDetails['showingDates']);
+        
+    echo "<script>console.log('".$dateAndTime."');</script>";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
