@@ -143,12 +143,13 @@
         $theatername = $_POST['name'];
         $location = $_POST['location'];
         $address = $_POST['address'];
-        $capacity = $_POST['capacity'];
+        $capacity = json_encode($_POST['capacity']);
         $contact = $_POST['contact'];
         $email = $_POST['email'];
         $description = $_POST['description'];
+        $boxes = $_POST['boxes'];
 
-        mysqli_query($con, "INSERT INTO filmHalls(hallName,location,address,capacity,contact,email,description) VALUES('".$theatername."', '".$location."', '".$address."', ".$capacity.", '".$contact."', '".$email."', '".$description."')");
+        mysqli_query($con, "INSERT INTO filmHalls(hallName,location,address,capacity,contact,email,description,boxes) VALUES('".$theatername."', '".$location."', '".$address."', '".$capacity."', '".$contact."', '".$email."', '".$description."', ".$boxes.")");
         echo "success";
     }
 

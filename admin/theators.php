@@ -58,7 +58,6 @@
                                                     <td>'.$row['address'].'</td>
                                                     <td>'.$row['contact'].'</td>
                                                     <td>'.$row['email'].'</td>
-                                                    <td>'.$row['capacity'].'</td>
                                                     <td>
                                                         <a href="/moviebooker/admin/theaterEdit.php?tid='.$row['id'].'" class="btn1"><i class="fa fa-edit"></i></a>
                                                         <a href="/moviebooker/database/deluser.php?tid='.$row['id'].'" class="btn1"><i class="fa fa-trash-o"></i></a>
