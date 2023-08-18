@@ -319,44 +319,6 @@ $('#addNewTheater').click(function (e) {
 });
 
 
-$('#editTheater').click(function (e) { 
-    e.preventDefault();
-    const name = $('#theatername').val();
-    const location = $('#location').val();
-    const address = $('#address').val();
-    const capacity = $('#capacity').val();
-    const theaterId = $('#theaterid').val();
-    const contact = $('#contact').val();
-    const email = $('#email').val();
-    const description = $('#description').val();
-
-    if(name == "" || location == "" || address == "" || capacity == "" || contact == "" || email == ""){
-        $('#alert-setter').html(alertSet("input", "All Fields are Required.")); 
-    }
-    else{
-        $.ajax({
-            type: "post",
-            url: "/moviebooker/database/actions.php",
-            data: {
-                editTheater : true,
-                theaterId : theaterId,
-                name : name,
-                location : location,
-                address : address,
-                capacity : capacity,
-                contact : contact,
-                email : email,
-                description : description,
-            },
-            dataType: "text",
-            success: function (response) {
-                $('#alert-setter').html(alertSet("success", "Theater successfully changed.")); 
-            }
-        });
-    }
-});
-
-
 $('#addMovieUp').click(function (e) { 
     e.preventDefault();
     const image = $('#image')[0].files[0];

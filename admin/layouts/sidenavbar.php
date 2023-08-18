@@ -44,12 +44,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/moviebooker/admin/customers.php">
-                        <i class="fa fa-user"></i>
-                        <div class="title">Customers</div>
-                    </a>
-                </li>
-                <li>
                     <a href="/moviebooker/admin/bookings.php">
                         <i class="fa fa-desktop"></i>
                         <div class="title">Bookings</div>

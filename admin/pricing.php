@@ -42,7 +42,7 @@
                                 <td>Hall Name</td>
                                 <td>Childern Ticket</td>
                                 <td>Elders Ticket</td>
-                                <td>Show Time</td>
+                                <td>Box Ticket</td>
                             </thead>
                             <tbody>
                                 <?php
@@ -56,7 +56,7 @@
                                                 <td>'.$row['hallName'].' - '.$row['location'].'</td>
                                                 <td>Rs.'.$row['youngerPrice'].'</td>
                                                 <td>Rs.'.$row['elderTicket'].'</td>
-                                                <td>'.$row['showTime'].'</td>
+                                                <td>Rs.'.$row['boxPrice'].'</td>
                                                 <td>
                                                     <a href="/moviebooker/admin/pricingEdit.php?tbid='.$row['tid'].'" class="btn1"><i class="fa fa-edit"></i></a>
                                                     <a href="/moviebooker/database/deluser.php?tbid='.$row['tid'].'" class="btn1" id="delAdmin" style="cursor : pointer;background : transparent; outline : none; border : none;"><i class="fa fa-trash-o"></i></a>

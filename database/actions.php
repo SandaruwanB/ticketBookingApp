@@ -154,16 +154,17 @@
     }
 
     else if(isset($_POST['editTheater'])){
-        $theaterId = $_POST['theaterId'];
-        $theatername = $_POST['name'];
+        $id = $_POST['id'];
+        $name = $_POST['name'];
         $location = $_POST['location'];
         $address = $_POST['address'];
-        $capacity = $_POST['capacity'];
         $contact = $_POST['contact'];
         $email = $_POST['email'];
+        $boxes = $_POST['boxes'];
         $description = $_POST['description'];
+        $capacity = json_encode($_POST['capacity']);
 
-        mysqli_query($con, "UPDATE filmHalls SET hallName='".$theatername."', location='".$location."', address='".$address."', capacity=".$capacity.", contact='".$contact."', email='".$email."', description='".$description."' WHERE id=".$theaterId."");
+        mysqli_query($con, "UPDATE filmHalls SET hallName='".$name."', location='".$location."', address='".$address."', capacity='".$capacity."', contact='".$contact."', email='".$email."', description='".$description."', boxes=".$boxes." WHERE id=".$id."");
         echo "success";
     }
 
@@ -244,6 +245,13 @@
         $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing WHERE tid=".$id."");
         $row = mysqli_fetch_assoc($query);
         echo json_encode($row['showingDates']);
+    }
+
+    else if(isset($_POST['getCapacityEdit'])){
+        $id = $_POST['id'];
+        $query = mysqli_query($con, "SELECT * FROM filmHalls WHERE id=".$id."");
+        $row = mysqli_fetch_assoc($query);
+        echo $row['capacity'];
     }
 
     else if(isset($_POST['logout'])){
