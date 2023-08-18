@@ -232,6 +232,9 @@
                             <a class="button" href="#">7.00 PM</a>
                             <a class="button" href="#">2.30 PM</a>
                             <a class="button" href="#">10.15 AM</a>
+                            <a class="button" href="#"><?= $_GET['fid'] ?></a>
+                            <a class="button" href="#"><?= $_GET['date'] ?></a>
+                            <a class="button" href="#"><?= $_GET['time'] ?></a>
                         </div>
                     </div>
                 </div>
