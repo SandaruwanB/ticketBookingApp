@@ -249,6 +249,39 @@ $('#addNewCustomer').click(function (e) {
 });
 
 
+const theaterRows = [];
+function addRowArray(){
+    const capacity = $('#capacity').val();
+    if(capacity == ""){
+        $('#alert-setter3').text("Fill Capacity Before Add Row.");
+        $('#alert-setter3').css("color", "red");
+    }
+    else{
+        $('#alert-setter3').text("");
+        theaterRows.push(capacity);
+        let sring = "<ul class='list-group list-group-flush'>";
+        for(let i=0; i<theaterRows.length; i++){
+            sring += '<li style="display : flex; justify-content : space-between;" value="'+ theaterRows[i] +'" class="list-group-item">Row : '+ (i+1) +' Capacity : '+ theaterRows[i] +' <button type="button" class="btn btn-sm btn-danger" value="'+i+'" onclick="removeRow('+i+')">Remove</button></li>';
+        }
+        sring += "</ul>";
+        $('#capacitylist').html(sring);
+    }
+}
+function removeRow(id){
+    $('#alert-setter3').text("");
+    theaterRows.splice(id,1);
+    if(theaterRows.length > 0){
+        let sring = "<ul class='list-group list-group-flush'>";
+        for(let i=0; i<theaterRows.length; i++){
+            sring += '<li style="display : flex; justify-content : space-between;" value="'+ theaterRows[i] +'" class="list-group-item">Row : '+ (i+1) +' Capacity : '+ theaterRows[i] +' <button type="button" class="btn btn-sm btn-danger" value="'+i+'" onclick="removeRow('+i+')">Remove</button></li>';
+        }
+        sring += "</ul>";
+        $('#capacitylist').html(sring);
+    }
+    else{
+        $('#capacitylist').html(""); 
+    }
+}
 $('#addNewTheater').click(function (e) { 
     e.preventDefault();
     const name = $('#theatername').val();
@@ -258,6 +291,7 @@ $('#addNewTheater').click(function (e) {
     const contact = $('#contact').val();
     const email = $('#email').val();
     const description = $('#description').val();
+    const boxes = $('#boxes').val();
 
     if(name == "" || location == "" || address == "" || capacity == "" || contact == "" || email == "" || description == ""){
         $('#alert-setter').html(alertSet("input", "All Fields are Required.")); 
@@ -274,7 +308,8 @@ $('#addNewTheater').click(function (e) {
                 capacity : capacity,
                 contact : contact,
                 email : email,
-                description : description
+                description : description,
+                boxes : boxes,
             },
             dataType: "text",
             success: function (response) {

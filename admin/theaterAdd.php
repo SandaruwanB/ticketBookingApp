@@ -115,7 +115,16 @@
             </div>
             <div class="form-group">
               <label for="email">Capacity :</label>
+              <div class="form-group text-center p-0" id="alert-setter3">
+              </div>      
+              <div class='form-group' id="capacitylist">
+              </div>   
               <input type="number" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" id="capacity" name="capacity" required>
+              <button type="button" onclick="addRowArray()" class="btn btn-outline-primary btn-sm mt-2">Add Row</button>
+            </div>
+            <div class="form-group">
+              <label for="email">Boxes :</label>
+              <input type="number" style="width : 100%; border : 1px solid #ccc; padding : 10px; border-radius : 4px;" id="boxes" name="capacity" required>
             </div>
             <div class="form-group">
               <label for="email">Description :</label>

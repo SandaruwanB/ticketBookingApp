@@ -12,8 +12,7 @@
 	    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 	    <script src="js/bootstrap.bundle.min.js"></script>
         
-        <style>
-        
+        <style>        
             body {
                 font-family: Arial, sans-serif;
                 background-color: #f2f2f2;
