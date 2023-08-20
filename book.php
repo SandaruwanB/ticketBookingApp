@@ -301,6 +301,9 @@
         <script>
             let boxesStr = "";
             let normalStr = "";
+            let childrenTicket = 0;
+            let eldersTicket = 0;
+            let boxTicket = 0;
             const boxesArray = [];
             const normalArray = [];
             const bookedBox = [10,20,3];
@@ -326,6 +329,9 @@
                     dataType: "text",
                     success: function (response) {
                         const finalVal = JSON.parse(response);
+                        childrenTicket = finalVal['youngerPrice'];
+                        eldersTicket = finalVal['elderTicket'];
+                        boxTicket = finalVal['boxPrice'];
 
                         for(let i=1; i<=parseInt(finalVal['boxes']); i++){
                             boxesArray.push(i);
@@ -347,7 +353,6 @@
                         }
                         $('#boxes').html(boxesStr);
                         $('#normalSeats').html(normalStr);
-                        console.log(selectedBox.length);
                     }
                 });
             };
@@ -360,11 +365,9 @@
                 }
                 else{
                     selectedBox.push(id);
-                    if(selectedBox.length == -1){
-                        console.log("-1");
-                    }
                 }
                 printBoxVals();
+                console.log(selectedBox);
             }
             function printBoxVals (){
                 boxesStr = "";
@@ -407,7 +410,44 @@
             }
 
 
-
+            function addItemNormal(id){
+                if(findOnNormalArray(id)){
+                    const index = selectedNormal.indexOf(id);
+                    selectedNormal.splice(index,1);
+                }
+                else{
+                    selectedNormal.push(id);
+                }
+                printNormalVals();
+            }
+            function printNormalVals (){
+                normalStr = "";
+                for(let i=0; i<normalArray.length; i++){
+                    if(findBookedNormal(i+1)){
+                        normalStr += '<button style="background : #091C7A;" class="seat" disabled></button>';
+                    }
+                    else{
+                        if(findOnNormalArray(i+1)){
+                            normalStr += '<button value="'+(i+1)+'" style="background : #0f0;" onclick="addItemNormal(this.value)" class="seat"></button>';
+                        }
+                        else{
+                            normalStr += '<button value="'+(i+1)+'" onclick="addItemNormal(this.value)" class="seat"></button>';
+                        }
+                    }
+                }
+                $('#normalSeats').html(normalStr);
+            }
+            function findOnNormalArray(value){
+                for(let i=0; i<selectedNormal.length; i++){
+                    if(selectedNormal[i] == value){
+                        return true;
+                        break;
+                    }
+                    else{
+                        continue;
+                    }
+                }
+            }
             function findBookedNormal(id){
                 for(let i=0; i<bookedNormal.length; i++){
                     if(bookedNormal[i] == id){
@@ -420,8 +460,6 @@
                 }
             }
             
-            function addItemNormal(id){
-            }
         </script>    
     </body>
     
