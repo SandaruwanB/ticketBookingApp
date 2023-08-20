@@ -352,6 +352,7 @@
                 });
             };
 
+
             function addItemBox(id){
                 if(findOnBoxArray(id)){
                     let index = selectedBox.indexOf(id);
@@ -365,21 +366,23 @@
                 }
                 printBoxVals();
             }
-
             function printBoxVals (){
                 boxesStr = "";
                 for(let i=0; i<boxesArray.length; i++){
-                    if(findOnBoxArray(i+1)){
-                        boxesStr += '<button value="'+i+'" style="background : #0f0;" onclick="addItemBox(this.value)" class="seat"></button>';
+                    if(findBookedBox(i+1)){
+                        boxesStr += '<button style="background : #091C7A;" class="seat" disabled></button>';
                     }
                     else{
-                        boxesStr += '<button value="'+i+'" onclick="addItemBox(this.value)" class="seat"></button>';
+                        if(findOnBoxArray(i+1)){
+                            boxesStr += '<button value="'+(i+1)+'" style="background : #0f0;" onclick="addItemBox(this.value)" class="seat"></button>';
+                        }
+                        else{
+                            boxesStr += '<button value="'+(i+1)+'" onclick="addItemBox(this.value)" class="seat"></button>';
+                        }
                     }
                 }
                 $('#boxes').html(boxesStr);
             }
-
-
             function findOnBoxArray(value){
                 for(let i=0; i<selectedBox.length; i++){
                     if(selectedBox[i] == value){
@@ -390,8 +393,7 @@
                         continue;
                     }
                 }
-            }
-
+            }           
             function findBookedBox (id){
                 for(let i=0; i<bookedBox.length; i++){
                     if(bookedBox[i] == id){
@@ -403,6 +405,9 @@
                     }
                 }
             }
+
+
+
             function findBookedNormal(id){
                 for(let i=0; i<bookedNormal.length; i++){
                     if(bookedNormal[i] == id){
