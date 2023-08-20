@@ -340,37 +340,44 @@
             };
 
             function addItemBox(id){
-                let boxesStr = "";
-                for(let i=0; i<boxesArray.length; i++){
-                    
-                }
-            }
-
-            function addItemNormal(id){
-                let normalStr = "";
-                if(checkArr(id, "normal")){
-                    const index = selectedNormal.indexOf(id);
-                    selectedNormal.splice(index,1);
-                    for(let k=0; k<normalArray.length; k++){
-                        if(checkArray2(k)){
-                            normalStr += '<button value="'+(k+1)+'" style="background : #0f0;" onclick="addItemBox(this.value)" class="seat"></button>';
-                        }
-                        else{
-                            normalStr += '<button value="'+(k+1)+'" onclick="addItemBox(this.value)" class="seat"></button>';
-                        }
-                    }
+                if(findOnBoxArray(id)){
+                    let index = selectedBox.indexOf(id);
+                    selectedBox.splice(index,1);
                 }
                 else{
-                    selectedNormal.push(id); 
-                    for(let k=0; k<normalArray.length; k++){
-                        if(checkArray2(k)){
-                            normalStr += '<button value="'+(k+1)+'" style="background : #0f0;" onclick="addItemBox(this.value)" class="seat"></button>';
-                        }
-                        else{
-                            normalStr += '<button value="'+(k+1)+'" onclick="addItemBox(this.value)" class="seat"></button>';
-                        }
+
+                }
+                printBoxVals();
+                console.log(selectedBox);
+            }
+
+            function printBoxVals (){
+                boxesStr = "";
+                for(let i=0; i<boxesArray.length; i++){
+                    if(findOnBoxArray(i+1)){
+                        boxesStr += '<button value="'+i+'" style="background : #0f0;" onclick="addItemBox(this.value)" class="seat"></button>';
+                    }
+                    else{
+                        boxesStr += '<button value="'+i+'" onclick="addItemBox(this.value)" class="seat"></button>';
                     }
                 }
+                $('#boxes').html(boxesStr);
+            }
+
+
+            function findOnBoxArray(value){
+                for(let i=0; i<selectedBox.length; i++){
+                    if(selectedBox[i] == value){
+                        return true;
+                        break;
+                    }
+                    else{
+                        continue;
+                    }
+                }
+            }
+            
+            function addItemNormal(id){
             }
         </script>    
     </body>
