@@ -209,11 +209,53 @@
                 margin-left: 80px; /* Adjust the margin-left value to subtract from the left side */
             }
 
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+
+                /* Modal Content/Box */
+            .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto; /* 15% from the top and centered */
+                padding: 20px;
+                border: 1px solid #888;
+                width: 45%; /* Could be more or less, depending on screen size */
+            }
+
+                /* The Close Button */
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
         </style>
         
     </head>
     
     <body>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modalContent"></div>
+            </div>
+        </div>
         <section id="subs" class="pb-5 pt-5 bg_LightSteelBlue">
             <div class="container-xl">
                 <div class="row">
@@ -261,7 +303,7 @@
                         <h3 style="color : #091C7A;">Booking Summary</h3>
                         <p>( box ticket allocate for two persons )</p>
                         <h5 style="color : #000;">You Selected <span id="selectedBoxes">0</span> Boxes & <span id="selectedSeats">0</span> Seats.</h5>
-                        <button id="book-now">Book Now</button>
+                        <button id="book-now" onclick="showModal()">Book Now</button>
                     </div>
                 </div>
             </div>
@@ -295,6 +337,15 @@
 
             // Update the date element in the HTML
             document.getElementById("date").innerHTML = formattedDate;
+
+
+            function showModal() {
+                $('#myModal').css("display", "block");
+            }
+            $('.close').click(function (e) { 
+                e.preventDefault();
+                $('#myModal').css("display", "none");
+            });
         </script>
         <script src="./sources/js/main.js"></script>    
         <script>
