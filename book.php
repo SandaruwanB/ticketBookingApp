@@ -303,6 +303,8 @@
             let normalStr = "";
             const boxesArray = [];
             const normalArray = [];
+            const bookedBox = [10,20,3];
+            const bookedNormal = [3,10,37];
             const selectedBox = [];
             const selectedNormal = [];
             window.onload = getSeats();
@@ -327,14 +329,25 @@
 
                         for(let i=1; i<=parseInt(finalVal['boxes']); i++){
                             boxesArray.push(i);
-                            boxesStr += '<button value="'+i+'" onclick="addItemBox(this.value)" class="seat"></button>';
+                            if(findBookedBox(i)){
+                                boxesStr += '<button style="background : #091C7A;" value="'+i+'" onclick="addItemBox(this.value)" class="seat" disabled></button>';
+                            }
+                            else{
+                                boxesStr += '<button value="'+i+'" onclick="addItemBox(this.value)" class="seat"></button>';
+                            }
                         }
                         for(let k=1; k<=parseInt(finalVal['capacity']); k++){
                             normalArray.push(k);
-                            normalStr += '<button value="'+k+'" onclick="addItemNormal(this.value)" class="seat"></button>';
+                            if(findBookedNormal(k)){
+                                normalStr += '<button value="'+k+'" style="background : #091C7A;" onclick="addItemNormal(this.value)" class="seat" disabled></button>';
+                            }
+                            else{
+                                normalStr += '<button value="'+k+'" onclick="addItemNormal(this.value)" class="seat"></button>';
+                            }
                         }
                         $('#boxes').html(boxesStr);
                         $('#normalSeats').html(normalStr);
+                        console.log(selectedBox.length);
                     }
                 });
             };
@@ -345,10 +358,12 @@
                     selectedBox.splice(index,1);
                 }
                 else{
-
+                    selectedBox.push(id);
+                    if(selectedBox.length == -1){
+                        console.log("-1");
+                    }
                 }
                 printBoxVals();
-                console.log(selectedBox);
             }
 
             function printBoxVals (){
@@ -368,6 +383,29 @@
             function findOnBoxArray(value){
                 for(let i=0; i<selectedBox.length; i++){
                     if(selectedBox[i] == value){
+                        return true;
+                        break;
+                    }
+                    else{
+                        continue;
+                    }
+                }
+            }
+
+            function findBookedBox (id){
+                for(let i=0; i<bookedBox.length; i++){
+                    if(bookedBox[i] == id){
+                        return true;
+                        break;
+                    }
+                    else{
+                        continue;
+                    }
+                }
+            }
+            function findBookedNormal(id){
+                for(let i=0; i<bookedNormal.length; i++){
+                    if(bookedNormal[i] == id){
                         return true;
                         break;
                     }
