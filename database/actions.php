@@ -254,6 +254,19 @@
         echo $row['capacity'];
     }
 
+    else if(isset($_POST['getRowsAndCols'])){
+        $film = $_POST['film'];
+        $theater = $_POST['theater'];
+        $date = $_POST['date'];
+        $time = $_POST['hours'].":".$_POST['mins'];
+        $date = $_POST['year']."-".$_POST['month']."-".$_POST['date'];
+
+        $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing,filmHalls WHERE tiketsAndPricing.hallid =filmHalls.id AND tiketsAndPricing.movieid=nowShowing.id AND tiketsAndPricing.hallid=".$theater."");
+        $row = mysqli_fetch_assoc($query);
+
+        echo json_encode($row);
+    }
+
     else if(isset($_POST['logout'])){
         session_destroy();
         echo "success";

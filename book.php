@@ -4,6 +4,8 @@
     $cdate = $_GET['date'];
     $ctime = $_GET['time'];
     $theaterId = $_GET['tid'];
+    $time = explode(":",$ctime);
+    $date = explode("-",$cdate);
 
     $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing,filmHalls WHERE tiketsAndPricing.hallid =filmHalls.id AND tiketsAndPricing.movieid=nowShowing.id AND tiketsAndPricing.hallid=".$theaterId."");
     $allDetails = mysqli_fetch_assoc($query);
@@ -21,7 +23,6 @@
 	    <link href="./sources/css/global.css" rel="stylesheet">
 	    <link href="./sources/css/index.css" rel="stylesheet">
 	    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-	    <script src="./js/bootstrap.bundle.min.js"></script>
         
         <style>
         
@@ -213,16 +214,30 @@
     </head>
     
     <body>
-        <section id="subs" class="bg_LightSteelBlue" >
-            <div class="container-xl pt-5">
-                <Button class="btn btn-md btn-outline-info">Go Back</Button>
-            </div>
-        </section>
-
-        <section id="subs" class="pb-5 bg_LightSteelBlue">
+        <section id="subs" class="pb-5 pt-5 bg_LightSteelBlue">
             <div class="container-xl">
-                <div id="date"></div>
-                <div></div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <Button class="btn btn-md btn-outline-info">Go Back</Button>
+                        <div id="date"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center">
+                        <div>
+                            <div>
+                                <h4 style="color : #000; font-weight : bold; font-size : 24px;"><?= $allDetails['hallName']." , ".$allDetails['location'] ?> </h4>
+                            </div>
+                            <div>
+                                <h5 style="color : #091C7A; font-weight : bold;">Movie : <span style="color : #000; font-size : 1rem;"><?= $allDetails['filmName'] ?></span></h5>
+                            </div>
+                            <div>
+                                <h5 style="color : #091C7A; font-weight : bold;">Time : <span style="color : #000; font-size : 1rem;"><?= $_GET['time'] ?></span></h5>
+                            </div>
+                            <div>
+                                <h5 style="color : #091C7A; font-weight : bold;">Date : <span style="color : #000; font-size : 1rem;"><?= $_GET['date'] ?></span></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -235,25 +250,11 @@
                 </div>
                 <div class="seat-booking">
                     <div class="screen">Boxes</div>
-                        <div class="row">
-                            <?php 
-                                $totBoxes = $allDetails['boxes'];
-                                while($totBoxes > 0){
-                                    echo '<button class="seat"></button>';
-                                    --$totBoxes;
-                                }
-                            ?>
+                        <div class="row" id="boxes">
                         </div>
                     <div class="screen">Normal Seats</div>
                     <div class="seats">
-                        <div class="row">
-                            <?php
-                                $normalSeats = $allDetails['capacity'];
-                                while($normalSeats > 0){
-                                    echo '<button class="seat"></button>';
-                                    --$normalSeats;
-                                }
-                            ?>
+                        <div class="row" id="normalSeats">
                         </div>
                     </div>
                     <div class="booking-summary">
@@ -268,19 +269,7 @@
         </section>
         
         <script>
-        const allTicketsInput = document.getElementById('allTickets');
-        const kidsTicketsInput = document.getElementById('kidsTickets');
-        const totalElement = document.getElementById('total');
-        
-        allTicketsInput.addEventListener('input', updateTotal);
-        kidsTicketsInput.addEventListener('input', updateTotal);
-        
-        function updateTotal() {
-            const allTickets = parseInt(allTicketsInput.value);
-            const kidsTickets = parseInt(kidsTicketsInput.value);
-            const totalPrice = allTickets + kidsTickets;
-            totalElement.textContent =  + totalPrice;
-        }
+
         </script>
         
         <script src="./sources/js/jquery.min.js"></script>
@@ -308,7 +297,82 @@
             // Update the date element in the HTML
             document.getElementById("date").innerHTML = formattedDate;
         </script>
-        <script src="./sources/js/main.js"></script>        
+        <script src="./sources/js/main.js"></script>    
+        <script>
+            let boxesStr = "";
+            let normalStr = "";
+            const boxesArray = [];
+            const normalArray = [];
+            const selectedBox = [];
+            const selectedNormal = [];
+            window.onload = getSeats();
+            
+            function getSeats() {
+                $.ajax({
+                    type: "post",
+                    url: "/moviebooker/database/actions.php",
+                    data: {
+                        getRowsAndCols : true,
+                        theater : <?= $theaterId ?>,
+                        film : <?= $filmId ?>,
+                        year : <?= $date[0] ?>,
+                        month : <?= $date[1] ?>,
+                        date : <?= $date ?>,
+                        hours : <?= $time[0] ?>,
+                        mins : <?= $time[1] ?>
+                    },
+                    dataType: "text",
+                    success: function (response) {
+                        const finalVal = JSON.parse(response);
+
+                        for(let i=1; i<=parseInt(finalVal['boxes']); i++){
+                            boxesArray.push(i);
+                            boxesStr += '<button value="'+i+'" onclick="addItemBox(this.value)" class="seat"></button>';
+                        }
+                        for(let k=1; k<=parseInt(finalVal['capacity']); k++){
+                            normalArray.push(k);
+                            normalStr += '<button value="'+k+'" onclick="addItemNormal(this.value)" class="seat"></button>';
+                        }
+                        $('#boxes').html(boxesStr);
+                        $('#normalSeats').html(normalStr);
+                    }
+                });
+            };
+
+            function addItemBox(id){
+                let boxesStr = "";
+                for(let i=0; i<boxesArray.length; i++){
+                    
+                }
+            }
+
+            function addItemNormal(id){
+                let normalStr = "";
+                if(checkArr(id, "normal")){
+                    const index = selectedNormal.indexOf(id);
+                    selectedNormal.splice(index,1);
+                    for(let k=0; k<normalArray.length; k++){
+                        if(checkArray2(k)){
+                            normalStr += '<button value="'+(k+1)+'" style="background : #0f0;" onclick="addItemBox(this.value)" class="seat"></button>';
+                        }
+                        else{
+                            normalStr += '<button value="'+(k+1)+'" onclick="addItemBox(this.value)" class="seat"></button>';
+                        }
+                    }
+                }
+                else{
+                    selectedNormal.push(id); 
+                    for(let k=0; k<normalArray.length; k++){
+                        if(checkArray2(k)){
+                            normalStr += '<button value="'+(k+1)+'" style="background : #0f0;" onclick="addItemBox(this.value)" class="seat"></button>';
+                        }
+                        else{
+                            normalStr += '<button value="'+(k+1)+'" onclick="addItemBox(this.value)" class="seat"></button>';
+                        }
+                    }
+                }
+            }
+        </script>    
     </body>
     
 </html>
