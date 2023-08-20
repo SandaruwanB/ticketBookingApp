@@ -213,50 +213,23 @@
     </head>
     
     <body>
-
-        <section id="footer_b" class="pt-3 pb-3">
-            <div class="container-xl">
-                <div class="row footer_b1">
-                    <div class="row">
-                        <div class="col-lg-12 bg-black shadow p-4 rounded">
-                            <form>
-                                <div class="row align-items-end">
-                                    <div class="col-lg-3 mb-3 bg-black">
-                                        <label for="allTickets">No. Of Full Tickets</label>
-                                        <input type="number" id="allTickets" name="allTickets" min="0" value="0">
-                                    </div>
-                                    <div class="col-lg-3 mb-3 bg-black">
-                                        <label for="kidsTickets">No. Of Kids Tickets</label>
-                                        <input type="number" id="kidsTickets" name="kidsTickets" min="0" value="0">
-                                    </div>
-                                    <div class="col-lg-2 mb-3 bg-black">
-                                        <label for="total">Total Tickets</label>
-                                        <div id="total">0</div>
-                                    </div>
-                                    <div class="col-lg-1 mb-lg-3 mt-2 bg-black">
-                                        <button type="submit" class="btn text-white shadow-none custom-bg">NEXT</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <h3><?= $allDetails['filmName'] ?></h3>
-                            <h6><?= $allDetails['hallName'] ?> , <?= $allDetails['location'] ?></h6>
-                            <button class="buttonTime"><?= $_GET['time'] ?></button>
-                        </div>
-                    </div>
-                </div>
+        <section id="subs" class="bg_LightSteelBlue" >
+            <div class="container-xl pt-5">
+                <Button class="btn btn-md btn-outline-info">Go Back</Button>
             </div>
         </section>
-        
-        <section id="subs" class="pt-5 pb-5 bg_LightSteelBlue">
+
+        <section id="subs" class="pb-5 bg_LightSteelBlue">
             <div class="container-xl">
                 <div id="date"></div>
+                <div></div>
             </div>
         </section>
         
         <section id="" class="p_3 bg-light">
             <div class="container-xl">
                 <h3 style="color: #333; text-align: center;">ODC</h3>
-                <h6 style="color: #808080; text-align: center;">( F. Rs.<?= $allDetails['elderTicket'] ?>.00 / H. Rs.<?= $allDetails['youngerPrice'] ?>.00 )</h6>
+                <h6 style="color: #808080; text-align: center;">( Full. Rs.<?= $allDetails['elderTicket'] ?>.00 / Half. Rs.<?= $allDetails['youngerPrice'] ?>.00 / Box Ticket. Rs.<?= $allDetails['boxPrice'] ?>.00 )</h6>
                 <div class="line-container">
                     <hr class="subtracted-line">
                 </div>
@@ -278,14 +251,16 @@
                                 $normalSeats = $allDetails['capacity'];
                                 while($normalSeats > 0){
                                     echo '<button class="seat"></button>';
+                                    --$normalSeats;
                                 }
                             ?>
                         </div>
                     </div>
                     <div class="booking-summary">
-                        <h3>Booking Summary</h3>
-                        <p>Selected Seats: <span id="selected-seats">0</span></p>
-                        <p>Total: $<span id="total-price">0</span></p>
+                        <h3 style="color : #091C7A;">Booking Summary</h3>
+                        <p>( box ticket allocate for two persons )</p>
+                        <h5 style="color : #000;">Selected Seats: <span id="selected-seats">0</span></h5>
+                        <h5 style="color : #000;">Total: Rs.<span id="total-price">0</span></h5>
                         <button id="book-now">Book Now</button>
                     </div>
                 </div>
