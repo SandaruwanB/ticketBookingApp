@@ -261,7 +261,7 @@
         $time = $_POST['hours'].":".$_POST['mins'];
         $date = $_POST['year']."-".$_POST['month']."-".$_POST['date'];
 
-        $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing,filmHalls WHERE tiketsAndPricing.hallid =filmHalls.id AND tiketsAndPricing.movieid=nowShowing.id AND tiketsAndPricing.hallid=".$theater."");
+        $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing,filmHalls WHERE tiketsAndPricing.hallid =filmHalls.id AND tiketsAndPricing.movieid=nowShowing.id AND tiketsAndPricing.hallid=".$theater." AND nowShowing.id=".$film."");
         $row = mysqli_fetch_assoc($query);
 
         echo json_encode($row);

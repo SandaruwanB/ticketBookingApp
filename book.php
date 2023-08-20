@@ -7,7 +7,7 @@
     $time = explode(":",$ctime);
     $date = explode("-",$cdate);
 
-    $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing,filmHalls WHERE tiketsAndPricing.hallid =filmHalls.id AND tiketsAndPricing.movieid=nowShowing.id AND tiketsAndPricing.hallid=".$theaterId."");
+    $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing,filmHalls WHERE tiketsAndPricing.hallid =filmHalls.id AND tiketsAndPricing.movieid=nowShowing.id AND tiketsAndPricing.hallid=".$theaterId." AND nowShowing.id=".$filmId."");
     $allDetails = mysqli_fetch_assoc($query);
 ?>
 
@@ -218,7 +218,7 @@
             <div class="container-xl">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-6">
-                        <Button class="btn btn-md btn-outline-info">Go Back</Button>
+                        <Button class="btn btn-md btn-outline-info" onclick="goBack()">Go Back</Button>
                         <div id="date"></div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center">
@@ -260,8 +260,7 @@
                     <div class="booking-summary">
                         <h3 style="color : #091C7A;">Booking Summary</h3>
                         <p>( box ticket allocate for two persons )</p>
-                        <h5 style="color : #000;">Selected Seats: <span id="selected-seats">0</span></h5>
-                        <h5 style="color : #000;">Total: Rs.<span id="total-price">0</span></h5>
+                        <h5 style="color : #000;">You Selected <span id="selectedBoxes">0</span> Boxes & <span id="selectedSeats">0</span> Seats.</h5>
                         <button id="book-now">Book Now</button>
                     </div>
                 </div>
@@ -353,6 +352,7 @@
                         }
                         $('#boxes').html(boxesStr);
                         $('#normalSeats').html(normalStr);
+                        console.log(finalVal);
                     }
                 });
             };
@@ -367,7 +367,7 @@
                     selectedBox.push(id);
                 }
                 printBoxVals();
-                console.log(selectedBox);
+                $('#selectedBoxes').text(selectedBox.length);
             }
             function printBoxVals (){
                 boxesStr = "";
@@ -419,6 +419,7 @@
                     selectedNormal.push(id);
                 }
                 printNormalVals();
+                $('#selectedSeats').text(selectedNormal.length);
             }
             function printNormalVals (){
                 normalStr = "";
@@ -458,6 +459,11 @@
                         continue;
                     }
                 }
+            }
+
+
+            function goBack(){
+                window.history.back();
             }
             
         </script>    
