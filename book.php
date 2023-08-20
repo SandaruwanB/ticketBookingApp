@@ -7,10 +7,6 @@
 
     $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,nowShowing,filmHalls WHERE tiketsAndPricing.hallid =filmHalls.id AND tiketsAndPricing.movieid=nowShowing.id AND tiketsAndPricing.hallid=".$theaterId."");
     $allDetails = mysqli_fetch_assoc($query);
-    $capacity = json_encode($allDetails['capacity']);
-    $dateAndTime = json_decode($allDetails['showingDates']);
-        
-    echo "<script>console.log('".$dateAndTime."');</script>";
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +106,7 @@
                 color: #fff;!important;
             } 
 
-            .button {
+            .buttonTime {
                 background: #fff;
                 color: #000;
                 display: inline-block;
@@ -242,14 +238,9 @@
                                     </div>
                                 </div>
                             </form>
-                            <h3>Guththila</h3>
-                            <h6>Savoy Metro Maharagama , Maharagama</h6>
-                            <a class="button" href="#">7.00 PM</a>
-                            <a class="button" href="#">2.30 PM</a>
-                            <a class="button" href="#">10.15 AM</a>
-                            <a class="button" href="#"><?= $_GET['fid'] ?></a>
-                            <a class="button" href="#"><?= $_GET['date'] ?></a>
-                            <a class="button" href="#"><?= $_GET['time'] ?></a>
+                            <h3><?= $allDetails['filmName'] ?></h3>
+                            <h6><?= $allDetails['hallName'] ?> , <?= $allDetails['location'] ?></h6>
+                            <button class="buttonTime"><?= $_GET['time'] ?></button>
                         </div>
                     </div>
                 </div>
@@ -265,49 +256,31 @@
         <section id="" class="p_3 bg-light">
             <div class="container-xl">
                 <h3 style="color: #333; text-align: center;">ODC</h3>
-                <h6 style="color: #808080; text-align: center;">( F. Rs.500.00 / H. Rs.350.00 )</h6>
+                <h6 style="color: #808080; text-align: center;">( F. Rs.<?= $allDetails['elderTicket'] ?>.00 / H. Rs.<?= $allDetails['youngerPrice'] ?>.00 )</h6>
                 <div class="line-container">
                     <hr class="subtracted-line">
                 </div>
                 <div class="seat-booking">
-                    <div class="screen">Screen</div>
+                    <div class="screen">Boxes</div>
+                        <div class="row">
+                            <?php 
+                                $totBoxes = $allDetails['boxes'];
+                                while($totBoxes > 0){
+                                    echo '<button class="seat"></button>';
+                                    --$totBoxes;
+                                }
+                            ?>
+                        </div>
+                    <div class="screen">Normal Seats</div>
                     <div class="seats">
                         <div class="row">
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <button class="seat"></button>
-                            <!-- ...more seats... -->
+                            <?php
+                                $normalSeats = $allDetails['capacity'];
+                                while($normalSeats > 0){
+                                    echo '<button class="seat"></button>';
+                                }
+                            ?>
                         </div>
-                        <!-- ...more rows... -->
                     </div>
                     <div class="booking-summary">
                         <h3>Booking Summary</h3>
@@ -335,6 +308,7 @@
         }
         </script>
         
+        <script src="./sources/js/jquery.min.js"></script>
         <script>
             // Get the current date
             var currentDate = new Date();
@@ -359,56 +333,7 @@
             // Update the date element in the HTML
             document.getElementById("date").innerHTML = formattedDate;
         </script>
-        
-        <script>
-        const seats = document.querySelectorAll('.seat');
-        const selectedSeatsCount = document.getElementById('selected-seats');
-        const totalPrice = document.getElementById('total-price');
-        const bookNow = document.getElementById('book-now');
-        
-        let selectedSeats = [];
-        let total = 0;
-        
-        // Update selected seats and total price
-        function updateSelectedSeats() {
-            selectedSeatsCount.innerText = selectedSeats.length;
-            totalPrice.innerText = total;
-        }
-        
-        // Seat click event listener
-        function seatClick(e) {
-            const seat = e.target;
-            
-            // Toggle seat selection
-            seat.classList.toggle('selected');
-            
-            // Update selected seats and total price
-            if (seat.classList.contains('selected')) {
-                selectedSeats.push(seat);
-                total += 500 + 350; // Adjust the price as needed
-            } else {
-                selectedSeats = selectedSeats.filter(s => s !== seat);
-                total -= 10; // Adjust the price as needed
-            }
-            updateSelectedSeats();
-        }
-        
-        // Book Now button click event listener
-        function bookNowClick() {
-            if (selectedSeats.length === 0) {
-                alert('Please select at least one seat.');
-            } else {
-                
-                // Perform booking logic
-                alert('Seats booked successfully!');
-            }
-        }
-        
-        // Add event listeners
-        seats.forEach(seat => seat.addEventListener('click', seatClick));
-        bookNow.addEventListener('click', bookNowClick);
-        </script>
-        
+        <script src="./sources/js/main.js"></script>        
     </body>
     
 </html>
