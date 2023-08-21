@@ -245,7 +245,8 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h3 style="color : #000;"></h3>
+                <div class="content text-center mt-1" id="content" style="color : #000;">
+                </div>
             </div>
         </div>
         <section id="subs" class="pb-5 pt-5 bg_LightSteelBlue">
@@ -501,14 +502,61 @@
             }
 
             function showModal() {
-
-                $('#myModal').css("display", "flex");
+                if(selectedBox.length == 0){
+                    if(selectedNormal.length == 0){
+                        displayErr("You didn't select any boxes or seats.");
+                        $('#myModal').css("display", "flex");
+                    }
+                    else{
+                        displayModalContent();
+                        $('#myModal').css("display", "flex");
+                    }
+                }
+                else{
+                    displayModalContent();
+                    $('#myModal').css("display", "flex");
+                }
             }
             $('.close').click(function (e) { 
                 e.preventDefault();
-                $('#myModal').css("display", "none");
+                closeModal();
             });
-            
+            function closeModal(){
+                $('#myModal').css("display", "none");
+            }
+
+
+            function displayModalContent(){
+                let str =  '<h3 style="color : #000;">Booking Details</h3>';
+                str += '<div class="mt-2 text-start p-2" style="background : #f2f2f2;">';
+                str += '<h6 style="color : #000;">Total Seats : <span>'+(selectedNormal.length)+'</span></h6>';
+                str += '<h6 style="color : #000;">Total Boxes : <span>'+(selectedBox.length)+'</span></h6>';
+                str += '</div>';
+                str += '<div class="mt-4 text-center" style="width : 76%; margin-left : 12%;">';
+                str += '<p>Please Specify Your Seats</p>';
+                str += '<input type="number" placeholder="Full Tickets">';
+                str += '<input type="number" placeholder="Half Tickets" class="mt-2">';
+                str += '</div>';
+                str += '<div class="mt-3 text-start p-2" style="background : #f2f2f2;">';
+                str += '<h6 style="color : #000;">Cost for Full Seats : <span>Rs.250.00</span></h6>';
+                str += '<h6 style="color : #000;">Cost for Half Seats : <span>Rs.100.00</span></h6>';
+                str += '<h6 style="color : #000;">Cost for Boxes : <span>Rs.350.00</span></h6>';
+                str += '<h6 style="color : #000;">Total Charge for Tickets : <span>Rs.700.00</span></h6>';
+                str += '</div>';
+                str += '<div class="mt-3 text-end p-2">'; 
+                str += '<button class="btn btn-md btn-primary">Pay Now</button>';
+                str += '</div>';
+
+                $('#content').html(str);
+            }
+            function displayErr(errText){
+                let str = '<div class="alert alert-info">' + errText + '</div>';
+                str += '<div class="text-end mt-3">';
+                str += '<button id="close" onclick="closeModal()" class="btn btn-md btn-primary">close</button>';
+                str +='</div>';
+
+                $('#content').html(str);
+            }
         </script>    
     </body>
     
