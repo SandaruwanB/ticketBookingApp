@@ -263,6 +263,109 @@
                 0% { transform: rotate(0deg); }
                 100% { transform: rotate(360deg); }
             }
+
+            .card{
+                border:none;
+            }
+
+            .form-control {
+                border-bottom: 2px solid #eee !important;
+                border: none;
+                font-weight: 600
+            }
+
+            .form-control:focus {
+                color: #495057;
+                background-color: #fff;
+                border-color: #8bbafe;
+                outline: 0;
+                box-shadow: none;
+                border-radius: 0px;
+                border-bottom: 2px solid blue !important;
+            }
+
+
+
+            .inputbox {
+                position: relative;
+                margin-bottom: 20px;
+                width: 100%
+            }
+
+            .inputbox span {
+                position: absolute;
+                top: 7px;
+                left: 11px;
+                transition: 0.5s
+            }
+
+            .inputbox i {
+                position: absolute;
+                top: 13px;
+                right: 8px;
+                transition: 0.5s;
+                color: #3F51B5
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0
+            }
+
+            .inputbox input:focus~span {
+                transform: translateX(-0px) translateY(-15px);
+                font-size: 12px
+            }
+
+            .inputbox input:valid~span {
+                transform: translateX(-0px) translateY(-15px);
+                font-size: 12px
+            }
+
+            .card-blue{
+
+                background-color: #492bc4;
+            }
+
+            .hightlight{
+
+                background-color: #5737d9;
+                padding: 10px;
+                border-radius: 10px;
+                margin-top: 15px;
+                font-size: 14px;
+            }
+
+            .yellow{
+
+                color: #fdcc49; 
+            }
+
+            .decoration{
+
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+            .btn-success {
+                color: #fff;
+                background-color: #492bc4;
+                border-color:#492bc4;
+            }
+
+            .btn-success:hover {
+                color: #fff;
+                background-color:#492bc4;
+                border-color: #492bc4;
+            }
+
+
+            .decoration:hover{
+
+                text-decoration: none;
+                color: #fdcc49; 
+            }
         </style>
         
     </head>
@@ -326,8 +429,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-        
+        </section>        
         <script>
 
         </script>
@@ -557,7 +659,7 @@
 
 
             function displayModalContent(){
-                let str =  '<div id="loader"></div><div id="data"><h3 style="color : #000;">Booking Details</h3>';
+                let str =  '<div id="loader" class="d-none"></div><div id="data"><h3 style="color : #000;">Booking Details</h3>';
                 str += '<div class="mt-2 text-start p-2" style="background : #f2f2f2;">';
                 str += '<h6 style="color : #000;">Total Seats : <span>'+(selectedNormal.length)+'</span></h6>';
                 str += '<h6 style="color : #000;">Total Boxes : <span>'+(selectedBox.length)+'</span></h6>';
@@ -571,7 +673,7 @@
                 str += '</div>';
                 str += '<div class="mt-3 mb-1 text-start">';
                 str += '<span class="text-start mb-0">Half Tickets</span>';
-                str += '<input type="number" placeholder="Half Tickets" onchange="addHalfTicket(this.value)" id="halfTick">';
+                str += '<input type="number" placeholder="Half Tickets"  id="halfTick" onchange="addHalfTicket(this.value)">';
                 str += '<span class="text-start" style="color : red; font-size : 12px;" id="setErr1"></span>';
                 str += '</div>';
                 str += '</div>';
@@ -587,6 +689,30 @@
 
                 $('#content').html(str);
             }
+            function displayContent2(){
+                let str = '<div class="card p-3">';
+                str += '<div class="text-start mt-2 mb-4"><h6 style="color : #000;">Total Payment : <span>Rs.'+(selectedBox.length*boxTicket + elderTicketCount*eldersTicket + childTicketsCount*childrenTicket )+'.00</span></h6></div>';
+                str += '<h6 class="text-uppercase" style="color : #000">Payment details</h6>';
+                str += '<div class="inputbox mt-3"> <input type="text" name="email" class="form-control" required="required"> <span>Email Address</span> </div>';
+                str += '<div class="inputbox mt-3"> <input type="text" name="name" class="form-control" required="required"> <span>Name on card</span> </div>';
+                str += '<div class="inputbox mt-3">';
+                str += '<input type="text" name="name" class="form-control" required="required"> <i class="fa fa-credit-card"></i> ';
+                str += '<span>Card Number</span> ';
+                str += '</div> ';
+                str += '<div class="row">';
+                str += '<div class="col">';
+                str += '<div class="d-flex flex-row">';
+                str += '<div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <span>Expiry</span> </div>';
+                str += '<div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <span>CVV</span> </div>';
+                str += '</div>';                       
+                str += '</div>'
+                str += '<div class="mt-3"><button class="btn btn-md btn-success">Pay Now</button></div>';
+                str += '</div>';
+                str += '</div>';
+
+                $('#content').html(str);
+
+            }
             function displayErr(errText){
                 let str = '<div class="alert alert-info">' + errText + '</div>';
                 str += '<div class="text-end mt-3">';
@@ -598,7 +724,11 @@
 
             function gotoPayment(){
                 if(selectedNormal.length == (childTicketsCount+elderTicketCount)){
-                    
+                    $('#loader').removeClass("d-none");
+                    setTimeout(()=>{
+                        $('#loader').addClass("d-none");
+                        displayContent2();
+                    }, 3000)
                 }
                 else{
                     $('#setErr').text("Your selected seats and this seats are not equal.");
@@ -611,12 +741,14 @@
                 displayModalContent();
                 $('#halfTick').val(childTicketsCount);
                 $('#fullTick').val(value);
+                console.log(elderTicketCount);
             }
             function addHalfTicket(value){
                 childTicketsCount = value;
                 displayModalContent();
                 $('#fullTick').val(elderTicketCount);
                 $('#halfTick').val(value);
+                console.log(childTicketsCount);
             }
         </script>    
     </body>
