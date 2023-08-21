@@ -237,6 +237,32 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+
+
+            #loader {
+                position: absolute;
+                left: 59%;
+                top: 55%;
+                z-index: 1;
+                width: 60px;
+                height: 60px;
+                margin: -76px 0 0 -76px;
+                border: 5px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 5px solid #091C7A;
+                -webkit-animation: spin 0.8s linear infinite;
+                animation: spin 0.8s linear infinite;
+            }
+
+            @-webkit-keyframes spin {
+                0% { -webkit-transform: rotate(0deg); }
+                100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
         </style>
         
     </head>
@@ -531,20 +557,22 @@
 
 
             function displayModalContent(){
-                let str =  '<h3 style="color : #000;">Booking Details</h3>';
+                let str =  '<div id="loader"></div><div id="data"><h3 style="color : #000;">Booking Details</h3>';
                 str += '<div class="mt-2 text-start p-2" style="background : #f2f2f2;">';
                 str += '<h6 style="color : #000;">Total Seats : <span>'+(selectedNormal.length)+'</span></h6>';
                 str += '<h6 style="color : #000;">Total Boxes : <span>'+(selectedBox.length)+'</span></h6>';
                 str += '</div>';
                 str += '<div class="mt-4 text-center" style="width : 76%; margin-left : 12%;">';
-                str += '<p>Please Specify Your Seats</p>';
+                str += '<p>Please Specify Your Tickets</p>';
                 str += '<div class="mt-3 mb-1 text-start">';
                 str += '<span class="text-start">Full Tickets</span>';
                 str += '<input type="number" placeholder="Full Tickets" id="fullTick" onchange="addFullTicket(this.value)">';
+                str += '<span class="text-start" style="color : red; font-size : 12px;" id="setErr"></span>';
                 str += '</div>';
                 str += '<div class="mt-3 mb-1 text-start">';
                 str += '<span class="text-start mb-0">Half Tickets</span>';
                 str += '<input type="number" placeholder="Half Tickets" onchange="addHalfTicket(this.value)" id="halfTick">';
+                str += '<span class="text-start" style="color : red; font-size : 12px;" id="setErr1"></span>';
                 str += '</div>';
                 str += '</div>';
                 str += '<div class="mt-3 text-start p-2" style="background : #f2f2f2;">';
@@ -554,8 +582,8 @@
                 str += '<h6 style="color : #000;">Total Charge for Tickets : <span>'+(selectedNormal.length > 0 ? childTicketsCount > 0 || elderTicketCount > 0 ? 'Rs.'+(selectedBox.length*boxTicket + elderTicketCount*eldersTicket + childTicketsCount*childrenTicket )+'.00' : "Please Choose Ticket Types" : 'Rs.'+(selectedBox.length*boxTicket)+'.00')+'</span></h6>';
                 str += '</div>';
                 str += '<div class="mt-3 text-end p-2">'; 
-                str += '<button class="btn btn-md btn-primary">Pay Now</button>';
-                str += '</div>';
+                str += '<button class="btn btn-md btn-primary" onclick="gotoPayment()">Pay Now</button>';
+                str += '</div></data>';
 
                 $('#content').html(str);
             }
@@ -566,6 +594,16 @@
                 str +='</div>';
 
                 $('#content').html(str);
+            }
+
+            function gotoPayment(){
+                if(selectedNormal.length == (childTicketsCount+elderTicketCount)){
+                    
+                }
+                else{
+                    $('#setErr').text("Your selected seats and this seats are not equal.");
+                    $('#setErr1').text("Your selected seats and this seats are not equal.");
+                }
             }
 
             function addFullTicket(value){
