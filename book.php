@@ -209,29 +209,21 @@
                 margin-left: 80px; /* Adjust the margin-left value to subtract from the left side */
             }
 
-            .modal {
-                display: none; /* Hidden by default */
-                position: fixed; /* Stay in place */
-                z-index: 1; /* Sit on top */
-                left: 0;
-                top: 0;
-                width: 100%; /* Full width */
-                height: 100%; /* Full height */
-                overflow: auto; /* Enable scroll if needed */
-                background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            .modal{
+                width : 100%;
+                height : 100%;
+                background : rgba(0,0,0,0.6);
+                display : none;
+                justify-content : center;
+                align-items : center;
             }
 
-                /* Modal Content/Box */
-            .modal-content {
-                background-color: #fefefe;
-                margin: 15% auto; /* 15% from the top and centered */
-                padding: 20px;
-                border: 1px solid #888;
-                width: 45%; /* Could be more or less, depending on screen size */
+            .modal .modal-content{
+                width : 500px;
+                padding : 20px;
+                position: relative;
             }
 
-                /* The Close Button */
             .close {
                 color: #aaa;
                 float: right;
@@ -253,7 +245,7 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <div class="modalContent"></div>
+                <h3 style="color : #000;"></h3>
             </div>
         </div>
         <section id="subs" class="pb-5 pt-5 bg_LightSteelBlue">
@@ -337,15 +329,6 @@
 
             // Update the date element in the HTML
             document.getElementById("date").innerHTML = formattedDate;
-
-
-            function showModal() {
-                $('#myModal').css("display", "block");
-            }
-            $('.close').click(function (e) { 
-                e.preventDefault();
-                $('#myModal').css("display", "none");
-            });
         </script>
         <script src="./sources/js/main.js"></script>    
         <script>
@@ -516,6 +499,15 @@
             function goBack(){
                 window.history.back();
             }
+
+            function showModal() {
+
+                $('#myModal').css("display", "flex");
+            }
+            $('.close').click(function (e) { 
+                e.preventDefault();
+                $('#myModal').css("display", "none");
+            });
             
         </script>    
     </body>
