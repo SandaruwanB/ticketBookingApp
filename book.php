@@ -482,6 +482,7 @@
             let boxesStr = "";
             let normalStr = "";
             let bookerEmail = "";
+            let bookerName = "";
             let childrenTicket = 0;
             let eldersTicket = 0;
             let boxTicket = 0;
@@ -769,7 +770,7 @@
 
             function payForTickets(){
                 bookerEmail = $('#email').val();
-                const cardholder = $('#cardholder').val();
+                bookerName = $('#cardholder').val();
                 const cardNumber = $('#cardnumber').val();
                 const expire = $('#expire').val();
                 const cvv = $('#cvv').val();
@@ -807,6 +808,9 @@
                             normal : selectedNormal,
                             email : bookerEmail,
                             paid : ((selectedBox*boxTicket)+(childTicketsCount*childrenTicket)+(elderTicketCount*eldersTicket)),
+                            childTickets : childTicketsCount,
+                            elderTickets : elderTicketCount,
+                            bookerName : bookerName,
                         },
                         dataType: "text",
                         success: function (response) {

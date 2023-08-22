@@ -277,9 +277,16 @@
     }
 
     else if(isset($_POST['bookSeats'])){
-                    $array[$nic] = $rand;
-                    
-                    $mail = new PHPMailer(true);
+        $useremail = $_POST['email'];
+        $boxes = $_POST['boxes'];
+        $normal = $_POST['normal'];
+        $paid = $_POST['paid'];
+        $childTickets = $_POST['childTickets'];
+        $elderTickets = $_POST['elderTickets'];
+        $bookerName = $_POST['bookerName'];
+
+        echo $useremail;
+        /*            $mail = new PHPMailer(true);
                     // set to use smtp
                     $mail -> isSMTP();
                     // define smtp host
@@ -312,7 +319,7 @@
                     $mail -> Send();
                     $mail ->  smtpClose();
     
-                    echo "success";
+                    echo "success";*/
                 
     }
 
