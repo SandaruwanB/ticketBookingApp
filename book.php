@@ -366,6 +366,18 @@
                 text-decoration: none;
                 color: #fdcc49; 
             }
+
+            .loader2{
+                width : 100%;
+                height : 100vh;
+                position : absolute;
+                top : 0;
+                left : 0;
+                background : rgba(0,0,0,0.6);
+                display : flex;
+                justify-content : center;
+                align-items : center;
+            }
         </style>
         
     </head>
@@ -427,6 +439,12 @@
                         <h5 style="color : #000;">You Selected <span id="selectedBoxes">0</span> Boxes & <span id="selectedSeats">0</span> Seats.</h5>
                         <button id="book-now" onclick="showModal()">Book Now</button>
                     </div>
+                </div>
+            </div>
+
+            <div class="loader2 d-none" id="loader2">
+                <div class="spinner-border text-light" role="status">
+                    <span class="sr-only">Loading...</span>
                 </div>
             </div>
         </section>        
@@ -706,12 +724,22 @@
                 str += '<div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <span>CVV</span> </div>';
                 str += '</div>';                       
                 str += '</div>'
-                str += '<div class="mt-3"><button class="btn btn-md btn-success">Pay Now</button></div>';
+                str += '<div class="mt-3"><button class="btn btn-md btn-success" onclick="payForTickets()">Pay Now</button></div>';
                 str += '</div>';
                 str += '</div>';
 
                 $('#content').html(str);
 
+            }
+            function displayOTP(){
+                let str = '<div class="card p-3 text-center">';
+                str += '<h6 class="text-uppercase" style="color : #000">Payment details</h6>';
+                str += "<p style='padding-top : 20px; padding-left : 30px; padding-right : 30px;'>Please verify it's you. check your mobile number send with your banking partner and enter that in here.</p>";
+                str += '<div class="mt-1 mr-2" > <input type="text" name="name" class="form-control w-50" style="margin-left : 25%;" required="required"> <span>OTP</span> </div>';
+                str += '<div class="mt-5"><button class="btn btn-md btn-success" onclick="verify()">Verify</button></div>';
+                str += '</div>';
+
+                $('#content').html(str);
             }
             function displayErr(errText){
                 let str = '<div class="alert alert-info">' + errText + '</div>';
@@ -736,6 +764,19 @@
                 }
             }
 
+            function payForTickets(){
+                closeModal();
+                $('#loader2').removeClass("d-none");
+                setTimeout(()=>{
+                        $('#loader2').addClass("d-none");
+                        $('#myModal').css("display", "flex");
+                        displayOTP();
+                }, 3000)
+            }
+            function verify(){
+                //todo
+            }
+
             function addFullTicket(value){
                 elderTicketCount = value;
                 displayModalContent();
@@ -750,6 +791,7 @@
                 $('#halfTick').val(value);
                 console.log(childTicketsCount);
             }
+
         </script>    
     </body>
     
