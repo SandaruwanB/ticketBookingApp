@@ -2,6 +2,15 @@
 
     include_once ('./connection.php');
 
+    require "/media/sandaru/New Volume/My Projects/php/online movie ticket booking system/moviebooker/phpmailer/PHPMailer.php";
+    require "/media/sandaru/New Volume/My Projects/php/online movie ticket booking system/moviebooker/phpmailer/SMTP.php";
+    require "/media/sandaru/New Volume/My Projects/php/online movie ticket booking system/moviebooker/phpmailer/Exception.php";
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\POP3;
+    use PHPMailer\PHPMailer\SMTP;
+
     if(isset($_POST['addContactMessage'])){
         $name = $_POST['name'];
         $email = $_POST['email'];
@@ -265,6 +274,46 @@
         $row = mysqli_fetch_assoc($query);
 
         echo json_encode($row);
+    }
+
+    else if(isset($_POST['bookSeats'])){
+                    $array[$nic] = $rand;
+                    
+                    $mail = new PHPMailer(true);
+                    // set to use smtp
+                    $mail -> isSMTP();
+                    // define smtp host
+                    $mail -> Host = "smtp.gmail.com";
+                    // authentication
+                    $mail -> SMTPAuth = "true";
+                    // set encryption type
+                    $mail -> SMTPSecure = "tls";
+                    // set port
+                    $mail -> Port = "587";
+                    // email username
+                    $mail -> Username = "ccinema.org@gmail.com";
+                    // password
+                    $mail -> Password = "ibnfvazubtdhpjfu";
+                    // subject
+                    $mail -> Subject = "Account Recovery LPG SMART SERVICE";
+                    // from set
+                    $mail -> setFrom("ccinema.org@gmail.com", "CINEMA ORG");
+                    
+                    $email = "sandarusbandara110@gmail.com";
+                    $message = "verification code is lol";
+                    // body
+                    $mail -> isHTML(true);
+                    $mail -> CharSet = "UTF-8";
+                    $mail -> Body = $message;
+                    // recipient
+                    $mail -> addAddress($email);
+                    
+                    
+                    $mail -> Send();
+                    $mail ->  smtpClose();
+    
+                    echo "success";
+                
     }
 
     else if(isset($_POST['logout'])){

@@ -481,6 +481,7 @@
         <script>
             let boxesStr = "";
             let normalStr = "";
+            let bookerEmail = "";
             let childrenTicket = 0;
             let eldersTicket = 0;
             let boxTicket = 0;
@@ -711,17 +712,18 @@
                 let str = '<div class="card p-3">';
                 str += '<div class="text-start mt-2 mb-4"><h6 style="color : #000;">Total Payment : <span>Rs.'+(selectedBox.length*boxTicket + elderTicketCount*eldersTicket + childTicketsCount*childrenTicket )+'.00</span></h6></div>';
                 str += '<h6 class="text-uppercase" style="color : #000">Payment details</h6>';
-                str += '<div class="inputbox mt-3"> <input type="text" name="email" class="form-control" required="required"> <span>Email Address</span> </div>';
-                str += '<div class="inputbox mt-3"> <input type="text" name="name" class="form-control" required="required"> <span>Name on card</span> </div>';
+                str += '<div class="text-center mt-3 mb-2" id="alert-setter"></div>';
+                str += '<div class="inputbox mt-3"> <input type="text" id="email" name="email" class="form-control" required="required"> <span>Email Address</span> </div>';
+                str += '<div class="inputbox mt-3"> <input type="text" id="cardholder" name="name" class="form-control" required="required"> <span>Name on card</span> </div>';
                 str += '<div class="inputbox mt-3">';
-                str += '<input type="text" name="name" class="form-control" required="required"> <i class="fa fa-credit-card"></i> ';
+                str += '<input type="text" name="name" class="form-control" id="cardnumber" required="required"> <i class="fa fa-credit-card"></i> ';
                 str += '<span>Card Number</span> ';
                 str += '</div> ';
                 str += '<div class="row">';
                 str += '<div class="col">';
                 str += '<div class="d-flex flex-row">';
-                str += '<div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <span>Expiry</span> </div>';
-                str += '<div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <span>CVV</span> </div>';
+                str += '<div class="mt-3 mr-2"> <input type="month" value="0000-00" name="name" id="expire" class="form-control" required="required"> <span>Expiry</span> </div>';
+                str += '<div class="mt-3 mr-2"> <input type="text" name="name" id="cvv" class="form-control" required="required"> <span>CVV</span> </div>';
                 str += '</div>';                       
                 str += '</div>'
                 str += '<div class="mt-3"><button class="btn btn-md btn-success" onclick="payForTickets()">Pay Now</button></div>';
@@ -733,9 +735,10 @@
             }
             function displayOTP(){
                 let str = '<div class="card p-3 text-center">';
-                str += '<h6 class="text-uppercase" style="color : #000">Payment details</h6>';
-                str += "<p style='padding-top : 20px; padding-left : 30px; padding-right : 30px;'>Please verify it's you. check your mobile number send with your banking partner and enter that in here.</p>";
-                str += '<div class="mt-1 mr-2" > <input type="text" name="name" class="form-control w-50" style="margin-left : 25%;" required="required"> <span>OTP</span> </div>';
+                str += '<h6 class="text-uppercase" style="color : #000">verification</h6>';
+                str += '<div class="text-center mt-3 mb-2" id="alert-setter2"></div>';
+                str += "<p style='padding-top : 20px; padding-left : 30px; padding-right : 30px;'>Please verify it's you. check your mobile number and take the otp send from your banking partner and enter that in here.</p>";
+                str += '<div class="mt-1 mr-2" > <input type="text" id="otp" name="name" class="form-control w-50" style="margin-left : 25%;" required="required"> <span>OTP</span> </div>';
                 str += '<div class="mt-5"><button class="btn btn-md btn-success" onclick="verify()">Verify</button></div>';
                 str += '</div>';
 
@@ -765,18 +768,53 @@
             }
 
             function payForTickets(){
-                closeModal();
-                $('#loader2').removeClass("d-none");
-                setTimeout(()=>{
-                        $('#loader2').addClass("d-none");
-                        $('#myModal').css("display", "flex");
-                        displayOTP();
-                }, 3000)
+                bookerEmail = $('#email').val();
+                const cardholder = $('#cardholder').val();
+                const cardNumber = $('#cardnumber').val();
+                const expire = $('#expire').val();
+                const cvv = $('#cvv').val();
+
+                if(bookerEmail == "" || cardholder == "" || cardNumber == "" || cvv == ""){
+                    $('#alert-setter').html('<div class="alert alert-danger">all fields are required</div>');
+                }
+                else if(cvv.length != 3 || cardNumber.length != 12){
+                    $('#alert-setter').html('<div class="alert alert-danger">invalid card detils</div>');
+                }
+                else{
+                    closeModal();
+                    $('#loader2').removeClass("d-none");
+                    setTimeout(()=>{
+                            $('#loader2').addClass("d-none");
+                            $('#myModal').css("display", "flex");
+                            displayOTP();
+                    }, 3000);
+                }
             }
             function verify(){
-                //todo
+                const otp = $('#otp').val();
+                if(otp == "" || otp.length != 4){
+                    $('#alert-setter2').html('<div class="alert alert-danger">invalid OTP code</div>');
+                }
+                else{
+                    closeModal();
+                    $('#loader2').removeClass("d-none");
+                    $.ajax({
+                        type: "post",
+                        url: "/moviebooker/database/actions.php",
+                        data: {
+                            bookSeats : true,
+                            boxes : selectedBox,
+                            normal : selectedNormal,
+                            email : bookerEmail,
+                            paid : ((selectedBox*boxTicket)+(childTicketsCount*childrenTicket)+(elderTicketCount*eldersTicket)),
+                        },
+                        dataType: "text",
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+                }
             }
-
             function addFullTicket(value){
                 elderTicketCount = value;
                 displayModalContent();
