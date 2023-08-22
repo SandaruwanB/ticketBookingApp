@@ -745,6 +745,14 @@
 
                 $('#content').html(str);
             }
+            function setSuccessModal(){
+                let str = '<div class="card p-3 text-center">';
+                str += '<div class="p-3 text-center"><h5 style="color : #000;">Succcess!</h5><p>Your seats are booked check your email address for more info.</p></div>';
+                str += '<div class="text-center"><button class="btn btn-md btn-outline-success">Done</button></div>';
+                str += '</div>';
+
+                $('#content').html(str);
+            }
             function displayErr(errText){
                 let str = '<div class="alert alert-info">' + errText + '</div>';
                 str += '<div class="text-end mt-3">';
@@ -755,7 +763,8 @@
             }
 
             function gotoPayment(){
-                if(selectedNormal.length == (childTicketsCount+elderTicketCount)){
+                const length = parseInt(childTicketsCount)+parseInt(elderTicketCount);
+                if(selectedNormal.length == length){
                     $('#loader').removeClass("d-none");
                     setTimeout(()=>{
                         $('#loader').addClass("d-none");
@@ -824,6 +833,8 @@
                         dataType: "text",
                         success: function (response) {
                             $('#loader2').addClass("d-none");
+                            $('#myModal').css("display", "flex");
+                            setSuccessModal();
                         }
                     });
                 }
