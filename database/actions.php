@@ -278,49 +278,55 @@
 
     else if(isset($_POST['bookSeats'])){
         $useremail = $_POST['email'];
-        $boxes = $_POST['boxes'];
-        $normal = $_POST['normal'];
+        $boxes = json_encode($_POST['boxes']);
+        $normal = json_encode($_POST['normal']);
         $paid = $_POST['paid'];
         $childTickets = $_POST['childTickets'];
         $elderTickets = $_POST['elderTickets'];
+        $boxTickets = $_POST['boxTickets'];
         $bookerName = $_POST['bookerName'];
+        $movie = $_POST['movie'];
+        $hall = $_POST['hall'];
+        $date = $_POST['year']."-".$_POST['month']."-".$_POST['date'];
+        $time = $_POST['hour'].":".$_POST['mins'];
 
-        echo $useremail;
-        /*            $mail = new PHPMailer(true);
-                    // set to use smtp
-                    $mail -> isSMTP();
-                    // define smtp host
-                    $mail -> Host = "smtp.gmail.com";
-                    // authentication
-                    $mail -> SMTPAuth = "true";
-                    // set encryption type
-                    $mail -> SMTPSecure = "tls";
-                    // set port
-                    $mail -> Port = "587";
-                    // email username
-                    $mail -> Username = "ccinema.org@gmail.com";
-                    // password
-                    $mail -> Password = "ibnfvazubtdhpjfu";
-                    // subject
-                    $mail -> Subject = "Account Recovery LPG SMART SERVICE";
-                    // from set
-                    $mail -> setFrom("ccinema.org@gmail.com", "CINEMA ORG");
+        $query = mysqli_query($con, "INSERT INTO bookings(username,email,paid,childTickets,elderTickets,boxTickets,filmTime,boxSeats,normalSeats,filmDate,hallId,movieId) VALUES('".$bookerName."','".$useremail."',".$paid.",".$childTickets.",".$elderTickets.",".$boxTickets.",'".$time."','".$boxes."','".$normal."','".$date."',".$hall.",".$movie.")");
+        if($query){
+            $mail = new PHPMailer(true);
+            // set to use smtp
+            $mail -> isSMTP();
+            // define smtp host
+            $mail -> Host = "smtp.gmail.com";
+            // authentication
+            $mail -> SMTPAuth = "true";
+            // set encryption type
+            $mail -> SMTPSecure = "tls";
+            // set port
+            $mail -> Port = "587";
+            // email username
+            $mail -> Username = "ccinema.org@gmail.com";
+            // password
+            $mail -> Password = "ibnfvazubtdhpjfu";
+            // subject
+            $mail -> Subject = "Account Recovery LPG SMART SERVICE";
+            // from set
+            $mail -> setFrom("ccinema.org@gmail.com", "CINEMA ORG");
                     
-                    $email = "sandarusbandara110@gmail.com";
-                    $message = "verification code is lol";
-                    // body
-                    $mail -> isHTML(true);
-                    $mail -> CharSet = "UTF-8";
-                    $mail -> Body = $message;
-                    // recipient
-                    $mail -> addAddress($email);
+            $email = $useremail;
+            $message = "verification code is lol";
+            // body
+            $mail -> isHTML(true);
+            $mail -> CharSet = "UTF-8";
+            $mail -> Body = $message;
+            // recipient
+            $mail -> addAddress($email);
                     
                     
-                    $mail -> Send();
-                    $mail ->  smtpClose();
+            $mail -> Send();
+            $mail ->  smtpClose();
     
-                    echo "success";*/
-                
+            echo "success";
+        }                
     }
 
     else if(isset($_POST['logout'])){

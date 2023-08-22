@@ -789,6 +789,7 @@
                             $('#myModal').css("display", "flex");
                             displayOTP();
                     }, 3000);
+
                 }
             }
             function verify(){
@@ -810,11 +811,19 @@
                             paid : ((selectedBox*boxTicket)+(childTicketsCount*childrenTicket)+(elderTicketCount*eldersTicket)),
                             childTickets : childTicketsCount,
                             elderTickets : elderTicketCount,
+                            boxTickets : selectedBox.length,
                             bookerName : bookerName,
+                            movie : <?= $filmId ?>,
+                            hall : <?= $theaterId ?>,
+                            year : <?= $date[0] ?>,
+                            month : <?= $date[1] ?>,
+                            date : <?= $date[2] ?>,
+                            hour : <?= $time[0] ?>,
+                            mins : <?= $time[1] ?>,
                         },
                         dataType: "text",
                         success: function (response) {
-                            console.log(response);
+                            $('#loader2').addClass("d-none");
                         }
                     });
                 }
