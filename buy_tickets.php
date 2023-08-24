@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Buy Tickets</title>
-    <link href="sources/css/bootstrap.min.css" rel="stylesheet" >
-	  <link href="sources/css/font-awesome.min.css" rel="stylesheet" >
-	  <link href="sources/css/global.css" rel="stylesheet">
-	  <link href="sources/css/index.css" rel="stylesheet">
+    <title>Book Tickets</title>
+    <link href="./sources/css/bootstrap.min.css" rel="stylesheet" >
+	  <link href="./sources/css/font-awesome.min.css" rel="stylesheet" >
+	  <link href="./sources/css/global.css" rel="stylesheet">
+	  <link href="./sources/css/index.css" rel="stylesheet">
 	  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-	  <script src="sources/js/bootstrap.bundle.min.js"></script>
+	  <script src="./sources/js/bootstrap.bundle.min.js"></script>
     
     <style>
     
@@ -78,48 +78,6 @@
   <body>
 
     <section id="header">
-      <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">SIGN UP</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-
-              <form class="ps-3 pe-3" action="#">
-                <div class="mb-3">
-                  <label for="username" class="form-label">Name</label>
-                  <input class="form-control" type="email" id="username" required="" placeholder="Enter Name">
-                </div>
-                
-                <div class="mb-3">
-                  <label for="emailaddress" class="form-label">Email address</label>
-								  <input class="form-control" type="email" id="emailaddress" required="" placeholder="info@gmail.com">
-							  </div>
-							 
-							  <div class="mb-3">
-								  <label for="password" class="form-label">Password</label>
-								  <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
-							  </div>
-							 
-							  <div class="mb-3">
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="customCheck1">
-									  <label class="form-check-label" for="customCheck1">I accept <a href="#">Terms and Conditions</a></label>
-								  </div> 
-							  </div>
-                
-                <div class="mb-3 text-center">
-                  <h6><a class="button_1 d-block" href="#">LOG IN</a></h6>
-							  </div>
-
-              </form>
-            </div>
-          </div><!-- /.modal-content -->
-        </div>
-      </div>
 
       <?php
         include_once("./layouts/navbar.php");
@@ -127,20 +85,56 @@
 
     </section>
 
-    <img src="sources/img/wall_img.jpg" width="85%" height="350px" style="object-fit : cover;">
+    <img src="./sources/img/wall_img.jpg" width="85%" height="350px" style="object-fit : cover;">
 
     <section id="upcome" class="p_3 bg-light">
       <div class="container-xl">
         <div class="row upcome_1 text-center">
           <div class="col-md-12">
-            <h3 class="mb-0">BUY TICKETS</h3>
+            <h3 class="mb-0">BOOK TICKETS</h3>
             <hr class="line me-auto ms-auto">
           </div>
         </div>
       </div>
+      <div class="container">
+          <form>
+            <div class="form-group">
+              <label for="username">First Name:</label>
+              <input type="text" id="firstname" name="firstname" required>
+            </div>
+            <div class="form-group">
+              <label for="username">Last Name:</label>
+              <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+              <label for="form_mobile">Mobile :</label>
+              <input type="text" name="formmobile" id="mobile" required>   
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" id="uname" name="username" required>
+              <span class="small_text">(Minimum 6 characters)</span>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="pass" name="password" required>
+              <span class="small_text">(Should be a minimum of 4 characters)</span>
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password:</label>
+              <input type="password" id="confirmpassword" name="confirm-password" required>
+            </div>
+            <h6 class="mb-0 mt-3"><button class="button_1" id="registerBtn">Register</button></h6>
+          </form>
+        </div>
+        <br><br>
     </section>
     
-    <section id="upcome" class="p_3 bg-light">
+    <!--section id="upcome" class="p_3 bg-light">
       <div class="container">
         <h3 style="font-weight:normal;">Guththila</h3>
         <hr style="height:1px; width:70%; border-width:0; color:gray; background-color:gray">
@@ -184,7 +178,7 @@
         <br><br>
         <a class="button button3" href="ticket_book.php">12.30 PM</a>
       </div>
-    </section>
+    </section-->
     
     <script>
     window.onscroll = function() {myFunction()};

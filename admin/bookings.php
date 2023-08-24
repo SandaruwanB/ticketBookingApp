@@ -1,3 +1,7 @@
+<?php
+    include_once('../database/connection.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,6 +32,57 @@
                         <div class="heading">
                             <h2>Bookings</h2>
                         </div>
+                        <table class="All Theaters" style="margin-top : 50px;">
+                            <thead>
+                                <td>#</td>
+                                <td>Booked by</td>
+                                <td>Email</td>
+                                <td>Movie</td>
+                                <td>Theater</td>                                
+                                <td>Box Tickets</td>
+                                <td>Full Tickets</td>
+                                <td>Half Tickets</td>
+                                <td>Seat Numbers</td>
+                                <td>Payment</td>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $query = mysqli_query($con, "SELECT * FROM bookings,filmHalls,nowShowing WHERE nowShowing.id=bookings.movieId AND filmHalls.id=bookings.hallId");
+                                    if(mysqli_num_rows($query) > 0){
+                                        $loop = 1;
+                                        while($row = mysqli_fetch_assoc($query)){
+                                            if($row['boxSeats'] == "null" && $row['normalSeats'] == "null"){
+                                                continue;
+                                            }
+                                            else{
+                                                echo '<tr>
+                                                    <td>'.$loop.'</td>
+                                                    <td>'.$row['username'].'</td>
+                                                    <td>'.$row['email'].'</td>
+                                                    <td>'.$row['filmName'].'</td>
+                                                    <td>'.$row['hallName'].' - '.$row['location'].'</td>
+                                                    <td>'.$row['boxTickets'].'</td>
+                                                    <td>'.$row['elderTickets'].'</td>
+                                                    <td>'.$row['childTickets'].'</td>
+                                                    <td>'.$row['childTickets'].'</td>
+                                                    <td>Rs.'.$row['paid'].'.00</td>
+                                                    <td>
+                                                        <a href="/moviebooker/database/deluser.php?tid='.$row['id'].'" class="btn1"><i class="fa fa-trash-o"></i></a>
+                                                    </td>
+                                                </tr>';
+                                                ++$loop;
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        echo "<tr><td colspan='6' style='text-align : center; font-size : 1rem;'>No Bookings Availble to Show.</td></tr>";
+                                    }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>    

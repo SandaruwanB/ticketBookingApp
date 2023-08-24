@@ -33,11 +33,11 @@
         </li>
         <li class="nav-item">
         <?php 
-          if($url == "/moviebooker/book.php"){
-            echo '<a class="nav-link active" aria-current="page" href="/moviebooker/book.php">Book Tickets</a>';
+          if($url == "/moviebooker/buy_tickets.php"){
+            echo '<a class="nav-link active" aria-current="page" href="/moviebooker/buy_tickets.php">Book Tickets</a>';
           }
           else{
-            echo '<a class="nav-link" aria-current="page" href="/moviebooker/book.php">Book Tickets</a>';
+            echo '<a class="nav-link" aria-current="page" href="/moviebooker/buy_tickets.php">Book Tickets</a>';
           }
         ?>      
         <li class="nav-item">
