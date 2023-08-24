@@ -266,7 +266,6 @@
     else if(isset($_POST['getRowsAndCols'])){
         $film = $_POST['film'];
         $theater = $_POST['theater'];
-        $date = $_POST['date'];
         $time = $_POST['hours'].":".$_POST['mins'];
         $date = $_POST['year']."-".$_POST['month']."-".$_POST['date'];
 
@@ -274,6 +273,31 @@
         $row = mysqli_fetch_assoc($query);
 
         echo json_encode($row);
+    }
+
+    else if(isset($_POST['getCurrentRows'])){
+        $film = $_POST['film'];
+        $theater = $_POST['theater'];
+        $time = $_POST['hours'].":".$_POST['mins'];
+        $date = $_POST['year']."-".$_POST['month']."-".$_POST['date'];
+        $boxSeats = array();
+        $normalSeats = array();
+        $test = array();
+
+        $query = mysqli_query($con, "SELECT * FROM bookings WHERE filmDate='".$date."' AND filmTime='".$time."' AND hallId=".$theater." AND movieId=".$film."");
+        $row = mysqli_fetch_assoc($query);
+        array_push($test, $row['boxSeats']);
+        while($row = mysqli_fetch_assoc($query)){
+            /*if($row['boxSeats']){
+                //array_push($boxSeats, $row['boxSeats']);
+                echo $row['boxSeats'];
+            }*/
+                //array_push($normalSeats, $row['normalSeats']);
+            echo $row['normalSeats'];
+        }
+
+        //echo json_encode($normalSeats);
+        
     }
 
     else if(isset($_POST['bookSeats'])){

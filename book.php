@@ -508,7 +508,7 @@
                         film : <?= $filmId ?>,
                         year : <?= $date[0] ?>,
                         month : <?= $date[1] ?>,
-                        date : <?= $date ?>,
+                        date : <?= $date[2] ?>,
                         hours : <?= $time[0] ?>,
                         mins : <?= $time[1] ?>
                     },
@@ -537,9 +537,28 @@
                                 normalStr += '<button value="'+k+'" onclick="addItemNormal(this.value)" class="seat"></button>';
                             }
                         }
+
+                        $.ajax({
+                            type: "post",
+                            url: "/moviebooker/database/actions.php",
+                            data: {
+                                getCurrentRows : true,
+                                theater : <?= $theaterId ?>,
+                                film : <?= $filmId ?>,
+                                year : <?= $date[0] ?>,
+                                month : <?= $date[1] ?>,
+                                date : <?= $date[2] ?>,
+                                hours : <?= $time[0] ?>,
+                                mins : <?= $time[1] ?>
+                            },
+                            dataType: "text",
+                            success: function (response) {
+                                const value = response;
+                                console.log(value);
+                            }
+                        });
                         $('#boxes').html(boxesStr);
                         $('#normalSeats').html(normalStr);
-                        console.log(finalVal);
                     }
                 });
             };
@@ -844,14 +863,12 @@
                 displayModalContent();
                 $('#halfTick').val(childTicketsCount);
                 $('#fullTick').val(value);
-                console.log(elderTicketCount);
             }
             function addHalfTicket(value){
                 childTicketsCount = value;
                 displayModalContent();
                 $('#fullTick').val(elderTicketCount);
                 $('#halfTick').val(value);
-                console.log(childTicketsCount);
             }
 
         </script>    
