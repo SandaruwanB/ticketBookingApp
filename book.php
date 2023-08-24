@@ -554,7 +554,7 @@
                             dataType: "text",
                             success: function (response) {
                                 const value = response;
-                                console.log(value);
+                                console.log(JSON.parse(value));
                             }
                         });
                         $('#boxes').html(boxesStr);

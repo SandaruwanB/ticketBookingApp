@@ -290,15 +290,14 @@
         while($row = mysqli_fetch_assoc($query)){
             if($row['boxSeats'] != "null"){
                 //array_push($boxSeats, $row['boxSeats']);
-                echo $row['boxSeats'];
             }
             if($row['normalSeats'] != "null"){
-                echo $row['normalSeats'];
+                //echo $row['normalSeats'];
+                array_push($normalSeats, $row['normalSeats']);
             }
-                //array_push($normalSeats, $row['normalSeats']);
         }
 
-        //echo json_encode($normalSeats);
+        echo json_encode($normalSeats);
         
     }
 
