@@ -491,8 +491,8 @@
 
             const boxesArray = [];
             const normalArray = [];
-            const bookedBox = [10,20,3];
-            const bookedNormal = [3,10,37];
+            const bookedBox = [];
+            const bookedNormal = [];
             const selectedBox = [];
             const selectedNormal = [];
 
@@ -503,7 +503,7 @@
                     type: "post",
                     url: "/moviebooker/database/actions.php",
                     data: {
-                        getRowsAndCols : true,
+                        getCurrentRows : true,
                         theater : <?= $theaterId ?>,
                         film : <?= $filmId ?>,
                         year : <?= $date[0] ?>,
@@ -514,27 +514,21 @@
                     },
                     dataType: "text",
                     success: function (response) {
-                        const finalVal = JSON.parse(response);
-                        childrenTicket = finalVal['youngerPrice'];
-                        eldersTicket = finalVal['elderTicket'];
-                        boxTicket = finalVal['boxPrice'];
+                        const value = JSON.parse(response);
+                        const normal = value[0];
+                        const boxes = value[1];
 
-                        for(let i=1; i<=parseInt(finalVal['boxes']); i++){
-                            boxesArray.push(i);
-                            if(findBookedBox(i)){
-                                boxesStr += '<button style="background : #091C7A;" value="'+i+'" onclick="addItemBox(this.value)" class="seat" disabled></button>';
-                            }
-                            else{
-                                boxesStr += '<button value="'+i+'" onclick="addItemBox(this.value)" class="seat"></button>';
+                        for(let i=0; i<normal.length; i++){
+                            let loopingArray = JSON.parse(normal[i]);
+                            for(let k=0; k<loopingArray.length; k++){
+                                bookedNormal.push(loopingArray[k]);
                             }
                         }
-                        for(let k=1; k<=parseInt(finalVal['capacity']); k++){
-                            normalArray.push(k);
-                            if(findBookedNormal(k)){
-                                normalStr += '<button value="'+k+'" style="background : #091C7A;" onclick="addItemNormal(this.value)" class="seat" disabled></button>';
-                            }
-                            else{
-                                normalStr += '<button value="'+k+'" onclick="addItemNormal(this.value)" class="seat"></button>';
+
+                        for(let i=0; i<boxes.length; i++){
+                            let loopingArray = JSON.parse(boxes[i]);
+                            for(let k=0; k<loopingArray.length; k++){
+                                bookedBox.push(loopingArray[k]);
                             }
                         }
 
@@ -542,7 +536,7 @@
                             type: "post",
                             url: "/moviebooker/database/actions.php",
                             data: {
-                                getCurrentRows : true,
+                                getRowsAndCols : true,
                                 theater : <?= $theaterId ?>,
                                 film : <?= $filmId ?>,
                                 year : <?= $date[0] ?>,
@@ -553,15 +547,38 @@
                             },
                             dataType: "text",
                             success: function (response) {
-                                const value = response;
-                                console.log(JSON.parse(value));
+                                const finalVal = JSON.parse(response);
+                                childrenTicket = finalVal['youngerPrice'];
+                                eldersTicket = finalVal['elderTicket'];
+                                boxTicket = finalVal['boxPrice'];
+
+                                for(let i=1; i<=parseInt(finalVal['boxes']); i++){
+                                    boxesArray.push(i);
+                                    if(findBookedBox(i)){
+                                        boxesStr += '<button style="background : #091C7A;" value="'+i+'" onclick="addItemBox(this.value)" class="seat" disabled></button>';
+                                    }
+                                    else{
+                                        boxesStr += '<button value="'+i+'" onclick="addItemBox(this.value)" class="seat"></button>';
+                                    }
+                                }
+                                for(let k=1; k<=parseInt(finalVal['capacity']); k++){
+                                    normalArray.push(k);
+                                    if(findBookedNormal(k)){
+                                        normalStr += '<button value="'+k+'" style="background : #091C7A;" onclick="addItemNormal(this.value)" class="seat" disabled></button>';
+                                    }
+                                    else{
+                                        normalStr += '<button value="'+k+'" onclick="addItemNormal(this.value)" class="seat"></button>';
+                                    }
+                                }
+
+                                $('#boxes').html(boxesStr);
+                                $('#normalSeats').html(normalStr);
                             }
                         });
-                        $('#boxes').html(boxesStr);
-                        $('#normalSeats').html(normalStr);
                     }
                 });
-            };
+                
+            }
 
 
             function addItemBox(id){
@@ -767,7 +784,7 @@
             function setSuccessModal(){
                 let str = '<div class="card p-3 text-center">';
                 str += '<div class="p-3 text-center"><h5 style="color : #000;">Succcess!</h5><p>Your seats are booked check your email address for more info.</p></div>';
-                str += '<div class="text-center"><button class="btn btn-md btn-outline-success">Done</button></div>';
+                str += '<div class="text-center"><button class="btn btn-md btn-outline-success" onclick="success()">Done</button></div>';
                 str += '</div>';
 
                 $('#content').html(str);
@@ -869,6 +886,10 @@
                 displayModalContent();
                 $('#fullTick').val(elderTicketCount);
                 $('#halfTick').val(value);
+            }
+
+            function success(){
+                window.location.reload();
             }
 
         </script>    
