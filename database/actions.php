@@ -288,12 +288,14 @@
         $row = mysqli_fetch_assoc($query);
         array_push($test, $row['boxSeats']);
         while($row = mysqli_fetch_assoc($query)){
-            /*if($row['boxSeats']){
+            if($row['boxSeats'] != "null"){
                 //array_push($boxSeats, $row['boxSeats']);
                 echo $row['boxSeats'];
-            }*/
+            }
+            if($row['normalSeats'] != "null"){
+                echo $row['normalSeats'];
+            }
                 //array_push($normalSeats, $row['normalSeats']);
-            echo $row['normalSeats'];
         }
 
         //echo json_encode($normalSeats);
@@ -350,7 +352,7 @@
             $mail ->  smtpClose();
     
             echo "success";
-        }                
+        }            
     }
 
     else if(isset($_POST['logout'])){
