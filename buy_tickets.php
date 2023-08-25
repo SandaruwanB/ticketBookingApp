@@ -72,6 +72,13 @@
           background-color: #f44336;
           color: white;
         }
+
+        #search{
+          width : 500px;
+          padding : 10px 10px;
+          border-radius : 10px;
+          border : 2px solid #091C7A;
+        }
         
     </style>
   </head>
@@ -98,37 +105,9 @@
       </div>
       <div class="container">
           <form>
-            <div class="form-group">
-              <label for="username">First Name:</label>
-              <input type="text" id="firstname" name="firstname" required>
+            <div class="form-group d-flex justify-content-center mt-4" style="position : relative;">
+              <input type="text" id="search" name="search" placeholder="Search Movie..." required>
             </div>
-            <div class="form-group">
-              <label for="username">Last Name:</label>
-              <input type="text" id="lastname" name="lastname" required>
-            </div>
-            <div class="form-group">
-              <label for="form_mobile">Mobile :</label>
-              <input type="text" name="formmobile" id="mobile" required>   
-            </div>
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="username">Username:</label>
-              <input type="text" id="uname" name="username" required>
-              <span class="small_text">(Minimum 6 characters)</span>
-            </div>
-            <div class="form-group">
-              <label for="password">Password:</label>
-              <input type="password" id="pass" name="password" required>
-              <span class="small_text">(Should be a minimum of 4 characters)</span>
-            </div>
-            <div class="form-group">
-              <label for="confirm-password">Confirm Password:</label>
-              <input type="password" id="confirmpassword" name="confirm-password" required>
-            </div>
-            <h6 class="mb-0 mt-3"><button class="button_1" id="registerBtn">Register</button></h6>
           </form>
         </div>
         <br><br>

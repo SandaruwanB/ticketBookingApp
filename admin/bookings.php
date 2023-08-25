@@ -38,11 +38,11 @@
                                 <td>Booked by</td>
                                 <td>Email</td>
                                 <td>Movie</td>
-                                <td>Theater</td>                                
-                                <td>Box Tickets</td>
-                                <td>Full Tickets</td>
-                                <td>Half Tickets</td>
-                                <td>Seat Numbers</td>
+                                <td>Theater</td>           
+                                <td>Date</td>
+                                <td>Time</td>                     
+                                <td>Box Number</td>
+                                <td>Normal Seat Number</td>
                                 <td>Payment</td>
                             </thead>
                             <tbody>
@@ -61,7 +61,7 @@
                                                     <td>'.$row['email'].'</td>
                                                     <td>'.$row['filmName'].'</td>
                                                     <td>'.$row['hallName'].' - '.$row['location'].'</td>
-                                                    <td>'.$row['boxTickets'].'</td>
+                                                    <td>'.$row['filmDate'].'</td>
                                                     <td>'.$row['elderTickets'].'</td>
                                                     <td>'.$row['childTickets'].'</td>
                                                     <td>'.$row['childTickets'].'</td>
