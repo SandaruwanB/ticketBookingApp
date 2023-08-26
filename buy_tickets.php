@@ -154,18 +154,33 @@
 
       $('#search').on('keyup', function () {
         const value = $('#search').val();
-        $.ajax({
-          type: "post",
-          url: "/moviebooker/database/actions.php",
-          data: {
-            searchMovie : true,
-            text : value,
-          },
-          dataType: "text",
-          success: function (response) {
-            console.log(response);
-          }
-        });
+        if(value == ""){
+          $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+              getLatestMovies : true,
+            },
+            dataType: "text",
+            success: function (response) {
+              $('#movieContent').html(response);
+            }
+          });
+        }
+        else{
+          $.ajax({
+            type: "post",
+            url: "/moviebooker/database/actions.php",
+            data: {
+              searchMovie : true,
+              text : value,
+            },
+            dataType: "text",
+            success: function (response) {
+              
+            }
+          });
+        }
       });
 
       function loadPage(){

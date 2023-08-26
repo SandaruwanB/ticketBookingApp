@@ -381,7 +381,7 @@
                                     <div class="upcome_2i_lasti row">
                                         <div class="col-md-9 col-9">
                                             <div class="upcome_2i_lastil">
-                                                <h5><a href="#">'.$row['filmName'].'</a></h5>
+                                                <h5><a href="/moviebooker/view.php?fid='.$row['movieid'].'">'.$row['filmName'].'</a></h5>
                                                 <h6 class="text-muted">'.$row['language'].'</h6>
                                             </div>
                                         </div>
