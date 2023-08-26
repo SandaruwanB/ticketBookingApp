@@ -75,9 +75,21 @@
 
         #search{
           width : 500px;
-          padding : 10px 10px;
+          padding : 10px 50px;
           border-radius : 10px;
           border : 2px solid #091C7A;
+        }
+        .fa-search{
+          position : absolute;
+          top : 10px;
+          font-size : 1.5rem;
+          left : 20px;
+        }
+
+        @media screen and (max-width : 500px) {
+          #search{
+            width : 380px;
+          }
         }
         
     </style>
@@ -105,75 +117,65 @@
       </div>
       <div class="container">
           <form>
-            <div class="form-group d-flex justify-content-center mt-4" style="position : relative;">
-              <input type="text" id="search" name="search" placeholder="Search Movie..." required>
+            <div class="form-group d-flex justify-content-center" style="position : relative;">
+              <div class="mt-4 d-inline" style="position : relative;">
+                <input type="text" id="search" name="search" placeholder="Search Movie..." required>
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </div>
             </div>
           </form>
         </div>
         <br><br>
     </section>
     
-    <!--section id="upcome" class="p_3 bg-light">
-      <div class="container">
-        <h3 style="font-weight:normal;">Guththila</h3>
-        <hr style="height:1px; width:70%; border-width:0; color:gray; background-color:gray">
-        <i class="fa fa-map-marker"><span style="font-weight: bold;"> SAVOY METRO MAHARAGAMA - MAHARAGAMA</span></i>
-        <br><br>
-        <a class="button button3" href="ticket_book.php">7.00 PM</a>
-        <a class="button button3" href="ticket_book.php">2.30 PM</a>
-        <a class="button button3" href="ticket_book.php">10.15 AM</a>
-        <br><br>
-        <i class="fa fa-map-marker"><span style="font-weight: bold;"> SAVOY METRO GAMPAHA - GAMPAHA</span></i>
-        <br><br>
-        <a class="button button3" href="ticket_book.php">3.00 PM</a>
-        <a class="button button3" href="ticket_book.php">7.30 PM</a>
-        <a class="button button3" href="ticket_book.php">10.15 AM</a>
-        <br><br>
-        <i class="fa fa-map-marker"><span style="font-weight: bold;"> SAVOY PREMIER RAJAGIRIYA - RAJAGIRIYA</span></i>
-        <br><br>
-        <a class="button button3" href="ticket_book.php">10.30 AM</a>
-        <a class="button button3" href="ticket_book.php">7.00 PM</a>
-        <br><br>
-        <i class="fa fa-map-marker"><span style="font-weight: bold;"> SINEXPO 3D - KURUNEGALA</span></i>
-        <br><br>
-        <a class="button button3" href="ticket_book.php">3.00 PM</a>
-        <a class="button button3" href="ticket_book.php">10.15 AM</a>
-        <a class="button button3" href="ticket_book.php">7.15 PM</a>
-        <a class="button button3" href="ticket_book.php">12.30 PM</a>
-        <br><br><br>
-        <h3 style="font-weight:normal;">Ksheera Sagaraya Kalabina</h3>
-        <hr style="height:1px; width:70%; border-width:0; color:gray; background-color:gray">
-        <i class="fa fa-map-marker"><span style="font-weight: bold;"> SAVOY METRO MAHARAGAMA - MAHARAGAMA</span></i>
-        <br><br>
-        <a class="button button3" href="ticket_book.php">4.45 PM</a>
-        <br><br>
-        <i class="fa fa-map-marker"><span style="font-weight: bold;"> SINEXPO 3D - KURUNEGALA</span></i>
-        <br><br>
-        <a class="button button3" href="ticket_book.php">5.00 PM</a>
-        <br><br><br>
-        <h3 style="font-weight:normal;">Yugathra</h3>
-        <hr style="height:1px; width:70%; border-width:0; color:gray; background-color:gray">
-        <i class="fa fa-map-marker"><span style="font-weight: bold;"> SAVOY METRO MAHARAGAMA - MAHARAGAMA</span></i>
-        <br><br>
-        <a class="button button3" href="ticket_book.php">12.30 PM</a>
-      </div>
-    </section-->
-    
+    <script src="./sources/js/jquery.min.js"></script>
     <script>
-    window.onscroll = function() {myFunction()};
-    var navbar_sticky = document.getElementById("navbar_sticky");
-    var sticky = navbar_sticky.offsetTop;
-    var navbar_height = document.querySelector('.navbar').offsetHeight;
-    
-    function myFunction() {
-      if (window.pageYOffset >= sticky + navbar_height) {
-        navbar_sticky.classList.add("sticky")
-        document.body.style.paddingTop = navbar_height + 'px';
-      } else {
-        navbar_sticky.classList.remove("sticky");
-        document.body.style.paddingTop = '0'
+      window.onload = loadPage();
+      window.onscroll = function() {myFunction()};
+      var navbar_sticky = document.getElementById("navbar_sticky");
+      var sticky = navbar_sticky.offsetTop;
+      var navbar_height = document.querySelector('.navbar').offsetHeight;
+      
+      function myFunction() {
+        if (window.pageYOffset >= sticky + navbar_height) {
+          navbar_sticky.classList.add("sticky")
+          document.body.style.paddingTop = navbar_height + 'px';
+        } else {
+          navbar_sticky.classList.remove("sticky");
+          document.body.style.paddingTop = '0'
+        }
       }
-    }
+
+      $('#search').on('keyup', function () {
+        const value = $('#search').val();
+        $.ajax({
+          type: "post",
+          url: "/moviebooker/database/actions.php",
+          data: {
+            searchMovie : true,
+            text : value,
+          },
+          dataType: "text",
+          success: function (response) {
+            console.log(response);
+          }
+        });
+      });
+
+      function loadPage(){
+        $.ajax({
+          type: "post",
+          url: "/moviebooker/database/actions.php",
+          data: {
+            getLatestMovies : true,
+          },
+          dataType: "text",
+          success: function (response) {
+            console.log(response);
+          }
+        });
+      }
+
     </script>
     
   </body>

@@ -332,7 +332,7 @@
             // password
             $mail -> Password = "ibnfvazubtdhpjfu";
             // subject
-            $mail -> Subject = "Account Recovery LPG SMART SERVICE";
+            $mail -> Subject = "CCINEMA ORG - booking details";
             // from set
             $mail -> setFrom("ccinema.org@gmail.com", "CINEMA ORG");
                     
@@ -345,12 +345,19 @@
             // recipient
             $mail -> addAddress($email);
                     
-                    
             $mail -> Send();
             $mail ->  smtpClose();
     
             echo "success";
         }            
+    }
+
+    else if(isset($_POST['getLatestMovies'])){
+        //$query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,filmHalls,nowShowing WHERE nowShowing.id=tiketsAndPricing.movieid AND filmHalls.id=tiketsAndPricing.hallid ORDER BY tiketsAndPricing.id DESC LIMIT 20");
+    }
+
+    else if(isset($_POST['searchMovie'])){
+        echo $_POST['text'];
     }
 
     else if(isset($_POST['logout'])){
