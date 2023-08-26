@@ -155,17 +155,7 @@
       $('#search').on('keyup', function () {
         const value = $('#search').val();
         if(value == ""){
-          $.ajax({
-            type: "post",
-            url: "/moviebooker/database/actions.php",
-            data: {
-              getLatestMovies : true,
-            },
-            dataType: "text",
-            success: function (response) {
-              $('#movieContent').html(response);
-            }
-          });
+          loadPage();
         }
         else{
           $.ajax({
@@ -177,7 +167,7 @@
             },
             dataType: "text",
             success: function (response) {
-              
+              $('#movieContent').html(response);
             }
           });
         }
