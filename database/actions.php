@@ -353,11 +353,17 @@
     }
 
     else if(isset($_POST['getLatestMovies'])){
-        //$query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,filmHalls,nowShowing WHERE nowShowing.id=tiketsAndPricing.movieid AND filmHalls.id=tiketsAndPricing.hallid ORDER BY tiketsAndPricing.id DESC LIMIT 20");
+        $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,filmHalls,nowShowing WHERE nowShowing.id=tiketsAndPricing.movieid AND filmHalls.id=tiketsAndPricing.hallid ORDER BY tiketsAndPricing.tid DESC LIMIT 20");
+        while($row = mysqli_fetch_assoc($query)){
+            echo $row['filmName'];        
+        }
     }
 
     else if(isset($_POST['searchMovie'])){
-        echo $_POST['text'];
+        $text = $_POST['text'];
+        $query = mysqli_query($con, 'SELECT * FROM `nowShowing` WHERE MATCH(`filmName`) AGAINST("'.$text.'")');
+        $rows = mysqli_num_rows($query);
+        echo $rows;
     }
 
     else if(isset($_POST['logout'])){
