@@ -66,9 +66,6 @@
                                                     <td>'.$row['childTickets'].'</td>
                                                     <td>'.$row['childTickets'].'</td>
                                                     <td>Rs.'.$row['paid'].'.00</td>
-                                                    <td>
-                                                        <a href="/moviebooker/database/deluser.php?tid='.$row['id'].'" class="btn1"><i class="fa fa-trash-o"></i></a>
-                                                    </td>
                                                 </tr>';
                                                 ++$loop;
                                             }
