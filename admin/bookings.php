@@ -42,7 +42,6 @@
                                 <td>Date</td>
                                 <td>Time</td>                     
                                 <td>Box Number</td>
-                                <td>Normal Seat Number</td>
                                 <td>Payment</td>
                             </thead>
                             <tbody>
@@ -63,7 +62,6 @@
                                                     <td>'.$row['hallName'].' - '.$row['location'].'</td>
                                                     <td>'.$row['filmDate'].'</td>
                                                     <td>'.$row['elderTickets'].'</td>
-                                                    <td>'.$row['childTickets'].'</td>
                                                     <td>'.$row['childTickets'].'</td>
                                                     <td>Rs.'.$row['paid'].'.00</td>
                                                 </tr>';
