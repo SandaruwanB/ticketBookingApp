@@ -374,7 +374,7 @@
                                         <img src="'.$row['image'].'" style="height : 490px; object-fit : cover;" class="w-100" alt="abc">
                                     </div>
                                     <div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-                                        <h6 class="text-uppercase mb-0"><button value="'.$row['tid'].'" class="button_2">Book Now</button></h6>
+                                        <h6 class="text-uppercase mb-0"><button value="'.$row['movieid'].'" onclick="bookSeat('.$row['movieid'].','.$row['hallid'].')" class="button_2">Book Now</button></h6>
                                     </div>
                                 </div>
                                 <div class="upcome_2i_last bg-white p-3">
@@ -383,6 +383,7 @@
                                             <div class="upcome_2i_lastil">
                                                 <h5><a href="/moviebooker/view.php?fid='.$row['movieid'].'">'.$row['filmName'].'</a></h5>
                                                 <h6 class="text-muted">'.$row['language'].'</h6>
+                                                <h6 class="text-muted">'.$row['hallName'].' - '.$row['location'].'</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -419,8 +420,10 @@
                                 <div class="tab-pane active" id="home">
                                     <div class="upcome_2i row">';
 
-        $query = mysqli_query($con, 'SELECT * FROM `nowShowing` WHERE MATCH(`filmName`) AGAINST("'.$text.'")');
-        if(mysqli_num_rows($query) > 0){
+        $query1 = mysqli_query($con, 'SELECT * FROM `nowShowing` WHERE MATCH(`filmName`) AGAINST("'.$text.'")');
+        $row = mysqli_fetch_assoc($query1);
+        if(mysqli_num_rows($query1) > 0){
+            $query = mysqli_query($con , 'SELECT * FROM tiketsAndPricing,filmHalls,nowShowing WHERE nowShowing.id=tiketsAndPricing.movieid AND filmHalls.id=tiketsAndPricing.hallid AND tiketsAndPricing.movieid='.$row['id'].'');
             while($row = mysqli_fetch_assoc($query)){
                 $outString = $outString.'<div class="col-md-3 mt-3">
                         <div class="upcome_2i1 clearfix position-relative">
@@ -428,7 +431,7 @@
                                 <img src="'.$row['image'].'" style="height : 490px; object-fit : cover;" class="w-100" alt="abc">
                             </div>
                             <div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
-                                <h6 class="text-uppercase mb-0"><button value="'.$row['tid'].'" class="button_2">Book Now</button></h6>
+                                <h6 class="text-uppercase mb-0"><button value="'.$row['movieid'].'" onclick="bookSeat(this.value)" class="button_2">Book Now</button></h6>
                             </div>
                         </div>
                         <div class="upcome_2i_last bg-white p-3">
@@ -437,6 +440,7 @@
                                     <div class="upcome_2i_lastil">
                                         <h5><a href="/moviebooker/view.php?fid='.$row['movieid'].'">'.$row['filmName'].'</a></h5>
                                         <h6 class="text-muted">'.$row['language'].'</h6>
+                                        <h6 class="text-muted" id="hall" value="'.$row['hallid'].'">'.$row['hallName'].' - '.$row['location'].'</h6>
                                     </div>
                                 </div>
                             </div>
@@ -455,6 +459,14 @@
                 </div>';
         }
         echo $outString;
+    }
+
+    else if(isset($_POST['getBookingDatesTimes'])){
+        $id = $_POST['id'];
+        $finalData = array();
+        $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,filmHalls,nowShowing WHERE nowShowing.id=tiketsAndPricing.movieid AND filmHalls.id=tiketsAndPricing.hallid AND tiketsAndPricing.movieid=".$id."");
+        $row = mysqli_fetch_assoc($query);
+        echo json_encode($row['showingDates']);
     }
 
     else if(isset($_POST['logout'])){

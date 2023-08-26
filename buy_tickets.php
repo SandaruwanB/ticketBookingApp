@@ -94,11 +94,46 @@
             width : 380px;
           }
         }
+
+        .modal{
+                width : 100%;
+                height : 100%;
+                background : rgba(0,0,0,0.6);
+                display : none;
+                justify-content : center;
+                align-items : center;
+            }
+
+            .modal .modal-content{
+                width : 500px;
+                padding : 20px;
+                position: relative;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
         
     </style>
   </head>
   <body>
-
+      <div id="myModal" class="modal">
+          <div class="modal-content">
+              <span class="close">&times;</span>
+            <div class="content text-center mt-1" id="content" style="color : #000;">
+          </div>
+        </div>
+      </div>
     <section id="header">
 
       <?php
@@ -138,6 +173,8 @@
     <script>
       window.onload = loadPage();
       window.onscroll = function() {myFunction()};
+      let movie = "";
+      let hall = "";
       var navbar_sticky = document.getElementById("navbar_sticky");
       var sticky = navbar_sticky.offsetTop;
       var navbar_height = document.querySelector('.navbar').offsetHeight;
@@ -187,6 +224,65 @@
         });
       }
 
+
+      function bookSeat(id,hallid){
+        movie = id;
+        hall = hallid;
+
+        $.ajax({
+          type: "post",
+          url: "/moviebooker/database/actions.php",
+          data: {
+            getBookingDatesTimes : true,
+            id : id,
+          },
+          dataType: "text",
+          success: function (response) {
+            const value = JSON.parse(JSON.parse(response));
+            let str =  '<div id="loader" class="d-none"></div><div id="data"><h5 style="color : #000;">CHOOSE DATE TIME</h5>';
+                str += '<div class="mt-4 text-center" style="width : 76%; margin-left : 12%;">';
+                str += '<div class="mt-3 mb-1 text-start">';
+                str += '<span class="text-start d-block">Date</span>';
+                str += '<select class="form-control" id="date">';
+                str += '<option>Choose Date</option>';
+                for(let i=0; i<value.length; i++){
+                  str += '<option value="'+ value[i]['date'] +'">'+ value[i]['date'] +'</option>';
+                }
+                str += '</select>'
+                str += '<span class="text-start" style="color : red; font-size : 12px;" id="setErr"></span>';
+                str += '</div>';
+                str += '<div class="mt-3 mb-1 text-start">';
+                str += '<span class="text-start mt-3 mb-0 d-block">Time</span>';
+                str += '<select class="form-control" id="time">';
+                str += '<option>Choose Time</option>';
+                for(let i=0; i<value.length; i++){
+                  str += '<option value="'+ value[i]['time'] +'">'+ value[i]['time'] +'</option>';
+                }
+                str += '</select>';
+                str += '<span class="text-start" style="color : red; font-size : 12px;" id="setErr1"></span>';
+                str += '</div>';
+                str += '</div>';
+                str += '</div>';
+                str += '<div class="mt-3 text-end p-2">'; 
+                str += '<button class="btn btn-md btn-primary" onclick="bookNow()">Book Now</button>';
+                str += '</div></div>';
+
+                $('#myModal').css("display", "flex");
+                $('#content').html(str);
+          }
+        });
+      }
+
+      function bookNow(){
+        const date = $('#date').val();
+        const time = $('#time').val();
+        window.location.replace("/moviebooker/book.php?tid="+ hall +"&fid="+ movie +"&date="+ date +"&time="+ time);
+      }
+
+      $('.close').click(function (e) { 
+        e.preventDefault();
+        $('#myModal').css("display", "none");
+      });
     </script>
     
   </body>
