@@ -354,9 +354,54 @@
 
     else if(isset($_POST['getLatestMovies'])){
         $query = mysqli_query($con, "SELECT * FROM tiketsAndPricing,filmHalls,nowShowing WHERE nowShowing.id=tiketsAndPricing.movieid AND filmHalls.id=tiketsAndPricing.hallid ORDER BY tiketsAndPricing.tid DESC LIMIT 20");
-        while($row = mysqli_fetch_assoc($query)){
-            echo $row['filmName'];        
+        
+        $outString = '<div class="container-xl">
+                        <div class="row upcome_1 text-center">
+                            <div class="mb-2 container text-start" style="position: relative;">
+                                <h4>Latetst Movies</h4>  
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row upcome_2 mt-2">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home">
+                                    <div class="upcome_2i row">';
+        if(mysqli_num_rows($query) > 0){
+            while($row = mysqli_fetch_assoc($query)){
+                $outString = $outString.'<div class="col-md-3 mt-3">
+                                <div class="upcome_2i1 clearfix position-relative">
+                                    <div class="upcome_2i1i clearfix">
+                                        <img src="'.$row['image'].'" style="height : 490px; object-fit : cover;" class="w-100" alt="abc">
+                                    </div>
+                                    <div class="upcome_2i1i1 clearfix position-absolute top-0 text-center w-100">
+                                        <h6 class="text-uppercase mb-0"><button value="'.$row['tid'].'" class="button_2">Book Now</button></h6>
+                                    </div>
+                                </div>
+                                <div class="upcome_2i_last bg-white p-3">
+                                    <div class="upcome_2i_lasti row">
+                                        <div class="col-md-9 col-9">
+                                            <div class="upcome_2i_lastil">
+                                                <h5><a href="#">'.$row['filmName'].'</a></h5>
+                                                <h6 class="text-muted">'.$row['language'].'</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';        
+            }
+            $outString = $outString.'</div></div></div></div></div>';
         }
+        else{
+            $outString = '<div class="container">
+                        <h4>Latest Movies</h4>
+                        <hr>
+                    </div>
+                    <div class="w-100 text-center d-flex justify-content-center">
+                        <div class="alert alert-info w-50">No Movies to Show. Please be Touch</div>
+                    </div>';
+        }
+        echo $outString;
+
     }
 
     else if(isset($_POST['searchMovie'])){

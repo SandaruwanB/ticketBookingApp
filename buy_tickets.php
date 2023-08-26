@@ -1,3 +1,6 @@
+<?php
+  include_once('./database/connection.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -127,6 +130,9 @@
         </div>
         <br><br>
     </section>
+
+    <section id="movieContent" class="p_3 bg-light">
+		</section>
     
     <script src="./sources/js/jquery.min.js"></script>
     <script>
@@ -171,7 +177,7 @@
           },
           dataType: "text",
           success: function (response) {
-            console.log(response);
+            $('#movieContent').html(response);
           }
         });
       }
